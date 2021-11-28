@@ -9,13 +9,19 @@ public class Player : MonoBehaviour
 
     //number ofindividually valued chips (initialised for the start of the game)
     [SerializeField]
-    private int[] numChips;
+    private int[] numChips; //Holds num of ALL chips
     //starting number of player chips (£700)
     [SerializeField]
     private int numChipsTotal;
     //total value of all the player's chips
     [SerializeField]
     private int totalChipsValue = 1000;
+    
+    public UnityEngine.UI.Button[] betButtons;
+
+    public Color color;
+
+    public int CurrentPos;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +46,33 @@ public class Player : MonoBehaviour
         {
             ChipsTxt[i].text = numChips[i].ToString();
         }
+    }
+
+    public void CurrentBet(string option)
+    {
+        if(option == "Rock")
+        {
+            CurrentPos = 0;
+        }
+        else if (option == "Paper")
+        {
+            CurrentPos = 1;
+        }
+        else if (option == "Scissors")
+        {
+            CurrentPos = 2;
+        }
+    }
+
+    public void EditChips(int[] values)
+    {
+        for (int i = 0; i < values.Length; i++)
+        {
+            numChips[i] -= values[i];
+        }
+        betButtons[CurrentPos].enabled = false;
+        betButtons[CurrentPos].image.color = color;
+        UpdateChipTotals();
     }
 
 }

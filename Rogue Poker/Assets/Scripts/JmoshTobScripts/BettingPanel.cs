@@ -4,15 +4,23 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using TMPro;
+using UnityEngine.Events;
 
 public class BettingPanel : MonoBehaviour
 {
     public UnityEngine.UI.Slider[] Sliders;
     public TextMeshProUGUI[] numChipsBet;
     public Player refPlayer;
+    public Bet refBet;
+
+    public UnityEvent closePopup;
+
+    public string Type;
 
     [SerializeField]
-    private int NumChips, TotalValue;
+    private int TotalBetNumber, TotalBetValue;
+    [SerializeField]
+    private int MaxBet, MaxNum;
 
     private int[] ChipValues = { 100, 50, 20, 10, 5, 1 };
 
@@ -44,17 +52,17 @@ public class BettingPanel : MonoBehaviour
     {
         if (bettingPanelActive)
         {
-            TotalValue = 0;
-            NumChips = 0;
+            TotalBetValue = 0;
+            TotalBetNumber = 0;
             for (int i = 0; i < numChipsBet.Length; i++)
             {
-                numChipsBet[i].text = Sliders[i].value.ToString();
-                TotalValue += ChipValues[i] * (int)Sliders[i].value;
-                NumChips += (int)Sliders[i].value;
+                numChipsBet[i].text = "x" +  Sliders[i].value.ToString();
+                TotalBetValue += ChipValues[i] * (int)Sliders[i].value;
+                TotalBetNumber += (int)Sliders[i].value;
             }
 
-            CurValueChips.text = TotalValue.ToString();
-            CurNumChips.text = NumChips.ToString();
+            CurValueChips.text = "£" + TotalBetValue.ToString();
+            CurNumChips.text = "x" + TotalBetNumber.ToString();
         }
 
     }
@@ -68,6 +76,26 @@ public class BettingPanel : MonoBehaviour
         }
     }
 
+    public void BetType(string type)
+    {
+        Type = type;
+        if (Type == "Bet")
+        {
+            MaxBet = 500;
+            MaxNum = 0;
+            MaxNumChips.text = "";
+            MaxValueChips.text = "£500";
+        }
+        else if (Type == "Raise")
+        {
+
+        }
+        else if (Type == "Call")
+        {
+
+        }
+    }
+
     public void PanelReset()
     {
         for (int i = 0; i < numChipsBet.Length; i++)
@@ -75,5 +103,41 @@ public class BettingPanel : MonoBehaviour
             Sliders[i].value = 0;
             Sliders[i].maxValue = refPlayer.getNumChips(i);
         }
+    }
+
+    public void PlaceBet() //need feedback at some point
+    {
+        //check bet < 50, bet >= 500
+        if (TotalBetValue <= MaxBet && TotalBetValue >= 50 && TotalBetNumber > 0)
+        {
+            if (Type == "Call")
+            {
+                if (TotalBetNumber != MaxNum)
+                {
+                    //can't bet
+                    return;
+                }
+            }
+
+            refBet.SetBet(refPlayer.CurrentPos, TotalBetValue, TotalBetNumber);
+
+            int[] temp = new int[6];
+
+            for (int i = 0; i < Sliders.Length; i++)
+            {
+                temp[i] = (int)Sliders[i].value;
+            }
+            refPlayer.EditChips(temp);
+
+            CloseBetWindow();
+            //can bet
+        }
+
+        //can't bet
+    }
+
+    public void CloseBetWindow()
+    {
+        closePopup.Invoke();
     }
 }

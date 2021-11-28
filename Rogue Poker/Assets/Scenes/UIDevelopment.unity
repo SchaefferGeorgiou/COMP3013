@@ -392,7 +392,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.4, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -777,6 +777,12 @@ MonoBehaviour:
   numChips: 03000000050000000a0000000a0000001400000032000000
   numChipsTotal: 0
   totalChipsValue: 1000
+  betButtons:
+  - {fileID: 1743296587}
+  - {fileID: 827003094}
+  - {fileID: 1464604107}
+  color: {r: 0.103773594, g: 0.08859915, b: 0.08859915, a: 1}
+  CurrentPos: 0
 --- !u!4 &139833578
 Transform:
   m_ObjectHideFlags: 0
@@ -1141,7 +1147,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 173170986}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 997261879}
+        m_TargetAssemblyTypeName: BettingPanel, Assembly-CSharp
+        m_MethodName: PlaceBet
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &173170986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3190,7 +3208,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.4, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4491,8 +4509,8 @@ RectTransform:
   m_Father: {fileID: 1568878794}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.4, y: 0}
+  m_AnchorMax: {x: 0.4, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4945,7 +4963,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.4, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5157,6 +5175,42 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 997261879}
+        m_TargetAssemblyTypeName: BettingPanel, Assembly-CSharp
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 997261879}
+        m_TargetAssemblyTypeName: BettingPanel, Assembly-CSharp
+        m_MethodName: BetType
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Bet
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 139833577}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: CurrentBet
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Paper
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &827003095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5306,8 +5360,8 @@ RectTransform:
   m_Father: {fileID: 206281969}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.4, y: 0}
+  m_AnchorMax: {x: 0.4, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6253,7 +6307,6 @@ GameObject:
   - component: {fileID: 997261876}
   - component: {fileID: 997261878}
   - component: {fileID: 997261877}
-  - component: {fileID: 997261880}
   - component: {fileID: 997261879}
   m_Layer: 5
   m_Name: BettingPanel
@@ -6261,7 +6314,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &997261876
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6343,34 +6396,51 @@ MonoBehaviour:
   - {fileID: 1188101179}
   - {fileID: 943984903}
   - {fileID: 210797035}
---- !u!114 &997261880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997261875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15103b03d1a27c54d8e577e52a94d978, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerRockValue: 0
-  playerScissorsValue: 0
-  playerPaperValue: 0
-  playerRockChips: 0
-  playerScissorsChips: 0
-  playerPaperChips: 0
-  aiRockValue: 0
-  aiScissorsValue: 0
-  aiPaperValue: 0
-  aiRockChips: 0
-  aiScissorsChips: 0
-  aiPaperChips: 0
-  playerFold: 
-  playerRaise: 
-  aiFold: 
-  aiRaise: 
+  numChipsBet:
+  - {fileID: 1199839004}
+  - {fileID: 388884028}
+  - {fileID: 707406955}
+  - {fileID: 2042096436}
+  - {fileID: 1182408343}
+  - {fileID: 1600731483}
+  refPlayer: {fileID: 139833577}
+  refBet: {fileID: 1540598801}
+  closePopup:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 997261879}
+        m_TargetAssemblyTypeName: BettingPanel, Assembly-CSharp
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 997261875}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Type: 
+  TotalBetNumber: 0
+  TotalBetValue: 0
+  MaxBet: 0
+  MaxNum: 0
+  MaxValueChips: {fileID: 396365947}
+  MaxNumChips: {fileID: 602407115}
+  CurValueChips: {fileID: 125254753}
+  CurNumChips: {fileID: 910395688}
 --- !u!1 &1001909813
 GameObject:
   m_ObjectHideFlags: 0
@@ -6601,7 +6671,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.4, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6846,7 +6916,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1128298948}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 997261879}
+        m_TargetAssemblyTypeName: BettingPanel, Assembly-CSharp
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 997261875}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1128298948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7117,8 +7211,8 @@ RectTransform:
   m_Father: {fileID: 2082879512}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.4, y: 0}
+  m_AnchorMax: {x: 0.4, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8605,8 +8699,8 @@ RectTransform:
   m_Father: {fileID: 2085221154}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.4, y: 0}
+  m_AnchorMax: {x: 0.4, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9024,8 +9118,8 @@ RectTransform:
   m_Father: {fileID: 1992956260}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.4, y: 0}
+  m_AnchorMax: {x: 0.4, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9515,6 +9609,42 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 997261879}
+        m_TargetAssemblyTypeName: BettingPanel, Assembly-CSharp
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 997261879}
+        m_TargetAssemblyTypeName: BettingPanel, Assembly-CSharp
+        m_MethodName: BetType
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Bet
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 139833577}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: CurrentBet
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Scissors
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1464604108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9778,6 +9908,7 @@ GameObject:
   - component: {fileID: 1540598799}
   - component: {fileID: 1540598798}
   - component: {fileID: 1540598797}
+  - component: {fileID: 1540598801}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -9867,6 +9998,59 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1540598801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540598796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15103b03d1a27c54d8e577e52a94d978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerValues: 000000000000000000000000
+  PlayerNumber: 000000000000000000000000
+  PlayerValuesTxt:
+  - {fileID: 532099939}
+  - {fileID: 1338460244}
+  - {fileID: 280270011}
+  PlayerNumberTxt:
+  - {fileID: 636818980}
+  - {fileID: 1202124025}
+  - {fileID: 1780697485}
+  playerFold: 
+  playerRaise: 
+  aiFold: 
+  aiRaise: 
+  FinishPhase1:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2045486508}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 882523602}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &1554003664
 GameObject:
   m_ObjectHideFlags: 0
@@ -10759,7 +10943,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.4, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10971,6 +11155,42 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 997261879}
+        m_TargetAssemblyTypeName: BettingPanel, Assembly-CSharp
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 997261879}
+        m_TargetAssemblyTypeName: BettingPanel, Assembly-CSharp
+        m_MethodName: BetType
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Bet
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 139833577}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: CurrentBet
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Rock
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1743296588
@@ -11534,7 +11754,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1856662363}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1540598801}
+        m_TargetAssemblyTypeName: Bet, Assembly-CSharp
+        m_MethodName: ConfirmBets
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1856662363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11984,8 +12216,8 @@ RectTransform:
   m_Father: {fileID: 1302799928}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.4, y: 0}
+  m_AnchorMax: {x: 0.4, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12736,7 +12968,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2045486509
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13113,7 +13345,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.4, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

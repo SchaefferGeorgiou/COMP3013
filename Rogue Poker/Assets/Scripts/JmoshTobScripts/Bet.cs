@@ -5,28 +5,32 @@ using System;
 using System.Linq;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using TMPro;
+using UnityEngine.Events;
 
 public class Bet : MonoBehaviour
 {
-
-
-
     [SerializeField]
-    private int playerRockValue, playerScissorsValue, playerPaperValue,
-                playerRockChips, playerScissorsChips, playerPaperChips;
-
+    private int[] PlayerValues; //stores current bets
     [SerializeField]
-    private int aiRockValue, aiScissorsValue, aiPaperValue,
-                aiRockChips, aiScissorsChips, aiPaperChips;
+    private int[] PlayerNumber;
+
+   // [SerializeField]
+   // private int aiRockValue, aiScissorsValue, aiPaperValue,
+   //             aiRockChips, aiScissorsChips, aiPaperChips;
+
+    public TextMeshProUGUI[] PlayerValuesTxt;
+    public TextMeshProUGUI[] PlayerNumberTxt; //Ui for displaying current bets
 
     [SerializeField]
     private string playerFold, playerRaise;
 
     [SerializeField]
-    private string aiFold, aiRaise;
+    private string aiFold, aiRaise; //don't care fn
 
     private string dealerChoice;
     // Start is called before the first frame update
+    public UnityEvent FinishPhase1;
     void Start()
     {
         
@@ -35,7 +39,11 @@ public class Bet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        for (int i = 0; i < 3; i++)
+        {
+            PlayerValuesTxt[i].text = "£" + PlayerValues[i].ToString();
+            PlayerNumberTxt[i].text = "x" + PlayerNumber[i].ToString();
+        }
     }
 
     public void ConfirmBets(string type)
@@ -59,53 +67,6 @@ public class Bet : MonoBehaviour
     // - Max. Raise of half prior bet value in that bubble
     // - Call must match Raise in NUMBER of chips (not value)
     // - Call is optional
-
-    public void ConfirmAllBets()
-    {
-
-        if (playerRockValue >= 50 || playerPaperValue >= 50 || playerScissorsValue >= 50)
-        {
-            if (playerRockValue <= 500 || playerPaperValue <= 500 || playerScissorsValue <= 500)
-            {
-                // UI shifts to Phase 2
-
-                //We'll use a little bit of randomness; will need changing later
-                System.Random generate = new System.Random();
-                int AIBet = generate.Next(1, 4);
-
-                switch (AIBet)
-                {
-                    case 1:
-                        aiRockChips = 3; aiRockValue = 200;
-                        aiPaperChips = 5; aiPaperValue = 100;
-                        aiScissorsChips = 10; aiScissorsValue = 50;
-                        break;
-                    case 2:
-                        aiRockChips = 15; aiRockValue = 200;
-                        aiPaperChips = 7; aiPaperValue = 500;
-                        aiScissorsChips = 50; aiScissorsValue = 50;
-                        break;
-                    case 3:
-                        aiRockChips = 10; aiRockValue = 100;
-                        aiPaperChips = 20; aiPaperValue = 100;
-                        aiScissorsChips = 2; aiScissorsValue = 150;
-                        break;
-                }
-
-                DealerChoice();
-
-
-            }
-            else
-            {
-                //UI element that says you've bet too much
-            }
-        }
-        else
-        {
-            //UI element that says you've bet too little
-        }
-    }
 
     void SecondPhaseConfirmBets()
     {
@@ -181,15 +142,15 @@ public class Bet : MonoBehaviour
 
     int getPlayerRockChips()
     {
-        return playerRockChips;
+        return PlayerValues[0];
     }
     int getPlayerPaperChips()
     {
-        return playerPaperChips;
+        return PlayerValues[1];
     }
     int getPlayerScissorsChips()
     {
-        return playerScissorsChips;
+        return PlayerValues[2];
     }
 
     void DealerChoice()
@@ -211,6 +172,27 @@ public class Bet : MonoBehaviour
         }
 
         //Display the chips bet for each in the texts displays
+    }
+
+    public void SetBet(int index, int value, int count)
+    {
+        PlayerValues[index] += value;
+        PlayerNumber[index] += count;
+    }
+
+    public void ConfirmBets()
+    {
+        Debug.Log("hmmm");
+        for (int i = 0; i < PlayerNumber.Length; i++)
+        {
+            if (PlayerNumber[i] == 0 || PlayerValues[i] == 0)
+            {
+                return; //something not bet on, quit 
+            }
+        }
+        //everything bet on
+        FinishPhase1.Invoke();
+        Debug.Log("yay");
     }
 
 }
