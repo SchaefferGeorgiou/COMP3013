@@ -12,7 +12,15 @@ public class Bet : MonoBehaviour
     private int playerRockValue, playerScissorsValue, playerPaperValue,
                 playerRockChips, playerScissorsChips, playerPaperChips;
 
+    [SerializeField]
+    private int aiRockValue, aiScissorsValue, aiPaperValue,
+                aiRockChips, aiScissorsChips, aiPaperChips;
+
+    [SerializeField]
     private string playerFold, playerRaise;
+
+    [SerializeField]
+    private string aiFold, aiRaise;
 
     private string dealerChoice;
     // Start is called before the first frame update
@@ -42,6 +50,13 @@ public class Bet : MonoBehaviour
         }
     }
 
+    //following method(s) describe betting rules
+    // - Max. £500 in single bubble
+    // - Min. £50 in single bubble
+    // - Max. Raise of half prior bet value in that bubble
+    // - Call must match Raise in NUMBER of chips (not value)
+    // - Call is optional
+
     public void ConfirmAllBets()
     {
 
@@ -50,7 +65,14 @@ public class Bet : MonoBehaviour
             if(playerRockValue <= 500 || playerPaperValue <= 500 || playerScissorsValue <= 500)
             {
                 // UI shifts to Phase 2
+
+                //We'll use a little bit of randomness; will need changing later
+                System.Random generate = new System.Random();
+                
+
                 DealerChoice();
+
+
             }
             else
             {
@@ -63,18 +85,68 @@ public class Bet : MonoBehaviour
         }
     }
 
+    //Use these methods on the raise buttons under the click event respectively
+    //"UISliders" is a catch-all term, not a variable
+    public void RaiseRock()
+    {
+        /*
+        if(Total of UISliders <= (playerRockValue / 2))
+        {
+            playerRaise = "Rock";
+            playerRockValue += //total of UISliders
+            playerRockChips += //total chips from UISliders
+        }
+        else
+        {
+            //UI element that notes the raise is too high in value
+        }
+        */
+    }
+
+    public void RaisePaper()
+    {
+        /*
+        if(Total of UISliders <= (playerPaperValue / 2))
+        {
+            playerRaise = "Paper";
+            playerPaperValue += //total value of UISliders
+            playerPaperChips += //total chips from UISliders
+        }
+        else
+        {
+            //UI element that notes the raise is too high in value
+        }
+        */
+    }
+
+    public void RaiseScissors()
+    {
+        /*
+        if(Total of UISliders <= (playerScissorsValue / 2))
+        {
+            playerRaise = "Scissors";
+            playerScissorsValue += //total of UISliders
+            playerScissorsChips += //total chips from UISliders
+        }
+        else
+        {
+            //UI element that notes the raise is too high in value
+        }
+        */
+    }
+
     //Use these methods on the fold buttons under the click event respectively
-    void FoldRock()
+    public void FoldRock()
     {
         playerFold = "Rock";
     }
 
-    void FoldPaper()
+    public void FoldPaper()
     {
         playerFold = "Paper";
     }
 
-    void FoldScissors()
+    public void FoldScissors()
     {
         playerFold = "Scissors";
     }
@@ -92,12 +164,6 @@ public class Bet : MonoBehaviour
     {
         return playerScissorsChips;
     }
-
-    //following method(s) describe betting rules
-    // - Max. £500 in single bubble
-    // - Min. £50 in single bubble
-    // - Max. Raise of half prior bet value in that bubble
-    // - Call must match Raise in NUMBER of chips (not value)
 
     void DealerChoice()
     {

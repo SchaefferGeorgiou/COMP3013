@@ -2,22 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class AI : MonoBehaviour
 {
-    //number of individually valued chips (initialised for the start of the game)
     [SerializeField]
-    private int numHundredChips = 3, 
-                numFiftyChips = 5, 
-                numTwentyChips = 10, 
-                numTenChips = 10, 
-                numFiveChips = 20, 
+    private int numHundredChips = 3,
+                numFiftyChips = 5,
+                numTwentyChips = 10,
+                numTenChips = 10,
+                numFiveChips = 20,
                 numUnitChips = 50;
-    //starting number of player chips (£700)
-    [SerializeField]
-    private int numChipsTotal;
-    //total value of all the player's chips
-    [SerializeField]
-    private int totalChipsValue = 1000;
+
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +54,4 @@ public class Player : MonoBehaviour
     {
         return numUnitChips;
     }
-
-
 }
