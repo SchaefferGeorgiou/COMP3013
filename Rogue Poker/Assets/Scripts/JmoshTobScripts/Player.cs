@@ -1,17 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
-    //number of individually valued chips (initialised for the start of the game)
+    public TextMeshProUGUI[] ChipsTxt;
+
+    //number ofindividually valued chips (initialised for the start of the game)
     [SerializeField]
-    private int numHundredChips = 3, 
-                numFiftyChips = 5, 
-                numTwentyChips = 10, 
-                numTenChips = 10, 
-                numFiveChips = 20, 
-                numUnitChips = 50;
+    private int[] numChips;
     //starting number of player chips (£700)
     [SerializeField]
     private int numChipsTotal;
@@ -22,7 +20,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        UpdateChipTotals();
     }
 
     // Update is called once per frame
@@ -31,35 +29,17 @@ public class Player : MonoBehaviour
         
     }
 
-    public int getNumHundredChips()
+    public int getNumChips(int Index) 
     {
-        return numHundredChips;
+        return numChips[Index];
     }
 
-    public int getNumFiftyChips()
+    void UpdateChipTotals()
     {
-        return numFiftyChips;
+        for (int i = 0; i < ChipsTxt.Length; i++)
+        {
+            ChipsTxt[i].text = numChips[i].ToString();
+        }
     }
-
-    public int getNumTwentyChips()
-    {
-        return numTwentyChips;
-    }
-
-    public int getNumTenChips()
-    {
-        return numTenChips;
-    }
-
-    public int getNumFiveChips()
-    {
-        return numFiveChips;
-    }
-
-    public int getNumUnitChips()
-    {
-        return numUnitChips;
-    }
-
 
 }

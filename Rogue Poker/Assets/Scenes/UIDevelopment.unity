@@ -738,6 +738,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125254751}
   m_CullTransparentMesh: 1
+--- !u!1 &139833576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 139833578}
+  - component: {fileID: 139833577}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &139833577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139833576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 085b270660af04747ad15f88ca7dc17f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChipsTxt:
+  - {fileID: 1911761801}
+  - {fileID: 896634447}
+  - {fileID: 1497817882}
+  - {fileID: 1637648953}
+  - {fileID: 448023694}
+  - {fileID: 69824592}
+  numChips: 03000000050000000a0000000a0000001400000032000000
+  numChipsTotal: 0
+  totalChipsValue: 1000
+--- !u!4 &139833578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139833576}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 404.13828, y: 226.55524, z: 92.35599}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &158190634
 GameObject:
   m_ObjectHideFlags: 0
@@ -5091,7 +5144,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 827003095}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 997261875}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &827003095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6188,6 +6253,8 @@ GameObject:
   - component: {fileID: 997261876}
   - component: {fileID: 997261878}
   - component: {fileID: 997261877}
+  - component: {fileID: 997261880}
+  - component: {fileID: 997261879}
   m_Layer: 5
   m_Name: BettingPanel
   m_TagString: Untagged
@@ -6257,6 +6324,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 997261875}
   m_CullTransparentMesh: 1
+--- !u!114 &997261879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997261875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e79dbf8ea437845bef9a7972da74a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sliders:
+  - {fileID: 2115035734}
+  - {fileID: 911574860}
+  - {fileID: 460107954}
+  - {fileID: 1188101179}
+  - {fileID: 943984903}
+  - {fileID: 210797035}
+--- !u!114 &997261880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997261875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15103b03d1a27c54d8e577e52a94d978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRockValue: 0
+  playerScissorsValue: 0
+  playerPaperValue: 0
+  playerRockChips: 0
+  playerScissorsChips: 0
+  playerPaperChips: 0
+  aiRockValue: 0
+  aiScissorsValue: 0
+  aiPaperValue: 0
+  aiRockChips: 0
+  aiScissorsChips: 0
+  aiPaperChips: 0
+  playerFold: 
+  playerRaise: 
+  aiFold: 
+  aiRaise: 
 --- !u!1 &1001909813
 GameObject:
   m_ObjectHideFlags: 0
@@ -7262,7 +7376,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1187979820
 MonoBehaviour:
@@ -9388,7 +9502,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1464604108}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 997261875}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1464604108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9828,7 +9954,7 @@ GameObject:
   - component: {fileID: 1568496683}
   - component: {fileID: 1568496682}
   m_Layer: 5
-  m_Name: "\xA3100Num (1)"
+  m_Name: RemainingChipsLbl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10462,7 +10588,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1648864588
 GameObject:
@@ -10834,7 +10960,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1743296588}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 997261875}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1743296588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11465,7 +11603,7 @@ Transform:
   - {fileID: 1133733496}
   - {fileID: 1540598800}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1911761799
 GameObject:
@@ -12598,7 +12736,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2045486509
 RectTransform:
   m_ObjectHideFlags: 0

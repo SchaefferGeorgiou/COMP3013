@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Bet : MonoBehaviour
 {
 
-    //References To UI Elements NEEDED
+
 
     [SerializeField]
     private int playerRockValue, playerScissorsValue, playerPaperValue,
