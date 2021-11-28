@@ -14,13 +14,15 @@ public class BettingPanel : MonoBehaviour
     public Bet refBet;
 
     public UnityEvent closePopup;
+    public UnityEvent returnRaiseFold;
+    public UnityEvent showResults;
 
     public string Type;
 
     [SerializeField]
     private int TotalBetNumber, TotalBetValue;
     [SerializeField]
-    private int MaxBet, MaxNum;
+    private int MaxBet, MaxNum, MinBet;
 
     private int[] ChipValues = { 100, 50, 20, 10, 5, 1 };
 
@@ -85,6 +87,7 @@ public class BettingPanel : MonoBehaviour
             MaxNum = 0;
             MaxNumChips.text = "";
             MaxValueChips.text = "£500";
+            MinBet = 50;
         }
         else if (Type == "Raise")
         {
@@ -95,6 +98,7 @@ public class BettingPanel : MonoBehaviour
             MaxNum = 0;
             MaxNumChips.text = "";
             MaxValueChips.text = MaxBet.ToString();
+            MinBet = 0;
         }
         else if (Type == "Call")
         {
@@ -114,7 +118,7 @@ public class BettingPanel : MonoBehaviour
     public void PlaceBet() //need feedback at some point
     {
         //check bet < 50, bet >= 500
-        if (TotalBetValue <= MaxBet && TotalBetValue >= 50 && TotalBetNumber > 0)
+        if (TotalBetValue <= MaxBet && TotalBetValue >= MinBet && TotalBetNumber > 0)
         {
             if (Type == "Call")
             {
@@ -123,6 +127,10 @@ public class BettingPanel : MonoBehaviour
                     //can't bet
                     return;
                 }
+            }
+            if (Type == "Raise")
+            {
+                refPlayer.Raise();
             }
 
             refBet.SetBet(refPlayer.CurrentPos, TotalBetValue, TotalBetNumber);
@@ -144,6 +152,15 @@ public class BettingPanel : MonoBehaviour
 
     public void CloseBetWindow()
     {
+        if (Type == "Raise" || Type == "Fold")
+        {
+            returnRaiseFold.Invoke();
+        }
+        else if (Type == "Call")
+        {
+            showResults.Invoke();
+        }
+
         closePopup.Invoke();
     }
 }
