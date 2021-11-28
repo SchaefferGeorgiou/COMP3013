@@ -88,7 +88,13 @@ public class BettingPanel : MonoBehaviour
         }
         else if (Type == "Raise")
         {
-
+            //get num, need to know R/P/S
+            int[] temp = new int[3];
+            temp = refBet.getAllBets();
+            MaxBet = (temp[refPlayer.CurrentPos] / 2);
+            MaxNum = 0;
+            MaxNumChips.text = "";
+            MaxValueChips.text = MaxBet.ToString();
         }
         else if (Type == "Call")
         {

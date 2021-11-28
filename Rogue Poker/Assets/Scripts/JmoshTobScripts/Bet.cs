@@ -140,17 +140,9 @@ public class Bet : MonoBehaviour
     }
 
 
-    int getPlayerRockChips()
+    public int[] getAllBets()
     {
-        return PlayerValues[0];
-    }
-    int getPlayerPaperChips()
-    {
-        return PlayerValues[1];
-    }
-    int getPlayerScissorsChips()
-    {
-        return PlayerValues[2];
+        return PlayerValues;
     }
 
     void DealerChoice()
@@ -182,7 +174,6 @@ public class Bet : MonoBehaviour
 
     public void ConfirmBets()
     {
-        Debug.Log("hmmm");
         for (int i = 0; i < PlayerNumber.Length; i++)
         {
             if (PlayerNumber[i] == 0 || PlayerValues[i] == 0)
@@ -192,7 +183,5 @@ public class Bet : MonoBehaviour
         }
         //everything bet on
         FinishPhase1.Invoke();
-        Debug.Log("yay");
     }
-
 }
