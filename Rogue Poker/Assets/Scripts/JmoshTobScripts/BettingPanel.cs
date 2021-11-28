@@ -11,11 +11,23 @@ public class BettingPanel : MonoBehaviour
     public TextMeshProUGUI[] numChipsBet;
     public Player refPlayer;
 
+    [SerializeField]
+    private int NumChips, TotalValue;
+
+    private int[] ChipValues = { 100, 50, 20, 10, 5, 1 };
+
+    //Value Text Fields
+
+    public TextMeshProUGUI MaxValueChips;
+    public TextMeshProUGUI MaxNumChips;
+
+    public TextMeshProUGUI CurValueChips;
+    public TextMeshProUGUI CurNumChips;
+
+
     private bool bettingPanelActive;
 
     //References To UI Elements NEEDED
-
-    private int[] ChipTotals;
 
 
     void Start()
@@ -32,10 +44,17 @@ public class BettingPanel : MonoBehaviour
     {
         if (bettingPanelActive)
         {
+            TotalValue = 0;
+            NumChips = 0;
             for (int i = 0; i < numChipsBet.Length; i++)
             {
                 numChipsBet[i].text = Sliders[i].value.ToString();
+                TotalValue += ChipValues[i] * (int)Sliders[i].value;
+                NumChips += (int)Sliders[i].value;
             }
+
+            CurValueChips.text = TotalValue.ToString();
+            CurNumChips.text = NumChips.ToString();
         }
 
     }
