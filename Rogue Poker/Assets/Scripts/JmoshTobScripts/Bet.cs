@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class Bet : MonoBehaviour
 {
@@ -62,13 +63,32 @@ public class Bet : MonoBehaviour
 
         if (playerRockValue >= 50 || playerPaperValue >= 50 || playerScissorsValue >= 50)
         {
-            if(playerRockValue <= 500 || playerPaperValue <= 500 || playerScissorsValue <= 500)
+            if (playerRockValue <= 500 || playerPaperValue <= 500 || playerScissorsValue <= 500)
             {
                 // UI shifts to Phase 2
 
                 //We'll use a little bit of randomness; will need changing later
                 System.Random generate = new System.Random();
-                
+                int AIBet = generate.Next(1, 4);
+
+                switch (AIBet)
+                {
+                    case 1:
+                        aiRockChips = 3; aiRockValue = 200;
+                        aiPaperChips = 5; aiPaperValue = 100;
+                        aiScissorsChips = 10; aiScissorsValue = 50;
+                        break;
+                    case 2:
+                        aiRockChips = 15; aiRockValue = 200;
+                        aiPaperChips = 7; aiPaperValue = 500;
+                        aiScissorsChips = 50; aiScissorsValue = 50;
+                        break;
+                    case 3:
+                        aiRockChips = 10; aiRockValue = 100;
+                        aiPaperChips = 20; aiPaperValue = 100;
+                        aiScissorsChips = 2; aiScissorsValue = 150;
+                        break;
+                }
 
                 DealerChoice();
 
@@ -83,6 +103,11 @@ public class Bet : MonoBehaviour
         {
             //UI element that says you've bet too little
         }
+    }
+
+    void SecondPhaseConfirmBets()
+    {
+
     }
 
     //Use these methods on the raise buttons under the click event respectively
