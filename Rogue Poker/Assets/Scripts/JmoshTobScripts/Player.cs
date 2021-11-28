@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
 
     public int FoldedIndex;
 
-    public Color color;
+    public Color color; //colour buttons turn to
 
     public int CurrentPos;
 
@@ -114,14 +114,9 @@ public class Player : MonoBehaviour
 
     public void CheckFinishRaiseFold()
     {
-        Debug.Log("Calling");
-        Debug.Log(Raised);
-        Debug.Log(Folded);
         if (Raised && Folded)
         {
-            Debug.Log("ye");
             Phase2_2.Invoke();
-            Debug.Log("ya");
         }
     }
 

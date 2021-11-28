@@ -841,6 +841,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 212137035}
+        m_TargetAssemblyTypeName: AI, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!4 &139833578
 Transform:
   m_ObjectHideFlags: 0
@@ -1603,6 +1615,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 212137034}
+  - component: {fileID: 212137035}
   m_Layer: 5
   m_Name: Opponent
   m_TagString: Untagged
@@ -1632,6 +1645,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 356.10016}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &212137035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212137033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddddce0d8fc3c0548916ba611acf1fdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyValues: 2c010000aa000000f4010000
+  EnemyNumber: 160000001100000005000000
+  EnemyValuesTxt:
+  - {fileID: 1768299041}
+  - {fileID: 2037981163}
+  - {fileID: 1309585401}
+  EnemyNumberTxt:
+  - {fileID: 356821990}
+  - {fileID: 1821710539}
+  - {fileID: 164076758}
+  RaiseTxt: {fileID: 2132354026}
 --- !u!1 &278649453
 GameObject:
   m_ObjectHideFlags: 0
@@ -7057,6 +7093,7 @@ MonoBehaviour:
   MaxNumChips: {fileID: 602407115}
   CurValueChips: {fileID: 125254753}
   CurNumChips: {fileID: 910395688}
+  refCalculator: {fileID: 1874259137}
 --- !u!1 &1001909813
 GameObject:
   m_ObjectHideFlags: 0
@@ -9282,6 +9319,7 @@ GameObject:
   - component: {fileID: 1296470063}
   - component: {fileID: 1296470065}
   - component: {fileID: 1296470064}
+  - component: {fileID: 1296470066}
   m_Layer: 5
   m_Name: Dealer
   m_TagString: Untagged
@@ -9347,6 +9385,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296470062}
   m_CullTransparentMesh: 1
+--- !u!114 &1296470066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296470062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e240fc5564454442ad44c2c9a9005e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ThreeOptions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Display: {fileID: 1296470064}
+  Default: {fileID: 0}
 --- !u!1 &1302799927
 GameObject:
   m_ObjectHideFlags: 0
@@ -11109,8 +11165,6 @@ MonoBehaviour:
   - {fileID: 1780697485}
   playerFold: 
   playerRaise: 
-  aiFold: 
-  aiRaise: 
   FinishPhase1:
     m_PersistentCalls:
       m_Calls:
@@ -11137,6 +11191,42 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1296470066}
+        m_TargetAssemblyTypeName: Dealer, Assembly-CSharp
+        m_MethodName: Deal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 212137035}
+        m_TargetAssemblyTypeName: AI, Assembly-CSharp
+        m_MethodName: ShowNumber
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1580981621}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &1554003664
 GameObject:
@@ -13016,6 +13106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1874259136}
+  - component: {fileID: 1874259137}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -13039,6 +13130,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1874259137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874259135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc28dbda661715438deb8042c5466d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  refPlayer: {fileID: 139833577}
+  refAi: {fileID: 212137035}
+  refDealer: {fileID: 1296470066}
 --- !u!1 &1911761799
 GameObject:
   m_ObjectHideFlags: 0

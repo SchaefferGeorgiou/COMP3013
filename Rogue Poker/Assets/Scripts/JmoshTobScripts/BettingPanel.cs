@@ -34,8 +34,9 @@ public class BettingPanel : MonoBehaviour
     public TextMeshProUGUI CurValueChips;
     public TextMeshProUGUI CurNumChips;
 
-
     private bool bettingPanelActive;
+
+    public Calculator refCalculator;
 
     //References To UI Elements NEEDED
 
@@ -131,9 +132,11 @@ public class BettingPanel : MonoBehaviour
             if (Type == "Raise")
             {
                 refPlayer.Raise();
+                refCalculator.refAi.Call(TotalBetNumber, refPlayer.CurrentPos);
             }
 
             refBet.SetBet(refPlayer.CurrentPos, TotalBetValue, TotalBetNumber);
+
 
             int[] temp = new int[6];
 
