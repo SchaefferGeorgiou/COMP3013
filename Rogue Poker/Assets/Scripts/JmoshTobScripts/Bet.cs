@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bet : MonoBehaviour
 {
+    [SerializeField]
+    private int PlayerRockBet, PlayerScissorsBet, PlayerPaperBet;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,14 @@ public class Bet : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void ConfirmBets(string type)
+    {
+        switch (type)
+        {
+            case "Rock":
+                ;
+        }
     }
 }
