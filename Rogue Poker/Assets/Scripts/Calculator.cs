@@ -13,8 +13,11 @@ public class Calculator : MonoBehaviour
     public UnityEvent PlayerWin;
     public UnityEvent OpponentWin;
 
+    private int FoldIndex;
+
     public void Calculate()
     {
+        FoldIndex = refPlayer.FoldedIndex; //-1 = no fold, otherwise index = folded option
         int[] PlayerBets = refBet.getAllBets();
         int[] OpponentBets = refAi.GetAllValues();
 
@@ -26,9 +29,9 @@ public class Calculator : MonoBehaviour
         int PlayerWinnings = 0;
         int OpponentWinnings = 0;
 
-        for (int x = 0; x < 3; x++)
+        for (int x = 0; x < 3; x++) //x refers to player
         {
-            for (int y = 0; y < 3; y++)
+            for (int y = 0; y < 3; y++) //y = enemy
             {
                 if(x != y)
                 {
@@ -59,11 +62,27 @@ public class Calculator : MonoBehaviour
 
                     if (PlayerBets[x] + Bonus > OpponentBets[y] + OppBonus)
                     {
-                        PlayerWinnings += (PlayerBets[x] + Bonus) - (OpponentBets[y] + OppBonus);
+                        if (x == FoldIndex)
+                        {
+                            //if the current option was folded
+                            PlayerWinnings += (PlayerBets[x] + Bonus) - (OpponentBets[y] + OppBonus) / 2;
+                        }
+                        else
+                        {
+                            PlayerWinnings += (PlayerBets[x] + Bonus) - (OpponentBets[y] + OppBonus);
+                        }
                     }
                     else
                     {
-                        OpponentWinnings += (OpponentBets[y] + OppBonus) - (PlayerBets[x] + Bonus);
+                        if (x == FoldIndex)
+                        {
+                            //if the current option was folded
+                            OpponentWinnings += (OpponentBets[y] + OppBonus) - (PlayerBets[x] + Bonus) / 2;
+                        }
+                        else
+                        {
+                            OpponentWinnings += (OpponentBets[y] + OppBonus) - (PlayerBets[x] + Bonus);
+                        }
                     }
                     OppBonus = 0;
                     Bonus = 0;
