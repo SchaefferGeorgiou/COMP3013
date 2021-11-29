@@ -175,7 +175,7 @@ public class BettingPanel : MonoBehaviour
 
     public void Pass()
     {
-        Type = "Raise";
+        Type = "Call";
         CloseBetWindow();
     }
 }

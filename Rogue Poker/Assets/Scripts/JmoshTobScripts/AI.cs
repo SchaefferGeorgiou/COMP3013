@@ -9,7 +9,7 @@ using TMPro;
 public class AI : MonoBehaviour
 {
     [SerializeField]
-    private int[] EnemyValues = new[] { 300, 170, 500 }; //stores current bets
+    private int[] EnemyValues = new[] { 300, 170, 250 }; //stores current bets
     [SerializeField]
     private int[] EnemyNumber = new[] { 22, 17, 5 };
 
@@ -38,7 +38,7 @@ public class AI : MonoBehaviour
     public void Raise()
     {
         EnemyNumber[0] += 3;
-        EnemyValues[0] += 150;
+        EnemyValues[0] += 60;
 
         RaiseTxt.text = "Rock by x3";
 
@@ -48,7 +48,7 @@ public class AI : MonoBehaviour
     public void Call(int num, int index)
     {
         int value = 10;
-        if (num > 12)
+        if (num > 11)
         {
             value = 1;
         }

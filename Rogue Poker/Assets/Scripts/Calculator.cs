@@ -18,10 +18,6 @@ public class Calculator : MonoBehaviour
         int[] PlayerBets = refBet.getAllBets();
         int[] OpponentBets = refAi.GetAllValues();
 
-        int[] PlayerScores = new int[6];
-        int[] OpponentScores = new int[6];
-        bool[] Winner = new bool[6];
-
         int dealer = refDealer.getDeal();
 
         int Bonus = 0;
@@ -69,6 +65,8 @@ public class Calculator : MonoBehaviour
                     {
                         OpponentWinnings += (OpponentBets[y] + OppBonus) - (PlayerBets[x] + Bonus);
                     }
+                    OppBonus = 0;
+                    Bonus = 0;
                 }
             }
         }

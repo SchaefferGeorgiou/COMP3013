@@ -1657,7 +1657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddddce0d8fc3c0548916ba611acf1fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyValues: 2c010000aa000000f4010000
+  EnemyValues: 2c010000aa000000fa000000
   EnemyNumber: 160000001100000005000000
   EnemyValuesTxt:
   - {fileID: 1768299041}
@@ -13523,7 +13523,7 @@ MonoBehaviour:
   refPlayer: {fileID: 139833577}
   refAi: {fileID: 212137035}
   refDealer: {fileID: 1296470066}
-  refBet: {fileID: 0}
+  refBet: {fileID: 1540598801}
   PlayerWin:
     m_PersistentCalls:
       m_Calls:
@@ -14824,7 +14824,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2045486509
 RectTransform:
   m_ObjectHideFlags: 0
