@@ -5,9 +5,10 @@ using UnityEngine;
 public class Dealer : MonoBehaviour
 {
     private int option;
-    public UnityEngine.UI.Image[] ThreeOptions;
+    public UnityEngine.Sprite[] ThreeOptions;
     public UnityEngine.UI.Image Display;
-    public UnityEngine.UI.Image Default;
+    public UnityEngine.Sprite Default;
+
     public void Start()
     {
         //set image to default ?-pic
@@ -15,7 +16,7 @@ public class Dealer : MonoBehaviour
     public void Deal()
     {
         option = Random.Range(0, 3);
-        //Display = ThreeOptions[option];
+        Display.sprite = ThreeOptions[option];
     }
 
     public int getDeal()
