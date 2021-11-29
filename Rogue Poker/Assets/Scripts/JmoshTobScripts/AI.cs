@@ -9,14 +9,36 @@ using TMPro;
 public class AI : MonoBehaviour
 {
     [SerializeField]
-    private int[] EnemyValues = new[] { 300, 170, 250 }; //stores current bets
+    private int[] EnemyValues; //stores current bets
     [SerializeField]
-    private int[] EnemyNumber = new[] { 22, 17, 5 };
+    private int[] EnemyNumber;
 
     public TextMeshProUGUI[] EnemyValuesTxt;
     public TextMeshProUGUI[] EnemyNumberTxt;
 
     public TextMeshProUGUI RaiseTxt;
+
+    public void Start()
+    {
+        int option = Random.Range(1, 4);
+        switch (option)
+        {
+            case 1:
+                EnemyValues = new[] { 300, 170, 250 };
+                EnemyNumber = new[] { 22, 17, 5 };
+                break;
+
+            case 2:
+                EnemyValues = new[] { 80, 370, 205 };
+                EnemyNumber = new[] { 3, 5, 12 };
+                break;
+
+            case 3:
+                EnemyValues = new[] { 275, 55, 199 };
+                EnemyNumber = new[] { 15, 2, 9 };
+                break;
+        }
+    }
 
     public void ShowNumber()
     {

@@ -14,7 +14,7 @@ public class Dealer : MonoBehaviour
     }
     public void Deal()
     {
-        option = Random.Range(1, 4);
+        option = Random.Range(0, 3);
         //Display = ThreeOptions[option];
     }
 

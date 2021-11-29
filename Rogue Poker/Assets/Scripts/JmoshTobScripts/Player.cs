@@ -34,16 +34,34 @@ public class Player : MonoBehaviour
 
     public UnityEvent Phase2_2;
 
+    public UnityEvent DisplayHelp;
+    public UnityEvent HideHelp;
+
+    private bool HelpPanelOpen;
+
     // Start is called before the first frame update
     void Start()
     {
+        HelpPanelOpen = false;
         UpdateChipTotals();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown("j"))
+        {
+            if (HelpPanelOpen)
+            {
+                HelpPanelOpen = false;
+                HideHelp.Invoke();
+            }
+            else
+            {
+                HelpPanelOpen = true;
+                DisplayHelp.Invoke();
+            }
+        }
     }
 
     public int getNumChips(int Index) 

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Calculator : MonoBehaviour
 {
@@ -12,6 +15,12 @@ public class Calculator : MonoBehaviour
 
     public UnityEvent PlayerWin;
     public UnityEvent OpponentWin;
+
+    public TextMeshProUGUI PlayerWinningsTxt;
+    public TextMeshProUGUI EnemyWinningsTxt;
+
+    private int PlayerWinnings = 0;
+    private int OpponentWinnings = 0;
 
     private int FoldIndex;
 
@@ -26,17 +35,13 @@ public class Calculator : MonoBehaviour
         int Bonus = 0;
         int OppBonus = 0;
 
-        int PlayerWinnings = 0;
-        int OpponentWinnings = 0;
-
         for (int x = 0; x < 3; x++) //x refers to player
         {
             for (int y = 0; y < 3; y++) //y = enemy
             {
-                if(x != y)
+                if(x != y) //don't compare matches
                 {
                     // Want to compare Player Vs Dealer, Player Vs Opponent, Opponent Vs Dealer, Opponent Vs Player
-
 
                     //Player vs Opponent
                     if (Compare(x, y))
@@ -44,17 +49,17 @@ public class Calculator : MonoBehaviour
                         Bonus += 50;
                     }
 
-                    if (Compare(x, dealer))
+                    if (Compare(x, dealer)) //P vs D
                     {
                         Bonus += 75;
                     }
 
-                    if (Compare(y, x))
+                    if (Compare(y, x)) //E vs P
                     {
                         OppBonus += 50;
                     }
 
-                    if (Compare(y, dealer))
+                    if (Compare(y, dealer)) //E vs D
                     {
                         OppBonus += 75;
                     }
@@ -93,10 +98,16 @@ public class Calculator : MonoBehaviour
         if (PlayerWinnings > OpponentWinnings)
         {
             PlayerWin.Invoke();
+
+            PlayerWinningsTxt.text = "+£" + PlayerWinnings.ToString();
+            EnemyWinningsTxt.text = "+£" + OpponentWinnings.ToString();
         }
         else
         {
             OpponentWin.Invoke();
+
+            PlayerWinningsTxt.text = "+£" + PlayerWinnings.ToString();
+            EnemyWinningsTxt.text = "+£" + OpponentWinnings.ToString();
         }
     }
 
