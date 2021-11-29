@@ -103,7 +103,13 @@ public class BettingPanel : MonoBehaviour
         }
         else if (Type == "Call")
         {
-
+            int[] temp = new int[3];
+            temp = refBet.getAllBets();
+            MaxBet = (temp[refPlayer.CurrentPos] / 2);
+            MaxNum = 3;
+            MaxNumChips.text = MaxNum.ToString();
+            MaxValueChips.text = MaxBet.ToString();
+            MinBet = 0;
         }
     }
 
@@ -165,5 +171,11 @@ public class BettingPanel : MonoBehaviour
         }
 
         closePopup.Invoke();
+    }
+
+    public void Pass()
+    {
+        Type = "Raise";
+        CloseBetWindow();
     }
 }

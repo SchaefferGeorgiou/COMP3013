@@ -17,4 +17,9 @@ public class Dealer : MonoBehaviour
         option = Random.Range(1, 4);
         //Display = ThreeOptions[option];
     }
+
+    public int getDeal()
+    {
+        return option;
+    }
 }

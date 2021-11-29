@@ -57,4 +57,9 @@ public class AI : MonoBehaviour
 
         ShowNumber();
     }
+
+    public int[] GetAllValues()
+    {
+        return EnemyValues;
+    }
 }
