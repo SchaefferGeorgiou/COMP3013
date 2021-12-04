@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class NAI : MonoBehaviour
 {
+    NBet opponentBets;
+    NChipCount opponentChips;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,10 @@ public class NAI : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void returnBets()
+    {
+
     }
 }

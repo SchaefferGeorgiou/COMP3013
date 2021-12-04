@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NDealer : MonoBehaviour
 {
+    private int option;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,20 @@ public class NDealer : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void Deal()
+    {
+
+    }
+
+    void ShowDealer()
+    {
+
+    }
+
+    void returnOption()
+    {
+
     }
 }

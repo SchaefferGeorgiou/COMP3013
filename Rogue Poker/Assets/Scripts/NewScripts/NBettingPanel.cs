@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class NBettingPanel : MonoBehaviour
 {
+    private string type;
+    private NBet bet;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,20 @@ public class NBettingPanel : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OpenPanel(string Type)
+    {
+
+    }
+
+    void validateBet()
+    {
+
+    }
+
+    void SetBetRef(Bet Reference)
+    {
+
     }
 }

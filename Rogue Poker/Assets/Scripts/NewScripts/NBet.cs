@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class NBet : MonoBehaviour
 {
+    private bool ifPlayer;
+    private int[] playerBet, playerNum;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +18,15 @@ public class NBet : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void AlterBet()
+    {
+
+    }
+
+    void CheckBetsMade()
+    {
+
     }
 }
