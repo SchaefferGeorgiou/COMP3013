@@ -25,12 +25,33 @@ public class NChipCount : MonoBehaviour
 
     public int[] GetCount()
     {
-        //code to satisfy the VS error
         int[] arrayCounts = { num100s, num50s, num20s, num10s, num5s, num1s };
         return arrayCounts;
     }
 
-    void AlterCount(int Chip, int Amount)
+    public void AlterCount(int chip, int amount)
     {
+        // Alters the chip values after the round for each player
+        switch (chip)
+        {
+            case 0:
+                num100s += amount;
+                break;
+            case 1:
+                num50s += amount;
+                break;
+            case 2:
+                num20s += amount;
+                break;
+            case 3:
+                num10s += amount;
+                break;
+            case 4:
+                num5s += amount;
+                break;
+            case 5:
+                num1s += amount;
+                break;
+        }
     }
 }
