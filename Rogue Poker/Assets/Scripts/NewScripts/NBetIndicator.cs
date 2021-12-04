@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NBetIndicator : MonoBehaviour
 {
+    private string betType;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +15,11 @@ public class NBetIndicator : MonoBehaviour
     void Update()
     {
         
+    }
+
+
+    void setBetType(string type)
+    {
+        betType = type;
     }
 }

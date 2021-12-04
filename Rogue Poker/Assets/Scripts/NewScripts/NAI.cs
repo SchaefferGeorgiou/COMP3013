@@ -19,8 +19,13 @@ public class NAI : MonoBehaviour
         
     }
 
-    void returnBets()
+    public int[] getAllCounts()
     {
+        return opponentBets.returnAllCounts();
+    }
 
+    public int[] getAllValues()
+    {
+        return opponentBets.returnAllValues();
     }
 }

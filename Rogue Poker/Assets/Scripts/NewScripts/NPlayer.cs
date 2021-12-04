@@ -6,7 +6,7 @@ using TMPro;
 
 public class NPlayer : MonoBehaviour
 {
-    private NBet playerBet; //player's bet's value (in £)
+    private NBet playerBets; //player's bet's value (in £)
     private NChipCount playerChips; //player's number of chips
     private NBetIndicator UIindicator; //UI variable
     private NBettingPanel panel; //object for the player's betting panel
@@ -25,8 +25,13 @@ public class NPlayer : MonoBehaviour
         
     }
 
-    void returnBets()
+    public int[] getAllCounts()
     {
+        return playerBets.returnAllCounts();
+    }
 
+    public int[] getAllValues()
+    {
+        return playerBets.returnAllValues();
     }
 }

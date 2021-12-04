@@ -20,13 +20,36 @@ public class NBet : MonoBehaviour
         
     }
 
-    void AlterBet()
+    void AlterBet(int type, int value, int num)
     {
-
+        playerBet[type] = value;
+        playerNum[type] = num;
     }
 
     void CheckBetsMade()
     {
+        bool betsMade = true;
+        for (int i = 0; i < playerBet.Length; i++)
+        {
+            if (!(playerBet[i] > 0))
+            {
+                betsMade = false;
+            }
+        }
 
+        if (betsMade && ifPlayer)
+        {
+            //phase2
+        }
+    }
+
+    public int[] returnAllValues()
+    {
+        return playerBet;
+    }
+
+    public int[] returnAllCounts()
+    {
+        return playerNum;
     }
 }
