@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class NPlayer : MonoBehaviour
 {
-    private NBet playerBet;
-    private NChipCount playerChips;
-    private NBetIndicator UIindicator;
-    private NBettingPanel panel;
+    private NBet playerBet; //player's bet's value (in £)
+    private NChipCount playerChips; //player's number of chips
+    private NBetIndicator UIindicator; //UI variable
+    private NBettingPanel panel; //object for the player's betting panel
 
     UnityEvent PhaseTwo;
 
