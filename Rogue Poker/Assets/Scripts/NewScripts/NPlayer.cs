@@ -34,4 +34,9 @@ public class NPlayer : MonoBehaviour
     {
         return playerBets.returnAllValues();
     }
+
+    public NBet getPlayerBet()
+    {
+        return playerBets;
+    }
 }
