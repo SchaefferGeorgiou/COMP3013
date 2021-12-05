@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class NBet : MonoBehaviour
 {
-    private bool ifPlayer;
+    NPhase phases;
+
+    private bool isPlayer;
     private int[] playerBet, playerNum;
 
 
@@ -20,13 +22,13 @@ public class NBet : MonoBehaviour
         
     }
 
-    void AlterBet(int type, int value, int num)
+    public void AlterBet(int type, int value, int num)
     {
         playerBet[type] = value;
         playerNum[type] = num;
     }
 
-    void CheckBetsMade()
+    public void CheckBetsMade()
     {
         bool betsMade = true;
         for (int i = 0; i < playerBet.Length; i++)
@@ -37,16 +39,25 @@ public class NBet : MonoBehaviour
             }
         }
 
-        if (betsMade && ifPlayer)
+        if (isPlayer && betsMade)
         {
-            //phase2
+            switch (phases.getPhaseNum())
+            {
+                case 1:
+                    phases.PhaseTwo();
+                    break;
+                case 2:
+                    
+                    break;
+            }
         }
+
     }
 
     public int[] returnAllValues()
     {
         return playerBet;
-    }
+    }   
 
     public int[] returnAllCounts()
     {
