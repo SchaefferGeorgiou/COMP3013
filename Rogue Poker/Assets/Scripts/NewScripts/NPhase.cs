@@ -107,6 +107,7 @@ public class NPhase : MonoBehaviour
 
     public void PhaseThree()
     {
+        setPhaseNum(3);
         CPBtns.SetActive(false);
         endScores.SetActive(true);
     }

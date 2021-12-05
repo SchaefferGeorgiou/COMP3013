@@ -9,13 +9,6 @@ public class NBet : MonoBehaviour
     private bool isPlayer;
     private int[] playerBet, playerNum;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -24,12 +17,14 @@ public class NBet : MonoBehaviour
 
     public void AlterBet(int type, int value, int num)
     {
+        //Sets a new value for the bets
         playerBet[type] = value;
         playerNum[type] = num;
     }
 
     public void CheckBetsMade()
     {
+        //Checks that all the bets have none-zero values before changing phases
         bool betsMade = true;
         for (int i = 0; i < playerBet.Length; i++)
         {
@@ -47,11 +42,37 @@ public class NBet : MonoBehaviour
                     phases.PhaseTwo();
                     break;
                 case 2:
-                    
+                    phases.PhaseThree();
                     break;
             }
         }
 
+    }
+
+    public bool BetValid(string betType, int betValue)
+    {
+        bool betValid = false;
+
+        switch (betType) 
+        {
+            case "bet":
+                if (betValue <= 500 && betValue >= 50)
+                {
+                    betValid = true;
+                }
+                break;
+
+            case "raise":
+
+                break;
+
+            case "fold":
+
+                break;
+        }
+
+
+        return betValid;
     }
 
     public int[] returnAllValues()
