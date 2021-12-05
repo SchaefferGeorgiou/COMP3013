@@ -11,6 +11,8 @@ public class NPlayer : MonoBehaviour
     private NBetIndicator UIindicator; //UI variable
     private NBettingPanel panel; //object for the player's betting panel
 
+
+
     UnityEvent PhaseTwo;
 
     // Start is called before the first frame update
@@ -38,5 +40,10 @@ public class NPlayer : MonoBehaviour
     public NBet getPlayerBet()
     {
         return playerBets;
+    }
+
+    public int getFoldIndex()
+    {
+        return playerBets.returnFoldIndex();
     }
 }

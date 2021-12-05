@@ -50,4 +50,9 @@ public class NAI : MonoBehaviour
     {
         return opponentBets.returnAllValues();
     }
+
+    public int getFoldedIndex()
+    {
+        return opponentBets.returnFoldIndex();
+    }
 }

@@ -8,6 +8,7 @@ public class NBet : MonoBehaviour
 
     private bool isPlayer;
     private int[] playerBet, playerNum;
+    private int foldedIndex;
 
     // Update is called once per frame
     void Update()
@@ -49,30 +50,9 @@ public class NBet : MonoBehaviour
 
     }
 
-    public bool BetValid(string betType, int betValue)
+    public void setFoldIndex(int type)
     {
-        bool betValid = false;
-
-        switch (betType) 
-        {
-            case "bet":
-                if (betValue <= 500 && betValue >= 50)
-                {
-                    betValid = true;
-                }
-                break;
-
-            case "raise":
-
-                break;
-
-            case "fold":
-
-                break;
-        }
-
-
-        return betValid;
+        foldedIndex = type;
     }
 
     public int[] returnAllValues()
@@ -83,5 +63,10 @@ public class NBet : MonoBehaviour
     public int[] returnAllCounts()
     {
         return playerNum;
+    }
+
+    public int returnFoldIndex()
+    {
+        return foldedIndex;
     }
 }

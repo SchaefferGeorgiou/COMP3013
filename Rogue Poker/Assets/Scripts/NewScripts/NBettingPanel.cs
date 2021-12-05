@@ -64,7 +64,7 @@ public class NBettingPanel : MonoBehaviour
         //switch-case to define bet type
         switch (type)
         {
-            case "Bet":
+            case "bet":
                 //setting the base values for a beginning bet
                 minBet = 50;
                 maxBet = 500;
@@ -72,7 +72,7 @@ public class NBettingPanel : MonoBehaviour
                 maxNumChips.text = "---";
                 maxValueChips.text = "£500";
                 break;
-            case "Raise":
+            case "raise":
                 //setting the base values for a raise bet
                 //temporary array whose indices represent rock, paper, and scissors 
                 int[] tempArray = new int[3];
@@ -85,7 +85,7 @@ public class NBettingPanel : MonoBehaviour
                 maxNumChips.text = "---";
                 maxValueChips.text = maxBet.ToString();
                 break;
-            case "Call":
+            case "call":
                 //setting the base values for matching an opponent's raise
                 int[] temp = new int[3];
                 temp = refBet.returnAllValues();
@@ -98,9 +98,42 @@ public class NBettingPanel : MonoBehaviour
         }    
     }
 
-    void validateBet()
+    public void ValidateBet(string betType, int betValue)
     {
+        bool betValid = false;
 
+        switch (betType)
+        {
+            case "bet":
+                if (betValue <= 500 && betValue >= 50)
+                {
+                    betValid = true;
+                }
+                break;
+
+            case "raise":
+                if (betValue <= maxBet)
+                {
+                    betValid = true;
+                }
+                break;
+            case "call":
+                if (betValue <= maxBet && totalBetNum == maxNum)
+                {
+                    betValid = true;
+                }
+                break;
+        }
+
+
+        if (betValid)
+        {
+            closeBettingPanel.Invoke();
+        }
+        else
+        {
+            Debug.Log("Bet is not Valid");
+        }
     }
 
     void SetBetRef(Bet Reference)
