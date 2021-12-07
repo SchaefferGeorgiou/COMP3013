@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class NChipCount : MonoBehaviour
 {
-    private int num100s, num50s, num20s, num10s, num5s, num1s;
+    private int[] numTotals;
 
     // Start is called before the first frame update
     void Start()
     {
-        num100s = 3;
-        num50s = 5;
-        num20s = 10;
-        num10s = 10;
-        num5s = 20;
-        num1s = 50;
+        numTotals = new int[6];
+
+        numTotals[0] = 3;
+        numTotals[1] = 5;
+        numTotals[2] = 10;
+        numTotals[3] = 10;
+        numTotals[4] = 20;
+        numTotals[5] = 50;
     }
 
     // Update is called once per frame
@@ -25,33 +27,15 @@ public class NChipCount : MonoBehaviour
 
     public int[] GetCount()
     {
-        int[] arrayCounts = { num100s, num50s, num20s, num10s, num5s, num1s };
-        return arrayCounts;
+        return numTotals;
     }
 
-    public void AlterCount(int chip, int amount)
+    public void AlterCount(int[] chips)
     {
         // Alters the chip values after the round for each player
-        switch (chip)
+        for (int i = 0; i < chips.Length; i++)
         {
-            case 0:
-                num100s += amount;
-                break;
-            case 1:
-                num50s += amount;
-                break;
-            case 2:
-                num20s += amount;
-                break;
-            case 3:
-                num10s += amount;
-                break;
-            case 4:
-                num5s += amount;
-                break;
-            case 5:
-                num1s += amount;
-                break;
+            numTotals[i] -= chips[i];
         }
     }
 }

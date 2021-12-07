@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using System;
 
 public class NPhase : MonoBehaviour
@@ -11,6 +12,8 @@ public class NPhase : MonoBehaviour
     private int phaseNum;
 
     private bool hasFolded, hasRaised;
+
+    public UnityEvent phaseOne, phaseTwo_RF, phaseTwo_C, phaseThree;
 
     // Start is called before the first frame update
     void Start()
@@ -29,13 +32,16 @@ public class NPhase : MonoBehaviour
     public void PhaseOne()
     {
         //This enables the bet buttons only
+        setPhaseNum(1);
         betBtns.SetActive(true);
         RFBtns.SetActive(false);
         pickBtnsFold.SetActive(false);
         pickBtnsRaise.SetActive(false);
         CPBtns.SetActive(false);
         hasFolded = false; 
-        hasRaised = false; 
+        hasRaised = false;
+
+        phaseOne.Invoke();
     }
 
     public void PhaseTwo()
@@ -45,6 +51,7 @@ public class NPhase : MonoBehaviour
         betBtns.SetActive(false);
         RFBtns.SetActive(true);
 
+        phaseTwo_RF.Invoke();
     }
     public void PhaseTwo_RF(string choice)
     {
@@ -82,6 +89,8 @@ public class NPhase : MonoBehaviour
         hasRaised = true;
         PhaseTwo_RF("reset");
         RaisedAndFolded();
+
+        phaseTwo_C.Invoke();
     }
     public void Fold()
     {
@@ -110,6 +119,8 @@ public class NPhase : MonoBehaviour
         setPhaseNum(3);
         CPBtns.SetActive(false);
         endScores.SetActive(true);
+
+        phaseThree.Invoke();
     }
 
 
