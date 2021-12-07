@@ -360,3 +360,4 @@ Received Import Request.
 Start importing Assets/Prefabs/testChip.prefab using Guid(67bb3215b3e46554fa782904db7f2afe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9fab9f6c5a682badb6e711f301ad26f5') in 0.010075 seconds 
   Import took 0.035296 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
