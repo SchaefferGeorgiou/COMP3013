@@ -57,13 +57,12 @@ public class NBettingPanel : MonoBehaviour
         
     }
 
-    void OpenPanel(string Type)
+    void OpenPanel(string Type, int Option)
     {
-        type = Type; //giving "type" the parameter value
-
-        //switch-case to define bet type
-        switch (type)
+        int[] tempValues = new int[3];
+        switch (Type)
         {
+
             case "bet":
                 //setting the base values for a beginning bet
                 minBet = 50;
@@ -75,11 +74,10 @@ public class NBettingPanel : MonoBehaviour
             case "raise":
                 //setting the base values for a raise bet
                 //temporary array whose indices represent rock, paper, and scissors 
-                int[] tempArray = new int[3];
-                tempArray = refBet.returnAllValues();
+                tempValues = refBet.returnAllValues();
                 //maxBet is half the original bet on a particular bubble (R, P, or S)
                 //this line needs to be changed when NPlayer is complete
-                maxBet = (tempArray[0] / 2);
+                maxBet = (tempValues[Option] / 2);
                 maxNum = 0;
                 minBet = 0;
                 maxNumChips.text = "---";
@@ -87,10 +85,9 @@ public class NBettingPanel : MonoBehaviour
                 break;
             case "call":
                 //setting the base values for matching an opponent's raise
-                int[] temp = new int[3];
-                temp = refBet.returnAllValues();
+                tempValues = refBet.returnAllValues();
                 //this line needs to be changed when NPlayer is complete
-                maxBet = (temp[0] / 2);
+                maxBet = (tempValues[Option] / 2);
                 maxNum = opponentNum;
                 maxNumChips.text = maxNum.ToString();
                 maxValueChips.text = maxBet.ToString();
@@ -128,6 +125,9 @@ public class NBettingPanel : MonoBehaviour
 
         if (betValid)
         {
+            //This bit of code needs to alter the number chips bet on rock / paper / scissors passed through to bet script
+            //see below code for example
+            //refBet.AlterBet(totalBetValue,totalBetNum);
             closeBettingPanel.Invoke();
         }
         else
@@ -136,8 +136,10 @@ public class NBettingPanel : MonoBehaviour
         }
     }
 
-    void SetBetRef(Bet Reference)
-    {
 
+
+    void SetBetRef(NBet Reference)
+    {
+        refBet = Reference;
     }
 }
