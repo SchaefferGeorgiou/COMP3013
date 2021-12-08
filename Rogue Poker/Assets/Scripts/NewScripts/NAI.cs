@@ -13,10 +13,11 @@ public class NAI : MonoBehaviour
     {
         System.Random generate = new System.Random();
         int option = generate.Next(0, 4);
+        int[] nums;
         switch (option)
         {
             case 1:
-                int[] nums = { 0, 2, 0, 20, 0, 0 };
+                nums = new int[] { 0, 2, 0, 20, 0, 0 };
                 opponentBets.AlterBet(0, nums);
                 nums = new int[] { 0, 0, 0, 17, 0, 0 };
                 opponentBets.AlterBet(1, nums);
@@ -25,26 +26,52 @@ public class NAI : MonoBehaviour
                 break;
 
             case 2:
-                //opponentBets.AlterBet(0, 80, 3);
-                //opponentBets.AlterBet(1, 370, 5);
-                //opponentBets.AlterBet(2, 205, 12);
+                nums = new int[] { 0, 2, 0, 20, 0, 0 };
+                opponentBets.AlterBet(0, nums);
+                nums = new int[] { 0, 0, 0, 17, 0, 0 };
+                opponentBets.AlterBet(1, nums);
+                nums = new int[] { 0, 5, 0, 0, 0, 0 };
+                opponentBets.AlterBet(2, nums);
                 break;
 
             case 3:
-                //opponentBets.AlterBet(0, 275, 15);
-                //opponentBets.AlterBet(1, 55, 2);
-                //opponentBets.AlterBet(2, 199, 9);
+                nums = new int[] { 0, 2, 0, 20, 0, 0 };
+                opponentBets.AlterBet(0, nums);
+                nums = new int[] { 0, 0, 0, 17, 0, 0 };
+                opponentBets.AlterBet(1, nums);
+                nums = new int[] { 0, 5, 0, 0, 0, 0 };
+                opponentBets.AlterBet(2, nums);
                 break;
         }
     }
 
-
-
-
-    // Update is called once per frame
-    void Update()
+    public void RaiseFold()
     {
-        
+        System.Random generate = new System.Random();
+        int option = generate.Next(0, 4);
+        int[] nums;
+        switch (option)
+        {
+            case 1:
+                nums = new int[] { 0, 2, 0, 20, 0, 0 };
+                opponentBets.AlterBet(0, nums);
+                break;
+
+            case 2:
+                nums = new int[] { 0, 0, 0, 17, 0, 0 };
+                opponentBets.AlterBet(1, nums);
+                break;
+
+            case 3:
+                nums = new int[] { 0, 5, 0, 0, 0, 0 };
+                opponentBets.AlterBet(2, nums);
+                break;
+        }
+    }
+
+    public void Call()
+    {
+
     }
 
     public int[] getAllCounts()
