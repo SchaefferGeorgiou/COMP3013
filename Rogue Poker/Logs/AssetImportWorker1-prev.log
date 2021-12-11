@@ -1,287 +1,76 @@
 Using pre-set license
 Built from '2020.3/staging' branch; Version is '2020.3.22f1 (e1a7f79fd887) revision 14788599'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Enterprise; OS build 19043.1288; Version 2009; 64bit' Language: 'en' Physical Memory: 16346 MB
+OS: 'Windows 10 Home; OS build 19042.1348; Version 2009; 64bit' Language: 'en' Physical Memory: 8155 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
 COMMAND LINE ARGUMENTS:
-C:\Program Files\Unity 2020.3.22f1\Editor\Unity.exe
+C:\Program Files\Unity\Installs\2020.3.22f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker1
 -projectPath
-C:/Users/Starg/Desktop/Repositories/COMP3013/Rogue Poker
+C:/src/COMP3013/Rogue Poker
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-62707
-Successfully changed project path to: C:/Users/Starg/Desktop/Repositories/COMP3013/Rogue Poker
-C:/Users/Starg/Desktop/Repositories/COMP3013/Rogue Poker
+54602
+Successfully changed project path to: C:/src/COMP3013/Rogue Poker
+C:/src/COMP3013/Rogue Poker
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 226.70 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 80.35 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.22f1 (e1a7f79fd887)
-[Subsystems] Discovering subsystems at path C:/Program Files/Unity 2020.3.22f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/Starg/Desktop/Repositories/COMP3013/Rogue Poker/Assets
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Installs/2020.3.22f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/src/COMP3013/Rogue Poker/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce GTX 1070 (ID=0x1b81)
+    Renderer: Radeon (TM) RX 480 Graphics (ID=0x67df)
     Vendor:   
-    VRAM:     8088 MB
-    Driver:   30.0.14.7247
+    VRAM:     8171 MB
+    Driver:   30.0.13033.5003
 Initialize mono
-Mono path[0] = 'C:/Program Files/Unity 2020.3.22f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/Unity 2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'C:/Program Files/Unity 2020.3.22f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56256
+Mono path[0] = 'C:/Program Files/Unity/Installs/2020.3.22f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Installs/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Installs/2020.3.22f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56136
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Unity 2020.3.22f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Register platform support module: C:/Program Files/Unity 2020.3.22f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002807 seconds.
+Register platform support module: C:/Program Files/Unity/Installs/2020.3.22f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.034823 seconds.
 Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 43.85 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 75.59 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.449 seconds
+- Completed reload, in 11.810 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1449ms)
-		BeginReloadAssembly (58ms)
+	ReloadAssembly (11810ms)
+		BeginReloadAssembly (99ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (637ms)
-			LoadAssemblies (58ms)
+		EndReloadAssembly (901ms)
+			LoadAssemblies (94ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (221ms)
+			SetupTypeCache (296ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (36ms)
-			SetupLoadedEditorAssemblies (224ms)
+			RebuildScriptCaches (56ms)
+			SetupLoadedEditorAssemblies (318ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (5ms)
+				InitializePlatformSupportModulesInManaged (6ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (44ms)
-				BeforeProcessingInitializeOnLoad (24ms)
-				ProcessInitializeOnLoadAttributes (110ms)
-				ProcessInitializeOnLoadMethodAttributes (41ms)
+				RefreshPlugins (76ms)
+				BeforeProcessingInitializeOnLoad (44ms)
+				ProcessInitializeOnLoadAttributes (134ms)
+				ProcessInitializeOnLoadMethodAttributes (57ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.005815 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.43 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  3.872 seconds
-Domain Reload Profiling:
-	ReloadAssembly (3873ms)
-		BeginReloadAssembly (160ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (18ms)
-		EndReloadAssembly (3648ms)
-			LoadAssemblies (2789ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (333ms)
-			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (50ms)
-			SetupLoadedEditorAssemblies (384ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (6ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (90ms)
-				ProcessInitializeOnLoadAttributes (272ms)
-				ProcessInitializeOnLoadMethodAttributes (8ms)
-				AfterProcessingInitializeOnLoad (7ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (6ms)
-Platform modules already initialized, skipping
-========================================================================
-Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.12 seconds
-Refreshing native plugins compatible for Editor in 0.43 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2148 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 99.8 MB.
-System memory in use after: 99.8 MB.
-
-Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 2581.
-Total: 4.830400 ms (FindLiveObjects: 0.224700 ms CreateObjectMapping: 0.092800 ms MarkObjects: 4.357200 ms  DeleteObjects: 0.154200 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  path: Assets/Scenes/ModelScene.unity
-  artifactKey: Guid(080b8bf69673b2540a4dd6f7766efbad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/ModelScene.unity using Guid(080b8bf69673b2540a4dd6f7766efbad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ce39db758ac50d91339801e5894e86e') in 0.016960 seconds 
-  Import took 0.020017 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.845402 seconds.
-  path: Assets/Materials/Wood.mat
-  artifactKey: Guid(383d679baabfa9d49a89d2d0e348f2c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Wood.mat using Guid(383d679baabfa9d49a89d2d0e348f2c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a1dbae8c43b593506a86bac3007c4bc') in 0.337519 seconds 
-  Import took 0.341235 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.186235 seconds.
-  path: Assets/Materials/MossCobble
-  artifactKey: Guid(89b7c298edef33041861f6ea1892ebe4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/MossCobble using Guid(89b7c298edef33041861f6ea1892ebe4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '430d0f64e86d6296d665b693b9ef4459') in 0.006164 seconds 
-  Import took 0.009571 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.064214 seconds.
-  path: Assets/Materials/MossCobble/MossCobble.mat
-  artifactKey: Guid(a195db0f387cd844bb8d6a2f565e661f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/MossCobble/MossCobble.mat using Guid(a195db0f387cd844bb8d6a2f565e661f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '424c106169eb2966802e35615e4d88c1') in 0.188156 seconds 
-  Import took 0.191493 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000228 seconds.
-  path: Assets/Materials/MossCobble/TexturesCom_Wall_CobblestoneMossy2_4x2_1K_roughness.tif
-  artifactKey: Guid(587aab48206605849a9168d31e00debe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/MossCobble/TexturesCom_Wall_CobblestoneMossy2_4x2_1K_roughness.tif using Guid(587aab48206605849a9168d31e00debe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23e8ebb676526564e6b60bc457897292') in 0.026642 seconds 
-  Import took 0.030031 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000362 seconds.
-  path: Assets/Materials/MossCobble/TexturesCom_Wall_CobblestoneMossy2_4x2_1K_normal.tif
-  artifactKey: Guid(eb662006d6dcfec49b3d31d838162456) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/MossCobble/TexturesCom_Wall_CobblestoneMossy2_4x2_1K_normal.tif using Guid(eb662006d6dcfec49b3d31d838162456) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c5e9ef33a155c9972c42e6c885d6733') in 0.013440 seconds 
-  Import took 0.016333 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000275 seconds.
-  path: Assets/Materials/MossCobble/TexturesCom_Wall_CobblestoneMossy2_4x2_1K_albedo.tif
-  artifactKey: Guid(09d5a4535fd0b6a418bbcc9c71015945) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/MossCobble/TexturesCom_Wall_CobblestoneMossy2_4x2_1K_albedo.tif using Guid(09d5a4535fd0b6a418bbcc9c71015945) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6fef8dfebadcf1f6f875ad0f52718c60') in 0.012506 seconds 
-  Import took 0.045815 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000356 seconds.
-  path: Assets/Materials/MossCobble/TexturesCom_Wall_CobblestoneMossy2_4x2_1K_height.tif
-  artifactKey: Guid(85dbff25ca81101459bef46ed84d590f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/MossCobble/TexturesCom_Wall_CobblestoneMossy2_4x2_1K_height.tif using Guid(85dbff25ca81101459bef46ed84d590f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc9b27403433209719e4cc231dcdc8a0') in 0.012134 seconds 
-  Import took 0.015597 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000254 seconds.
-  path: Assets/Materials/MossCobble/TexturesCom_Wall_CobblestoneMossy2_4x2_1K_ao.tif
-  artifactKey: Guid(611a09b3a734aae4e9b788ba8c11d858) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/MossCobble/TexturesCom_Wall_CobblestoneMossy2_4x2_1K_ao.tif using Guid(611a09b3a734aae4e9b788ba8c11d858) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e1681834355d5e102f8162b5335e7f84') in 0.010669 seconds 
-  Import took 0.014425 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 122.307634 seconds.
-  path: Assets/Materials/PlankedWood/PlankedWood.mat
-  artifactKey: Guid(75ae4aa692218894aaa96fbd5b10d360) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/PlankedWood/PlankedWood.mat using Guid(75ae4aa692218894aaa96fbd5b10d360) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cbf64f6c8c6e11f078dec5fa2b0bd3ab') in 0.079686 seconds 
-  Import took 0.091757 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000329 seconds.
-  path: Assets/Materials/PlankedWood/TexturesCom_Wood_PlanksRough1_2x2_1K_roughness.tif
-  artifactKey: Guid(6bfc34fda101d064b90af9e82ef5c5da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/PlankedWood/TexturesCom_Wood_PlanksRough1_2x2_1K_roughness.tif using Guid(6bfc34fda101d064b90af9e82ef5c5da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f41e5b24130a7332f7437b6713f66e9c') in 0.009660 seconds 
-  Import took 0.013339 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000312 seconds.
-  path: Assets/Materials/PlankedWood/ShutWood.mat
-  artifactKey: Guid(0d49e86bc54906346b624144fdf07e3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/PlankedWood/ShutWood.mat using Guid(0d49e86bc54906346b624144fdf07e3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0da33a6126017c7bc834d2da92847c0f') in 0.038615 seconds 
-  Import took 0.041936 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000204 seconds.
-  path: Assets/Materials/PlankedWood/TexturesCom_Wood_PlanksRough1_2x2_1K_ao.tif
-  artifactKey: Guid(587b16f6d40de834ea59f3f5e538a7dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/PlankedWood/TexturesCom_Wood_PlanksRough1_2x2_1K_ao.tif using Guid(587b16f6d40de834ea59f3f5e538a7dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '411dabfbf8f7fcd0622521e698d20246') in 0.010436 seconds 
-  Import took 0.013450 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000227 seconds.
-  path: Assets/Materials/PlankedWood/TexturesCom_Wood_PlanksRough1_2x2_1K_height.tif
-  artifactKey: Guid(c60eb0f63aec8d7409148cc3623b7a52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/PlankedWood/TexturesCom_Wood_PlanksRough1_2x2_1K_height.tif using Guid(c60eb0f63aec8d7409148cc3623b7a52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cbb888f222132c9dca3a17e453bd22e4') in 0.010450 seconds 
-  Import took 0.014250 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000249 seconds.
-  path: Assets/Materials/PlankedWood/TexturesCom_Wood_PlanksRough1_2x2_1K_albedo.tif
-  artifactKey: Guid(3333c3ea4627f214bba17298edecd8a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/PlankedWood/TexturesCom_Wood_PlanksRough1_2x2_1K_albedo.tif using Guid(3333c3ea4627f214bba17298edecd8a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34205917ca447540ff59065cfc46ef84') in 0.027851 seconds 
-  Import took 0.031220 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000199 seconds.
-  path: Assets/Materials/PlankedWood/TexturesCom_Wood_PlanksRough1_2x2_1K_normal.tif
-  artifactKey: Guid(a4f800675debc6a41b176dd58d5c615c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/PlankedWood/TexturesCom_Wood_PlanksRough1_2x2_1K_normal.tif using Guid(a4f800675debc6a41b176dd58d5c615c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '140f809098064f69319fc01250d13970') in 0.012290 seconds 
-  Import took 0.015760 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 338.616404 seconds.
-  path: Assets/Models/Chips/PalleteChips.png
-  artifactKey: Guid(7fb9ab9abfb0fd44cb98268f2f7e44c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Chips/PalleteChips.png using Guid(7fb9ab9abfb0fd44cb98268f2f7e44c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'acad67f6dab65b101729ced78ce0d0ce') in 0.022683 seconds 
-  Import took 0.027228 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 485.904852 seconds.
-  path: Assets/Materials/PlankedWood/PlankedWood.mat
-  artifactKey: Guid(75ae4aa692218894aaa96fbd5b10d360) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/PlankedWood/PlankedWood.mat using Guid(75ae4aa692218894aaa96fbd5b10d360) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1a98c58b4f4680e02eb619d8e7c1005') in 0.018434 seconds 
-  Import took 0.022945 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000249 seconds.
-  path: Assets/Materials/PlankedWood/ShutWood.mat
-  artifactKey: Guid(0d49e86bc54906346b624144fdf07e3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/PlankedWood/ShutWood.mat using Guid(0d49e86bc54906346b624144fdf07e3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e019500ef081b7e5c9f737ee65ab7230') in 0.023174 seconds 
-  Import took 0.026437 seconds .
-
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file
+Registered in 0.159458 seconds.
