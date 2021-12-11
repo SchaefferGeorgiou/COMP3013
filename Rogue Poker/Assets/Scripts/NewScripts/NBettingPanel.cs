@@ -128,6 +128,10 @@ public class NBettingPanel : MonoBehaviour
             //This bit of code needs to alter the number chips bet on rock / paper / scissors passed through to bet script
             //see below code for example
             //refBet.AlterBet(totalBetValue,totalBetNum);
+
+            //If it's calling then runs the finish calling method in the bet script to move to phase 3 for calculation
+            if (betType == "call") { refBet.FinishCallPhase(); }
+
             closeBettingPanel.Invoke();
         }
         else

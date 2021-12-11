@@ -45,7 +45,7 @@ public class NBet : MonoBehaviour
 
     public void CheckBetsMade()
     {
-        //Checks that all the bets have none-zero values before changing phases
+        //Checks that all the bets have none-zero values before changing from phase 1 to 2
         bool betsMade = true;
         for (int i = 0; i < playerBet.Length; i++)
         {
@@ -58,14 +58,14 @@ public class NBet : MonoBehaviour
 
         if (isPlayer && betsMade)
         {
-            switch (phases.getPhaseNum())
-            {
-                case 1:
-                    phases.PhaseTwo();
-                    break;
-            }
+            phases.PhaseTwo();
         }
 
+    }
+
+    public void FinishCallPhase()
+    {
+        phases.PhaseThree();
     }
 
     // Please call this method in NBet when folding
