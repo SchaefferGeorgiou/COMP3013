@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b9a3b76f2f32245b7a6e242c4a618d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GapSize: 0.02
   chip: {fileID: 1670186526}
 --- !u!4 &296598118
 Transform:
