@@ -76,7 +76,7 @@ public class NPhase : MonoBehaviour
                 break;
 
             default:
-                Debug.Log("Incorrect text written in a raise / fold / pass button");
+                Debug.Log("Incorrect text written in a raise / fold / reset button");
                 break;
         }
 
@@ -90,7 +90,6 @@ public class NPhase : MonoBehaviour
         PhaseTwo_RF("reset");
         RaisedAndFolded();
 
-        phaseTwo_C.Invoke();
     }
     public void Fold()
     {
@@ -104,6 +103,7 @@ public class NPhase : MonoBehaviour
         if (hasRaised && hasFolded)
         {
             PhaseTwo_C();
+            phaseTwo_C.Invoke();
         }
     }
 

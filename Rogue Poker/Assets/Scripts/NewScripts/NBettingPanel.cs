@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using TMPro;
+using System.Linq;
 
 public class NBettingPanel : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class NBettingPanel : MonoBehaviour
     private NBet refBet;
     //the player
     private NPlayer refPlayer;
+    //the oppoenent
+    private NAI refAI;
 
     //array of the values of individual chips
     private readonly int[] chipValues = {100, 50, 20, 10, 5, 1};
@@ -69,7 +72,7 @@ public class NBettingPanel : MonoBehaviour
                 maxBet = 500;
                 maxNum = 0;
                 maxNumChips.text = "---";
-                maxValueChips.text = "£500";
+                maxValueChips.text = "£" + maxBet;
                 break;
             case "raise":
                 //setting the base values for a raise bet
@@ -85,6 +88,9 @@ public class NBettingPanel : MonoBehaviour
                 break;
             case "call":
                 //setting the base values for matching an opponent's raise
+                opponentNum = refAI.getOpponentBets().returnRaisedNums().Sum();
+
+
                 tempValues = refBet.returnAllValues();
                 //this line needs to be changed when NPlayer is complete
                 maxBet = (tempValues[Option] / 2);
@@ -125,12 +131,22 @@ public class NBettingPanel : MonoBehaviour
 
         if (betValid)
         {
-            //This bit of code needs to alter the number chips bet on rock / paper / scissors passed through to bet script
-            //see below code for example
-            //refBet.AlterBet(totalBetValue,totalBetNum);
-
-            //If it's calling then runs the finish calling method in the bet script to move to phase 3 for calculation
-            if (betType == "call") { refBet.FinishCallPhase(); }
+            if (betType == "bet")
+            {
+                //This bit of code needs to alter the number chips bet on rock / paper / scissors passed through to bet script
+                //see below code for example
+                //refBet.AlterBet(totalBetValue,totalBetNum);
+            }
+            //If it's raising then runs the setRaisedNums method to store the number of chips for calling
+            else if (betType == "raise")
+            {
+                
+                // raiseNums = new int[]
+                //for(i < 6){
+                // raiseNums[i] = textbox.text
+                //}
+                //refBet.setRaisedNums(raiseNums)
+            }
 
             closeBettingPanel.Invoke();
         }

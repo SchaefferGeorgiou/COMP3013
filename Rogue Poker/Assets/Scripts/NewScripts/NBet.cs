@@ -15,6 +15,7 @@ public class NBet : MonoBehaviour
     private int[] playerBet, playerNum;
     private int[][] betNums;
     private int foldedIndex;
+    private int[] raiseNums;
 
     // Update is called once per frame
     void Update()
@@ -63,15 +64,39 @@ public class NBet : MonoBehaviour
 
     }
 
-    public void FinishCallPhase()
+    public void CheckCallMade()
     {
-        phases.PhaseThree();
+        bool callMade = false;
+        for (int i = 0; i < raiseNums.Length; i++)
+        {
+            if (!(raiseNums[i] > 0))
+            {
+                callMade = true;
+                break;
+            }
+        }
+
+        if (isPlayer && callMade)
+        {
+            phases.PhaseThree();
+        }
     }
+
+
 
     // Please call this method in NBet when folding
     public void setFoldIndex(int type)
     {
         foldedIndex = type;
+    }
+
+    public void setRaisedNums(int[] nums)
+    {
+        for (int i = 0; i < raiseNums.Length; i++)
+        {
+            raiseNums[i] = nums[i];
+        }
+        ChipCountChanged.Invoke();
     }
 
     //This returns the total value bet on each option rock / paper etc.
@@ -88,6 +113,13 @@ public class NBet : MonoBehaviour
     public int returnFoldIndex()
     {
         return foldedIndex;
+    }
+
+
+    //Returns the Number of Chips used in the Call phase
+    public int[] returnRaisedNums()
+    {
+        return raiseNums;
     }
 
 

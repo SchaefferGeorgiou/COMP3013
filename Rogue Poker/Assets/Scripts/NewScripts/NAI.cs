@@ -186,4 +186,9 @@ public class NAI : MonoBehaviour
     {
         return opponentBets.returnFoldIndex();
     }
+
+    public NBet getOpponentBets()
+    {
+        return opponentBets;
+    }
 }
