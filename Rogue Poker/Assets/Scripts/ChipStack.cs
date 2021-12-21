@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ChipStack : MonoBehaviour
 {
@@ -14,26 +15,14 @@ public class ChipStack : MonoBehaviour
     Vector3 stackPosition; //the chip stack's position
     List<GameObject> chipStack = new List<GameObject>(); //list of chips returned from instantiation
 
+    [SerializeField, Header("Invoked once per Chip")]
+    public UnityEvent ChipAdded;
+
     // Start is called before the first frame update
     void Start()
     {
         GapSize += chip.GetComponent<Renderer>().bounds.size.y; 
         stackPosition = transform.position;
-        Debug.Log(transform.position.y);
-
-        //for loop for the sake of testing without a button
-        for (int i = 0; i < 5; i++)
-        {
-            StackChips(1);
-        }
-
-        StartCoroutine(Wait());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     //a method for stacking individual chips as they are added (progressively) in the Betting Panel
@@ -43,6 +32,7 @@ public class ChipStack : MonoBehaviour
         {
             //create a chip, save it and then add it to the stack
             GameObject temp = Instantiate(chip, stackPosition, chip.transform.rotation * Quaternion.Euler(0f, 0f, 90f));
+            StartCoroutine(StackOne(temp)); //Co-routine ensures time between each ship added for satisfactory click clacks
             chipStack.Add(temp);
             stackPosition.y += GapSize; //the y value of the stack's position changes by the height
         }
@@ -60,9 +50,11 @@ public class ChipStack : MonoBehaviour
         }
     }
 
-    IEnumerator Wait()
+    IEnumerator StackOne(GameObject chip)
     {
-        yield return new WaitForSeconds(3);
-        RemoveChips(3);
+        chip.SetActive(false); //Same frame turn it off so user doesn't see it yet
+        yield return new WaitForSeconds(0.2f);
+        chip.SetActive(true); //After waiting activate the object. Creates delay between each chip
+        ChipAdded.Invoke();
     }
 }
