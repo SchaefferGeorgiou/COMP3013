@@ -10,18 +10,6 @@ public class NPlayer : MonoBehaviour
     private NChipCount playerChips; //player's number of chips
     private NBetIndicator UIindicator; //UI variable
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public int[] getAllCounts()
     {
         return playerBets.returnAllCounts();

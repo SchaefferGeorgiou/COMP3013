@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class NBet : MonoBehaviour
 {
-    NPhase phases;
+    public NPhase phases;
 
     public UnityEvent ChipCountChanged;
 
@@ -17,31 +17,36 @@ public class NBet : MonoBehaviour
     private int foldedIndex;
     private int[] raiseNums;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private int[] referenceValues = { 100, 50, 20, 10, 5, 1 };
 
-    public void AlterBet(int option, int[] betNum)
+    public void AlterBet(int[] betNum)
     {
         //Sets a new value for the bets
         for (int i = 0; i < betNums.Length; i++)
         {
-            betNums[option][i] = betNum[i];
-            playerNum[option] += betNum[i];
+            betNums[currentOption][i] = betNum[i];
+
+            playerNum[currentOption] += betNum[i];
+            playerBet[currentOption] += betNum[i] * referenceValues[i];
         }
 
-        playerBet[option] += betNum[0] * 100;
-        playerBet[option] += betNum[1] * 50;
-        playerBet[option] += betNum[2] * 20;
-        playerBet[option] += betNum[3] * 10;
-        playerBet[option] += betNum[4] * 5;
-        playerBet[option] += betNum[5] * 1;
+        ChipCountChanged.Invoke();
+    }
+
+    public void AlterBet(int option, int[] betNum)
+    {
+
+        setBetOption(option);
+        //Sets a new value for the bets
+        for (int i = 0; i < betNums.Length; i++)
+        {
+            betNums[currentOption][i] = betNum[i];
+
+            playerNum[currentOption] += betNum[i];
+            playerBet[currentOption] += betNum[i] * referenceValues[i];
+        }
 
         ChipCountChanged.Invoke();
-        setBetOption(option);
-
     }
 
     public void CheckBetsMade()
@@ -82,8 +87,6 @@ public class NBet : MonoBehaviour
         }
     }
 
-
-
     // Please call this method in NBet when folding
     public void setFoldIndex(int type)
     {
@@ -115,20 +118,17 @@ public class NBet : MonoBehaviour
         return foldedIndex;
     }
 
-
     //Returns the Number of Chips used in the Call phase
     public int[] returnRaisedNums()
     {
         return raiseNums;
     }
 
-
     //This returns all individual number of chips on a specific bet option 100s, 50s, 20s etc.
     public int[] returnBetNums()
     {
         return betNums[currentOption];
     }
-
 
     //Setting whether the bet is rock / paper / scissors
     public void setBetOption(int option)

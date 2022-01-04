@@ -7,14 +7,19 @@ public class NDealer : MonoBehaviour
 {
     private int option;
 
-    public Sprite[] threeOptions;
-    public Image display;
-    public Sprite Default;
+    public GameObject[] threeOptions;
+    //public Image display;
+    public GameObject Default;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Default.SetActive(true);
+
+        foreach (GameObject item in threeOptions)
+        {
+            item.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -26,7 +31,7 @@ public class NDealer : MonoBehaviour
     public void Deal()
     {
         option = Random.Range(0, 3);
-        display.sprite = threeOptions[option];
+        threeOptions[option].SetActive(true);
     }
 
     void ShowDealer()
