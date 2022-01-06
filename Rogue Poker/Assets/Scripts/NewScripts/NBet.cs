@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class NBet : MonoBehaviour
 {
-    public NPhase phases;
+    public NPhase refPhases;
+    public NDealer refDealer;
 
     public UnityEvent ChipCountChanged;
+
+    public TextMeshPro callLabel;
 
     private int currentOption;
 
@@ -64,8 +68,12 @@ public class NBet : MonoBehaviour
 
         if (isPlayer && betsMade)
         {
-            phases.PhaseTwo();
+            refPhases.PhaseTwo();
+            refDealer.Deal();
         }
+
+        //Can use Else statement here to report that couldn't progress
+        //Implement feedback in NPhase and use ref
 
     }
 
@@ -83,7 +91,7 @@ public class NBet : MonoBehaviour
 
         if (isPlayer && callMade)
         {
-            phases.PhaseThree();
+            refPhases.PhaseThree();
         }
     }
 
@@ -91,6 +99,8 @@ public class NBet : MonoBehaviour
     public void setFoldIndex(int type)
     {
         foldedIndex = type;
+        //Tell phase that folded
+        refPhases.Fold();
     }
 
     public void setRaisedNums(int[] nums)
@@ -99,6 +109,8 @@ public class NBet : MonoBehaviour
         {
             raiseNums[i] = nums[i];
         }
+        //Tell Phase script that Raised
+        refPhases.Raise();
         ChipCountChanged.Invoke();
     }
 
@@ -138,5 +150,10 @@ public class NBet : MonoBehaviour
     public int getBetOption()
     {
         return currentOption;
+    }
+
+    public void setCallLabelText(string option, int value)
+    {
+        callLabel.SetText(" - Opponent Raised " + option + " by £" + value.ToString() + ".\n Would you like to Call or Skip ? ");
     }
 }

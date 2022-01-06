@@ -8,10 +8,10 @@ using UnityEngine.UIElements;
 
 public class Calculator : MonoBehaviour
 {
-    public Player refPlayer;
-    public AI refAi;
-    public Dealer refDealer;
-    public Bet refBet;
+    public NPlayer refPlayer;
+    public NAI refAi;
+    public NDealer refDealer;
+    public NBet refBet;
 
     public UnityEvent PlayerWin;
     public UnityEvent OpponentWin;
@@ -24,13 +24,31 @@ public class Calculator : MonoBehaviour
 
     private int FoldIndex;
 
+    public void displayCalLablel()
+    {
+        string option = "";
+        switch (refAi.getRaiseIndex())
+        {
+            case 0:
+                option = "Rock";
+                break;
+            case 1:
+                option = "Paper";
+                break;
+            case 2:
+                option = "Scissors";
+                break;
+        }
+        refBet.setCallLabelText(option, refAi.getRaiseAmount());
+    }
+
     public void Calculate()
     {
-        FoldIndex = refPlayer.FoldedIndex; //-1 = no fold, otherwise index = folded option
-        int[] PlayerBets = refBet.getAllBets();
-        int[] OpponentBets = refAi.GetAllValues();
+        FoldIndex = refPlayer.getFoldIndex(); //-1 = no fold, otherwise index = folded option
+        int[] PlayerBets = refBet.returnAllValues();
+        int[] OpponentBets = refAi.getAllValues();
 
-        int dealer = refDealer.getDeal();
+        int dealer = refDealer.returnOption();
 
         int Bonus = 0;
         int OppBonus = 0;

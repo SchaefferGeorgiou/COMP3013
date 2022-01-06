@@ -8,6 +8,9 @@ public class NAI : MonoBehaviour
     NBet opponentBets;
     NChipCount opponentChips;
 
+    private int raiseIndex;
+    private int raiseAmount;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -162,6 +165,7 @@ public class NAI : MonoBehaviour
                 opponentBets.AlterBet(2, nums);
                 break;
         }
+        raiseIndex = highest;
 
         //Fold lowest valued bet
         opponentBets.setFoldIndex(lowest);
@@ -190,5 +194,16 @@ public class NAI : MonoBehaviour
     public NBet getOpponentBets()
     {
         return opponentBets;
+    }
+
+    public int getRaiseIndex()
+    {
+        return raiseIndex;
+    }
+
+    public int getRaiseAmount()
+    {
+        int[] temp =  opponentBets.returnAllValues();
+        return temp[raiseIndex];
     }
 }

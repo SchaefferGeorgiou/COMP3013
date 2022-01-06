@@ -58,9 +58,11 @@ public class NBettingPanel : MonoBehaviour
     private bool isActive;
 
     //UI elements for betting panel
-    public GameObject[] incrementBtns; //needed?????????????
     public TextMeshPro[] numChipsBet;
     public TextMeshPro[] totalNumChips;
+
+    public TextMeshPro BetTypeLabel;
+    private string[] options = { "Rock", "Paper", "Scissors" };
 
     private int[] currentBet = new int[5];
     private int selectedChip; //0-5, 100-1, index value for selection
@@ -74,10 +76,7 @@ public class NBettingPanel : MonoBehaviour
 
     public void SetType(string betType)
     {
-        if (isActive)
-        {
-            return;
-        }
+        if (!isActive) return;
         //set whether raise, call or fold
         type = betType;
         isActive = true;
@@ -85,10 +84,10 @@ public class NBettingPanel : MonoBehaviour
 
     public void OpenPanel(int Option)
     {
-        if (isActive)
-        {
-            return;
-        }
+        if (!isActive) return;
+        //if option sent is -1, then get the opponents Raised option to use
+        if (Option == -1) { Option = refAI.getRaiseIndex(); };
+
         isActive = true;
         int[] currentBet = {0, 0, 0, 0, 0 };
         ChangeChipSelected(5);
@@ -96,6 +95,9 @@ public class NBettingPanel : MonoBehaviour
         UpdatePanel();
 
         refBet.setBetOption(Option);
+        //Set label to show current selected option
+        BetTypeLabel.SetText(type + ": " + options[Option]);
+
         int[] tempValues = new int[3];
         switch (type)
         {
@@ -123,7 +125,6 @@ public class NBettingPanel : MonoBehaviour
             case "call":
                 //setting the base values for matching an opponent's raise
                 opponentNum = refAI.getOpponentBets().returnRaisedNums().Sum();
-
 
                 tempValues = refBet.returnAllValues();
                 //this line needs to be changed when NPlayer is complete
@@ -187,6 +188,7 @@ public class NBettingPanel : MonoBehaviour
         {
             if (type == "bet")
             {
+                refBet.AlterBet(currentBet);
                 //This bit of code needs to alter the number chips bet on rock / paper / scissors passed through to bet script
                 //see below code for example
                 //refBet.AlterBet(totalBetValue,totalBetNum);
@@ -194,7 +196,9 @@ public class NBettingPanel : MonoBehaviour
             //If it's raising then runs the setRaisedNums method to store the number of chips for calling
             else if (type == "raise")
             {
-                
+                refBet.setRaisedNums(currentBet);
+
+                    //Dunno about all this below:..
                 // raiseNums = new int[]
                 //for(i < 6){
                 // raiseNums[i] = textbox.text
