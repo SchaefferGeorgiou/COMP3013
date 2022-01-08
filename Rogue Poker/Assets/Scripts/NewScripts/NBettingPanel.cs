@@ -48,11 +48,11 @@ public class NBettingPanel : MonoBehaviour
     public UnityEvent displayResults;
 
     //text fields for describing UI elements
-    public TextMeshPro maxBetValue; //when setting text, include "Max Bet = £" + int.toString
+    public TextMeshPro maxBetValue;
     public TextMeshPro maxNumChips;
     public TextMeshPro selectedChipValue;
     public TextMeshPro currentNumChips;
-    public TextMeshPro currentBetValue; //when setting text, include "Total Bet = £" + int.toString
+    public TextMeshPro currentBetValue;
 
     //boolean to define whether betting panel is active
     private bool isActive;
@@ -89,12 +89,16 @@ public class NBettingPanel : MonoBehaviour
         if (Option == -1) { Option = refAI.getRaiseIndex(); };
 
         isActive = true;
-        int[] currentBet = {0, 0, 0, 0, 0 };
-        ChangeChipSelected(5);
-        SetPlayerChips();
-        UpdatePanel();
-
         refBet.setBetOption(Option);
+
+        //set current bet equal to the saved bet, unless it#s null then set to defaul 0's
+        int[] currentBet = refBet.returnBetNums();
+        if (currentBet == null) { currentBet = new int[] { 0, 0, 0, 0, 0 }; }
+
+        ChangeChipSelected(5); //set selected to £1's
+        SetPlayerChips(); 
+        UpdatePanel(); //Update bettingPanel UI with info
+
         //Set label to show current selected option
         BetTypeLabel.SetText(type + ": " + options[Option]);
 
@@ -186,12 +190,9 @@ public class NBettingPanel : MonoBehaviour
 
         if (betValid)
         {
-            if (type == "bet")
+            if (type == "bet" || type == "call") //serve same purpose, chips are updated with new values and no need to differentiate
             {
                 refBet.AlterBet(currentBet);
-                //This bit of code needs to alter the number chips bet on rock / paper / scissors passed through to bet script
-                //see below code for example
-                //refBet.AlterBet(totalBetValue,totalBetNum);
             }
             //If it's raising then runs the setRaisedNums method to store the number of chips for calling
             else if (type == "raise")

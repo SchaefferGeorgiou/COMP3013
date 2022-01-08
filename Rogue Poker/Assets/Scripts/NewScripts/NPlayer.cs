@@ -32,7 +32,7 @@ public class NPlayer : MonoBehaviour
 
     public void AlterChipCounts()
     {
-        playerChips.AlterCount(playerBets.returnBetNums());
+        playerChips.AlterCount(playerBets.returnBetChange());
     }
 
 }
