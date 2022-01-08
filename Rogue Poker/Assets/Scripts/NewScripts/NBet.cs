@@ -18,7 +18,7 @@ public class NBet : MonoBehaviour
     private bool isPlayer;
     private int[] playerBet = new int[3], //total value of all bets
         playerNum = new int[3], //total number of chips bet
-        previousBet = new int[5];
+        previousBet = new int[5]; //the num of chips on the bet before being updated
     private int[][] betNums = new int[3][];
     private int foldedIndex;
     private int[] raiseNums = new int[5];
@@ -171,7 +171,7 @@ public class NBet : MonoBehaviour
 
     public void setCallLabelText(string option, int value)
     {
-        callLabel.SetText(" - Opponent Raised " + option + " by £" + value.ToString() + ".\n Would you like to Call or Skip ? ");
+        callLabel.SetText("\n - Opponent Raised " + option + " by £" + value.ToString() + ".\n   Would you like to Call or Skip?");
     }
 
     public void ResetBets()

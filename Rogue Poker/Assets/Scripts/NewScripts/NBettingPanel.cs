@@ -23,7 +23,7 @@ public class NBettingPanel : MonoBehaviour
     //the string defining the type of UI panel
     private string type;
     //the player's bet
-    private NBet refBet;
+    public NBet refBet;
     //the player
     public NPlayer refPlayer;
     //the oppoenent
@@ -34,9 +34,7 @@ public class NBettingPanel : MonoBehaviour
 
     //ints related to bet options
     //[SerializeField]
-    private int totalBetNum, 
-                totalBetValue, 
-                maxBet, 
+    private int maxBet, 
                 maxNum, 
                 minBet,
                 opponentNum;
@@ -64,19 +62,12 @@ public class NBettingPanel : MonoBehaviour
     public TextMeshPro BetTypeLabel;
     private string[] options = { "Rock", "Paper", "Scissors" };
 
-    private int[] currentBet = new int[5];
+    private int[] currentBet = new int[6], tot = new int[6];
     private int selectedChip; //0-5, 100-1, index value for selection
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //setting the refBet to the player's bet
-        refBet = refPlayer.getPlayerBet();
-    }
 
     public void SetType(string betType)
     {
-        if (!isActive) return;
+        if (isActive) return;
         //set whether raise, call or fold
         type = betType;
         isActive = true;
@@ -112,7 +103,7 @@ public class NBettingPanel : MonoBehaviour
                 maxBet = 500;
                 maxNum = 0;
                 maxNumChips.SetText("---");
-                maxBetValue.SetText("£" + maxBet.ToString());
+                maxBetValue.SetText("Max Bet: £" + maxBet.ToString());
                 break;
             case "raise":
                 //setting the base values for a raise bet
@@ -124,7 +115,7 @@ public class NBettingPanel : MonoBehaviour
                 maxNum = 0;
                 minBet = 0;
                 maxNumChips.SetText("---");
-                maxBetValue.SetText(maxBet.ToString());
+                maxBetValue.SetText("Max Raise: £" + maxBet.ToString());
                 break;
             case "call":
                 //setting the base values for matching an opponent's raise
@@ -134,20 +125,22 @@ public class NBettingPanel : MonoBehaviour
                 //this line needs to be changed when NPlayer is complete
                 maxBet = (tempValues[Option] / 2);
                 maxNum = opponentNum;
-                maxNumChips.SetText(maxNum.ToString());
-                maxBetValue.SetText(maxBet.ToString());
+                maxNumChips.SetText("Number Chips:" + maxNum.ToString());
+                maxBetValue.SetText("Call Amount: £" + maxBet.ToString());
                 break;
         }    
     }
 
     public void SetPlayerChips()
     {
-        //getting the total number of chips the player has from nBet and updating the UI appropriately
-        int[] temp = refBet.returnAllCounts();
+        //getting the total number of chips the player has from nChipCount via nPlayer and updating the UI appropriately
+        tot = refPlayer.getTotalChipNums();
 
-        foreach (int i in temp)
+        for (int i = 0; i < tot.Length; i++)
         {
-            totalNumChips[i].SetText("x" + temp[i].ToString());
+            //add onto that any chips already on this bet, as they need to be included as available to be bet with
+            tot[i] += currentBet[i];
+            totalNumChips[i].SetText("x" + tot[i].ToString());
         }
     }
 
@@ -217,7 +210,8 @@ public class NBettingPanel : MonoBehaviour
     }
 
     public void IncrementBet()
-    {
+    { 
+        if (currentBet[selectedChip] >= tot[selectedChip]) return;
         //adds 1 chip to the current total bet
         currentBet[selectedChip] += 1;
         UpdatePanel();
@@ -225,19 +219,17 @@ public class NBettingPanel : MonoBehaviour
 
     public void DecrementBet()
     {
-        if (currentBet[selectedChip] > 0)
-        {
-            //if there's at least 1 of this chip bet, then take 1 away
-            currentBet[selectedChip] -= 1;
-            UpdatePanel();
-        }
+        //if there's at least 1 of this chip bet, then take 1 away
+        if (currentBet[selectedChip] - 1 < 0) return;
+        currentBet[selectedChip] -= 1;
+        UpdatePanel();
     }
 
     public void UpdatePanel()
     {
         int totalNum = 0;
         int totalVal = 0;
-        foreach (int i in currentBet)
+        for (int i = 0; i < currentBet.Length; i++)
         {
             //update the number of currently bet chips
             numChipsBet[i].SetText("x" + currentBet[i].ToString());
