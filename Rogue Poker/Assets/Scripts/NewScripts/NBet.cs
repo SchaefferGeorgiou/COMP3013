@@ -2,46 +2,62 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class NBet : MonoBehaviour
 {
-    NPhase phases;
+    public NPhase refPhases;
 
+    [Header ("Called when successfully updated player chip #")]
     public UnityEvent ChipCountChanged;
+
+    public TextMeshPro callLabel;
 
     private int currentOption;
 
     private bool isPlayer;
-    private int[] playerBet, playerNum;
-    private int[][] betNums;
+    private int[] playerBet = new int[3], //total value of all bets
+        playerNum = new int[3], //total number of chips bet
+        previousBet = new int[5]; //the num of chips on the bet before being updated
+    private int[][] betNums = new int[3][];
     private int foldedIndex;
-    private int[] raiseNums;
+    private int[] raiseNums = new int[5];
 
-    // Update is called once per frame
-    void Update()
+    private int[] referenceValues = { 100, 50, 20, 10, 5, 1 };
+
+    private void Start()
     {
-        
+        ResetBets();
+    }
+
+    public void AlterBet(int[] betNum)
+    {
+        previousBet = betNums[currentOption];
+        //Sets a new value for the bets
+        for (int i = 0; i < betNums.Length; i++)
+        {
+            betNums[currentOption][i] = betNum[i];
+
+            playerNum[currentOption] += betNum[i];
+            playerBet[currentOption] += betNum[i] * referenceValues[i];
+        }
+
+        ChipCountChanged.Invoke();
     }
 
     public void AlterBet(int option, int[] betNum)
     {
+        setBetOption(option);
         //Sets a new value for the bets
         for (int i = 0; i < betNums.Length; i++)
         {
-            betNums[option][i] = betNum[i];
-            playerNum[option] += betNum[i];
+            betNums[currentOption][i] = betNum[i];
+
+            playerNum[currentOption] += betNum[i];
+            playerBet[currentOption] += betNum[i] * referenceValues[i];
         }
 
-        playerBet[option] += betNum[0] * 100;
-        playerBet[option] += betNum[1] * 50;
-        playerBet[option] += betNum[2] * 20;
-        playerBet[option] += betNum[3] * 10;
-        playerBet[option] += betNum[4] * 5;
-        playerBet[option] += betNum[5] * 1;
-
         ChipCountChanged.Invoke();
-        setBetOption(option);
-
     }
 
     public void CheckBetsMade()
@@ -59,12 +75,15 @@ public class NBet : MonoBehaviour
 
         if (isPlayer && betsMade)
         {
-            phases.PhaseTwo();
+            refPhases.PhaseTwo();
         }
+
+        //Can use Else statement here to report that couldn't progress
+        //Implement feedback in NPhase and use ref
 
     }
 
-    public void CheckCallMade()
+    public void CheckCallMade() //confused as to what/why this is
     {
         bool callMade = false;
         for (int i = 0; i < raiseNums.Length; i++)
@@ -78,25 +97,38 @@ public class NBet : MonoBehaviour
 
         if (isPlayer && callMade)
         {
-            phases.PhaseThree();
+            refPhases.PhaseThree();
         }
     }
-
-
 
     // Please call this method in NBet when folding
     public void setFoldIndex(int type)
     {
         foldedIndex = type;
+        //Tell phase that folded
+        refPhases.Fold();
     }
 
     public void setRaisedNums(int[] nums)
     {
         for (int i = 0; i < raiseNums.Length; i++)
         {
-            raiseNums[i] = nums[i];
+            //RaisedNums hold amount Raised by for calculating min/max for Calls
+            raiseNums[i] = nums[i] - playerNum[i]; //take original bet from raised bet to get just raise values
         }
-        ChipCountChanged.Invoke();
+        //Tell Phase script that Raised
+        refPhases.Raise();
+        AlterBet(nums);
+    }
+
+    public int[] returnBetChange()
+    {
+        int[] diff = new int[5];
+        for (int i = 0; i < diff.Length; i++)
+        {
+            diff[i] = betNums[currentOption][i] - previousBet[i];
+        }
+        return diff;
     }
 
     //This returns the total value bet on each option rock / paper etc.
@@ -115,20 +147,17 @@ public class NBet : MonoBehaviour
         return foldedIndex;
     }
 
-
     //Returns the Number of Chips used in the Call phase
     public int[] returnRaisedNums()
     {
         return raiseNums;
     }
 
-
     //This returns all individual number of chips on a specific bet option 100s, 50s, 20s etc.
     public int[] returnBetNums()
     {
         return betNums[currentOption];
     }
-
 
     //Setting whether the bet is rock / paper / scissors
     public void setBetOption(int option)
@@ -138,5 +167,20 @@ public class NBet : MonoBehaviour
     public int getBetOption()
     {
         return currentOption;
+    }
+
+    public void setCallLabelText(string option, int value)
+    {
+        callLabel.SetText("\n - Opponent Raised " + option + " by £" + value.ToString() + ".\n   Would you like to Call or Skip?");
+    }
+
+    public void ResetBets()
+    {
+        //method to reset bet values for new run
+        playerNum = new int[] { 0, 0, 0 };
+        playerBet = new int[] { 0, 0, 0 };
+        betNums[0] = new int[] { 0, 0, 0, 0, 0, 0 };
+        betNums[1] = new int[] { 0, 0, 0, 0, 0, 0 };
+        betNums[2] = new int[] { 0, 0, 0, 0, 0, 0 };
     }
 }

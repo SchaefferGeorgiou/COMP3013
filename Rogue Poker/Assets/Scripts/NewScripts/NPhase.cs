@@ -7,12 +7,14 @@ using System;
 public class NPhase : MonoBehaviour
 {
     [SerializeField]
-    private GameObject betBtns, pickBtnsRaise, RFBtns, pickBtnsFold, CPBtns, endScores;
+    private GameObject betBtns, pickBtnsRaise, pickBtnsFold, CPBtns, endScores; //RFBtns
+
     [SerializeField]
     private int phaseNum;
 
     private bool hasFolded, hasRaised;
 
+    [Header("Events NOT Necessary for functionality")]
     public UnityEvent phaseOne, phaseTwo_RF, phaseTwo_C, phaseThree;
 
     // Start is called before the first frame update
@@ -34,7 +36,7 @@ public class NPhase : MonoBehaviour
         //This enables the bet buttons only
         setPhaseNum(1);
         betBtns.SetActive(true);
-        RFBtns.SetActive(false);
+            //RFBtns.SetActive(false);
         pickBtnsFold.SetActive(false);
         pickBtnsRaise.SetActive(false);
         CPBtns.SetActive(false);
@@ -49,11 +51,20 @@ public class NPhase : MonoBehaviour
         //This enables the Raise Fold buttons for Phase 2 and disables the Phase 1 Bet Buttons
         setPhaseNum(2);
         betBtns.SetActive(false);
-        RFBtns.SetActive(true);
+        //RFBtns.SetActive(true);
+            pickBtnsRaise.SetActive(true);
 
         phaseTwo_RF.Invoke();
     }
-    public void PhaseTwo_RF(string choice)
+
+    public void PhaseTwo_F()
+    {
+        setPhaseNum(3);
+        pickBtnsRaise.SetActive(false);
+        pickBtnsFold.SetActive(true);
+    }
+
+    /*public void PhaseTwo_RF(string choice)
     {
 
         //This takes in the specific button type and changes the UI respectively
@@ -82,19 +93,19 @@ public class NPhase : MonoBehaviour
 
         //The pass button can have the text change to reflect whether the player has done one or none
         //e.g. changing 'pass' to 'continue'
-    }
+    }*/
 
     public void Raise()
     {
         hasRaised = true;
-        PhaseTwo_RF("reset");
+        //PhaseTwo_RF("reset");
         RaisedAndFolded();
 
     }
     public void Fold()
     {
         hasFolded = true;
-        PhaseTwo_RF("reset");
+        //PhaseTwo_RF("reset");
         RaisedAndFolded();
     }
 
@@ -110,13 +121,15 @@ public class NPhase : MonoBehaviour
 
     public void PhaseTwo_C()
     {
+        setPhaseNum(4);
         CPBtns.SetActive(true);
-        RFBtns.SetActive(false);
+        //RFBtns.SetActive(false);
+        pickBtnsFold.SetActive(false);
     }
 
     public void PhaseThree()
     {
-        setPhaseNum(3);
+        setPhaseNum(5);
         CPBtns.SetActive(false);
         endScores.SetActive(true);
 
@@ -132,5 +145,27 @@ public class NPhase : MonoBehaviour
     public int getPhaseNum()
     {
         return phaseNum;
+    }
+
+    public void displayCurrentPhase()
+    {
+        switch(phaseNum)
+        {
+            case 1:
+                PhaseOne();
+                break;
+            case 2:
+                PhaseTwo();
+                break;
+            case 3:
+                PhaseTwo_F();
+                break;
+            case 4:
+                PhaseTwo_C();
+                break;
+            case 5:
+                PhaseThree();
+                break;
+        }
     }
 }

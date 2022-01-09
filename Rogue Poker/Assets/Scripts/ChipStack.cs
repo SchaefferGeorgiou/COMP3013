@@ -15,7 +15,7 @@ public class ChipStack : MonoBehaviour
     Vector3 stackPosition; //the chip stack's position
     List<GameObject> chipStack = new List<GameObject>(); //list of chips returned from instantiation
 
-    [SerializeField, Header("Invoked once per Chip")]
+    [SerializeField, Header("Invoked once per Chip (not necessary)")]
     public UnityEvent ChipAdded;
 
     // Start is called before the first frame update

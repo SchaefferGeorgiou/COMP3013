@@ -25,8 +25,8 @@ public class NCalculator : MonoBehaviour
 
     void Calculate()
     {
-        int[] playerBets = player.getAllValues();
-        int[] playerNums = player.getAllCounts();
+        int[] playerBets = player.getAllBetValues();
+        int[] playerNums = player.getAllBetsNums();
 
         int[] opponentBets = opponent.getAllValues();
         int[] opponentNums = opponent.getAllCounts();

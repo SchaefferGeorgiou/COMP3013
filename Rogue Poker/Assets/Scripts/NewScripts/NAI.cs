@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 
 public class NAI : MonoBehaviour
 {
     NBet opponentBets;
     NChipCount opponentChips;
+    public TextMeshPro ifCalledLbl;
+
+    private int raiseIndex;
+    private int raiseAmount;
 
     // Start is called before the first frame update
     void Start()
@@ -162,6 +167,7 @@ public class NAI : MonoBehaviour
                 opponentBets.AlterBet(2, nums);
                 break;
         }
+        raiseIndex = highest;
 
         //Fold lowest valued bet
         opponentBets.setFoldIndex(lowest);
@@ -169,7 +175,13 @@ public class NAI : MonoBehaviour
 
     public void Call()
     {
+        bool called = false;
 
+        //Input logic here
+        //get raised nums from player bet, random chance not to call
+
+        if (called) { ifCalledLbl.SetText("\n - Opponent Called your Raise,\n   Click to continue"); }
+        else { ifCalledLbl.SetText("\n - Opponent didn't call your Raise,\n   Click to continue"); }
     }
 
     public int[] getAllCounts()
@@ -190,5 +202,16 @@ public class NAI : MonoBehaviour
     public NBet getOpponentBets()
     {
         return opponentBets;
+    }
+
+    public int getRaiseIndex()
+    {
+        return raiseIndex;
+    }
+
+    public int getRaiseAmount()
+    {
+        int[] temp =  opponentBets.returnAllValues();
+        return temp[raiseIndex];
     }
 }
