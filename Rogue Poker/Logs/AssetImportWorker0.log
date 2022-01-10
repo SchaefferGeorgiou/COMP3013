@@ -136,3 +136,20 @@ Received Import Request.
 Start importing Assets/Scenes/CameraMovement.unity using Guid(a01a87c262b74254e95e1d9e2c3a400b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91562430bb036e020c471c18436a55ed') in 0.016029 seconds 
   Import took 0.018456 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 2799.363719 seconds.
+  path: Assets/Scripts/Rail.cs
+  artifactKey: Guid(eee783a875725864bb8504e395de38cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Rail.cs using Guid(eee783a875725864bb8504e395de38cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76b7bd5377be3004f0badc2491db6729') in 0.024841 seconds 
+  Import took 0.028074 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1740.129801 seconds.
+  path: Assets/Scripts/RailMover.cs
+  artifactKey: Guid(8c7ae37fea28928468cfd179ec9c83d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/RailMover.cs using Guid(8c7ae37fea28928468cfd179ec9c83d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '182693c267c1ca29415240c18a1ff607') in 0.007118 seconds 
+  Import took 0.010188 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
