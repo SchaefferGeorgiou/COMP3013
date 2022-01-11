@@ -36,6 +36,12 @@ public class RailMover : MonoBehaviour
             Play();
         }
 
+        
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            SetSpeed(1f);
+        }
+
     }
     
     //Method to be invoked when game is still running
@@ -99,6 +105,18 @@ public class RailMover : MonoBehaviour
             Speed = Speed - 0.2f;
         }
         Debug.Log("S was pressed - Speed: " + Speed);
+    }
+
+    //Use this method to increase and decrease the camera moving between scenes
+    public void SetSpeed(float inSpeed)
+    {
+        Speed = inSpeed;
+        Debug.Log("Speed: " + Speed);
+    }
+
+    public void Halt()
+    {
+        SetSpeed(0f);
     }
 
     public void TiltLeft()
