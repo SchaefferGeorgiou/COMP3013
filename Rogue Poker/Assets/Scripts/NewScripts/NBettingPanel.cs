@@ -79,11 +79,11 @@ public class NBettingPanel : MonoBehaviour
         //if option sent is -1, then get the opponents Raised option to use
         if (Option == -1) { Option = refAI.getRaiseIndex(); };
 
-        isActive = true;
         refBet.setBetOption(Option);
 
         //set current bet equal to the saved bet, unless it#s null then set to defaul 0's
-        int[] currentBet = refBet.returnBetNums();
+        currentBet = refBet.returnBetNums();
+
         if (currentBet == null) { currentBet = new int[] { 0, 0, 0, 0, 0 }; }
 
         ChangeChipSelected(5); //set selected to £1's
@@ -102,7 +102,7 @@ public class NBettingPanel : MonoBehaviour
                 minBet = 50;
                 maxBet = 500;
                 maxNum = 0;
-                maxNumChips.SetText("---");
+                maxNumChips.SetText("Min Bet: £50");
                 maxBetValue.SetText("Max Bet: £" + maxBet.ToString());
                 break;
             case "raise":
@@ -114,7 +114,7 @@ public class NBettingPanel : MonoBehaviour
                 maxBet = (tempValues[Option] / 2);
                 maxNum = 0;
                 minBet = 0;
-                maxNumChips.SetText("---");
+                maxNumChips.SetText("");
                 maxBetValue.SetText("Max Raise: £" + maxBet.ToString());
                 break;
             case "call":
@@ -135,13 +135,25 @@ public class NBettingPanel : MonoBehaviour
     {
         //getting the total number of chips the player has from nChipCount via nPlayer and updating the UI appropriately
         tot = refPlayer.getTotalChipNums();
+        
+        int[][] temp = refBet.returnAllBetNums();
 
+        foreach (int[] x in temp)
+        {
+            for (int i = 0; i < tot.Length; i++)
+            {
+                //add onto that any chips already on this bet, as they need to be included as available to be bet with
+                tot[i] += x[i];
+                totalNumChips[i].SetText("x" + tot[i].ToString());
+            }
+        }
+        /*
         for (int i = 0; i < tot.Length; i++)
         {
             //add onto that any chips already on this bet, as they need to be included as available to be bet with
             tot[i] += currentBet[i];
             totalNumChips[i].SetText("x" + tot[i].ToString());
-        }
+        }*/
     }
 
     public void ValidateBet()
@@ -186,18 +198,13 @@ public class NBettingPanel : MonoBehaviour
             if (type == "bet" || type == "call") //serve same purpose, chips are updated with new values and no need to differentiate
             {
                 refBet.AlterBet(currentBet);
+
+                if (type == "call") { refBet.refPhases.setPhaseNum(5); }//if calling, then ensure progress to next phase
             }
             //If it's raising then runs the setRaisedNums method to store the number of chips for calling
             else if (type == "raise")
             {
                 refBet.setRaisedNums(currentBet);
-
-                    //Dunno about all this below:..
-                // raiseNums = new int[]
-                //for(i < 6){
-                // raiseNums[i] = textbox.text
-                //}
-                //refBet.setRaisedNums(raiseNums)
             }
 
             isActive = false;
@@ -207,6 +214,12 @@ public class NBettingPanel : MonoBehaviour
         {
             Debug.Log("Bet is not Valid");
         }
+    }
+
+    public void cancelBet()
+    {
+        isActive = false;
+        closeBettingPanel.Invoke();
     }
 
     public void IncrementBet()

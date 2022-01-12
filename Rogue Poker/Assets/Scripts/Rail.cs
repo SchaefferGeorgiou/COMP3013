@@ -2,33 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.Events;
 
 [ExecuteInEditMode]
 public class Rail : MonoBehaviour
 {
     //Transform Array to hold all nodes in the current scene
     private Transform[] nodes;
-    private GameObject UI;
+    private GameObject Camera;
     public int currentRotation = 0;
     private bool isrotating = false;
+
+    public UnityEvent EndCameraMovement;
 
     private void Start()
     {
         //Gets all nodes that are children of the rail object in the current scene 
         nodes = GetComponentsInChildren<Transform>();
-        //Grabs the Canvas
-        UI = GameObject.Find("Canvas");
+        //Grabs the Camera
+        Camera = GameObject.Find("Main Camera");
+        Debug.Log(Camera.name);
     }
 
     public void CheckFinish(int seg)
     {
         //Checks if current node is last node
-        if (seg == nodes.Length - 1)
+        if (seg == nodes.Length - 2)
         {
             Debug.Log("Finishing Level...");
 
             //Runs command in the ui for ending level
-            UI.SendMessage("LevelFinished");
+            Camera.SendMessage("Halt");
         }
     }
 
@@ -53,7 +57,6 @@ public class Rail : MonoBehaviour
             throw;
         }
     }
-
     
     public Vector3 CatmullPositon(int seg, float ratio)
     {
@@ -129,44 +132,6 @@ public class Rail : MonoBehaviour
             float temp = currentRotation * 0.2f;
             nodes[seg+1].rotation = new Quaternion(temp + nodes[seg+1].rotation.x, nodes[seg+1].rotation.y, nodes[seg+1].rotation.z, nodes[seg+1].rotation.w);
             Debug.Log(nodes[seg].rotation.x);
-        }
-    }
-
-    public void rotateLeft(int seg)
-    {
-        if (currentRotation < 3)
-        {
-            currentRotation += 1;
-            if (!isrotating)
-            {
-                Debug.Log("yeeeee");
-                isrotating = true; //If not rotating then begin so
-            }
-            else
-            {
-                if (currentRotation == 0)
-                {
-                    isrotating = false;
-                } //limit of up to 3 stages of rotation (-3) : 3
-            }
-        }
-    }
-    public void rotateRight(int seg)
-    {
-        if (currentRotation > -3)
-        {
-            currentRotation -= 1;
-            if (!isrotating)
-            {
-                isrotating = true; //If not rotating then begin so
-            }
-            else
-            {
-                if (currentRotation == 0)
-                {
-                    isrotating = false;
-                }//limit of up to 3 stages of rotation (-3) : 3
-            }
         }
     }
 
