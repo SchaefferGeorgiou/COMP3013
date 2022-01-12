@@ -13,8 +13,6 @@ public class Rail : MonoBehaviour
     public int currentRotation = 0;
     private bool isrotating = false;
 
-    public UnityEvent EndCameraMovement;
-
     private void Start()
     {
         //Gets all nodes that are children of the rail object in the current scene 
