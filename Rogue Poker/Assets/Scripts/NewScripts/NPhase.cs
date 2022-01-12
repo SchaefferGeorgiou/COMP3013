@@ -7,7 +7,13 @@ using System;
 public class NPhase : MonoBehaviour
 {
     [SerializeField]
-    private GameObject betBtns, pickBtnsRaise, pickBtnsFold, CPBtns, endScores; //RFBtns
+    private GameObject betBtns, pickBtnsRaise, pickBtnsFold, CPBtns, EndBtns;
+
+    [SerializeField, Header ("Final score text displays")]
+    private GameObject dealerText;
+
+    [SerializeField]
+    private GameObject[] playerText, opponentText;
 
     [SerializeField]
     private int phaseNum;
@@ -17,18 +23,13 @@ public class NPhase : MonoBehaviour
     [Header("Events NOT Necessary for functionality")]
     public UnityEvent phaseOne, phaseTwo_RF, phaseTwo_C, phaseThree;
 
+    private int[] winnings = new int[3];
+
     // Start is called before the first frame update
     void Start()
     {
         PhaseOne();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     //This method isn't necessary at current, however we will make it reset the game for testing purposes
     public void PhaseOne()
@@ -36,10 +37,10 @@ public class NPhase : MonoBehaviour
         //This enables the bet buttons only
         setPhaseNum(1);
         betBtns.SetActive(true);
-            //RFBtns.SetActive(false);
         pickBtnsFold.SetActive(false);
         pickBtnsRaise.SetActive(false);
         CPBtns.SetActive(false);
+        EndBtns.SetActive(false);
         hasFolded = false; 
         hasRaised = false;
 
@@ -63,37 +64,6 @@ public class NPhase : MonoBehaviour
         pickBtnsRaise.SetActive(false);
         pickBtnsFold.SetActive(true);
     }
-
-    /*public void PhaseTwo_RF(string choice)
-    {
-
-        //This takes in the specific button type and changes the UI respectively
-        switch (choice)
-        {
-            case "raise":
-                RFBtns.SetActive(false);
-                pickBtnsRaise.SetActive(true);
-                break;
-
-            case "fold":
-                RFBtns.SetActive(false);
-                pickBtnsFold.SetActive(true);
-                break;
-
-            case "reset":
-                RFBtns.SetActive(true);
-                pickBtnsFold.SetActive(false);
-                pickBtnsRaise.SetActive(false);
-                break;
-
-            default:
-                Debug.Log("Incorrect text written in a raise / fold / reset button");
-                break;
-        }
-
-        //The pass button can have the text change to reflect whether the player has done one or none
-        //e.g. changing 'pass' to 'continue'
-    }*/
 
     public void Raise()
     {
@@ -131,8 +101,12 @@ public class NPhase : MonoBehaviour
     {
         setPhaseNum(5);
         CPBtns.SetActive(false);
-        endScores.SetActive(true);
+        EndBtns.SetActive(true);
+        //do other stuffs
+        //smooth rotate text displays so user can see
 
+
+        //Don't forget to reset these rotations in phase_one()
         phaseThree.Invoke();
     }
 

@@ -13,6 +13,8 @@ public class NBet : MonoBehaviour
 
     public TextMeshPro callLabel;
 
+    public TextMeshPro[] optionsText;
+
     private int currentOption;
 
     private bool isPlayer;
@@ -42,6 +44,8 @@ public class NBet : MonoBehaviour
             playerBet[currentOption] += betNum[i] * referenceValues[i];
         }
 
+        optionsText[currentOption].SetText("£" + playerBet[currentOption].ToString()); //sets the label text to the bets value
+
         ChipCountChanged.Invoke();
     }
 
@@ -55,6 +59,8 @@ public class NBet : MonoBehaviour
 
             playerNum[currentOption] += betNum[i];
             playerBet[currentOption] += betNum[i] * referenceValues[i];
+
+            optionsText[i].SetText("£" + playerBet[currentOption].ToString()); //sets the label text to the bets value
         }
 
         ChipCountChanged.Invoke();
@@ -81,24 +87,6 @@ public class NBet : MonoBehaviour
         //Can use Else statement here to report that couldn't progress
         //Implement feedback in NPhase and use ref
 
-    }
-
-    public void CheckCallMade() //confused as to what/why this is
-    {
-        bool callMade = false;
-        for (int i = 0; i < raiseNums.Length; i++)
-        {
-            if (!(raiseNums[i] > 0))
-            {
-                callMade = true;
-                break;
-            }
-        }
-
-        if (isPlayer && callMade)
-        {
-            refPhases.PhaseThree();
-        }
     }
 
     // Please call this method in NBet when folding
@@ -157,6 +145,11 @@ public class NBet : MonoBehaviour
     public int[] returnBetNums()
     {
         return betNums[currentOption];
+    }
+
+    public int[][] returnAllBetNums()
+    {
+        return betNums;
     }
 
     //Setting whether the bet is rock / paper / scissors

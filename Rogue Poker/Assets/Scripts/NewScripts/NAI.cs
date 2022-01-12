@@ -6,7 +6,7 @@ using TMPro;
 
 public class NAI : MonoBehaviour
 {
-    NBet opponentBets;
+    public NBet opponentBets;
     NChipCount opponentChips;
     public TextMeshPro ifCalledLbl;
 

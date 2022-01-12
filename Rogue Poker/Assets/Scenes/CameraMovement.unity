@@ -6046,7 +6046,6 @@ MonoBehaviour:
   currentRail: {fileID: 276418804}
   rig: {fileID: 821396657}
   Speed: 0
-  move: {x: 0, y: 0, z: 0}
 --- !u!54 &821396657
 Rigidbody:
   m_ObjectHideFlags: 0

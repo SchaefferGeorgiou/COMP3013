@@ -57,7 +57,6 @@ public class Rail : MonoBehaviour
             throw;
         }
     }
-
     
     public Vector3 CatmullPositon(int seg, float ratio)
     {
@@ -133,44 +132,6 @@ public class Rail : MonoBehaviour
             float temp = currentRotation * 0.2f;
             nodes[seg+1].rotation = new Quaternion(temp + nodes[seg+1].rotation.x, nodes[seg+1].rotation.y, nodes[seg+1].rotation.z, nodes[seg+1].rotation.w);
             Debug.Log(nodes[seg].rotation.x);
-        }
-    }
-
-    public void rotateLeft(int seg)
-    {
-        if (currentRotation < 3)
-        {
-            currentRotation += 1;
-            if (!isrotating)
-            {
-                Debug.Log("yeeeee");
-                isrotating = true; //If not rotating then begin so
-            }
-            else
-            {
-                if (currentRotation == 0)
-                {
-                    isrotating = false;
-                } //limit of up to 3 stages of rotation (-3) : 3
-            }
-        }
-    }
-    public void rotateRight(int seg)
-    {
-        if (currentRotation > -3)
-        {
-            currentRotation -= 1;
-            if (!isrotating)
-            {
-                isrotating = true; //If not rotating then begin so
-            }
-            else
-            {
-                if (currentRotation == 0)
-                {
-                    isrotating = false;
-                }//limit of up to 3 stages of rotation (-3) : 3
-            }
         }
     }
 
