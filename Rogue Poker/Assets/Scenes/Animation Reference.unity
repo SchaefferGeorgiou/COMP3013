@@ -606,7 +606,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7314297078229937443, guid: 846c5eeb27bdb874489d4b6a83d7bbd7, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7314297078229937443, guid: 846c5eeb27bdb874489d4b6a83d7bbd7, type: 3}
       propertyPath: m_LocalScale.x
@@ -2915,7 +2915,10 @@ MonoBehaviour:
   pickBtnsRaise: {fileID: 1577852690}
   pickBtnsFold: {fileID: 1307157063}
   CPBtns: {fileID: 2113797448}
-  endScores: {fileID: 0}
+  EndBtns: {fileID: 0}
+  dealerText: {fileID: 0}
+  playerText: []
+  opponentText: []
   phaseNum: 0
   phaseOne:
     m_PersistentCalls:
@@ -2933,6 +2936,30 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1326286501}
+        m_TargetAssemblyTypeName: EZAnimation, Assembly-CSharp
+        m_MethodName: setAnimIntValue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: DealerOption
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1326286501}
+        m_TargetAssemblyTypeName: EZAnimation, Assembly-CSharp
+        m_MethodName: setBoolTrue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Flip
           m_BoolArgument: 0
         m_CallState: 2
   phaseTwo_C:
@@ -2970,6 +2997,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   callLabel: {fileID: 2143098710}
+  optionsText: []
 --- !u!1 &467158831
 GameObject:
   m_ObjectHideFlags: 0
@@ -5424,6 +5452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71379300b055c314884e762a41681e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  opponentBets: {fileID: 0}
   ifCalledLbl: {fileID: 2063068985}
 --- !u!4 &876142154
 Transform:
@@ -5859,7 +5888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 710807727397556174, guid: 1532ae4a744ff9a45befeb65b588e7b7, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 710807727397556174, guid: 1532ae4a744ff9a45befeb65b588e7b7, type: 3}
       propertyPath: m_LocalScale.x
@@ -5887,19 +5916,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 710807727397556174, guid: 1532ae4a744ff9a45befeb65b588e7b7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.5010364
+      value: 0.5000002
       objectReference: {fileID: 0}
     - target: {fileID: 710807727397556174, guid: 1532ae4a744ff9a45befeb65b588e7b7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.5010364
+      value: -0.49999982
       objectReference: {fileID: 0}
     - target: {fileID: 710807727397556174, guid: 1532ae4a744ff9a45befeb65b588e7b7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.4989615
+      value: 0.50000054
       objectReference: {fileID: 0}
     - target: {fileID: 710807727397556174, guid: 1532ae4a744ff9a45befeb65b588e7b7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.4989615
+      value: 0.4999994
       objectReference: {fileID: 0}
     - target: {fileID: 710807727397556174, guid: 1532ae4a744ff9a45befeb65b588e7b7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5907,11 +5936,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 710807727397556174, guid: 1532ae4a744ff9a45befeb65b588e7b7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 710807727397556174, guid: 1532ae4a744ff9a45befeb65b588e7b7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 269.762
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1532ae4a744ff9a45befeb65b588e7b7, type: 3}
@@ -7526,7 +7555,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1310491167996370055, guid: c043492c330a3be4bbd472a26bf2d53c, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1310491167996370055, guid: c043492c330a3be4bbd472a26bf2d53c, type: 3}
       propertyPath: m_LocalScale.x
@@ -9693,6 +9722,7 @@ GameObject:
   - component: {fileID: 1326286497}
   - component: {fileID: 1326286496}
   - component: {fileID: 1326286500}
+  - component: {fileID: 1326286501}
   m_Layer: 0
   m_Name: Dealer
   m_TagString: Untagged
@@ -9857,20 +9887,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326286495}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.0045071756, w: 0.99998987}
   m_LocalPosition: {x: 0, y: 0, z: -4.2595}
   m_LocalScale: {x: 3.0014865, y: 3.0014863, z: 3.0014865}
   m_Children:
   - {fileID: 983659494}
-  - {fileID: 1009825395}
   - {fileID: 124281975}
   - {fileID: 366255819}
+  - {fileID: 1009825395}
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.516}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.14, y: 24.05}
+  m_AnchoredPosition: {x: 4.132534, y: 24.050076}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1326286500
@@ -9892,6 +9922,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1326286501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326286495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5f32ff46b17cd644b855dafee7a7d28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dealer: {fileID: 1326286497}
 --- !u!1 &1332235367
 GameObject:
   m_ObjectHideFlags: 0

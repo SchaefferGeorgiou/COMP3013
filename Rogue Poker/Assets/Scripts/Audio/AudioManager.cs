@@ -141,37 +141,37 @@ public class AudioManager : MonoBehaviour
         
     }
 
-    public void playRotateUp(int position)
-    {
-        if (position == 1 || position == -1)
-        {            
-            Play("tilt up 1");
-        }
-        else if (position == 2 || position == -2)
-        {
-            Play("tilt up 2");
-        }
-        else if (position == 3 || position == -3)
-        {
-            Play("tilt up 3");
-        }
-    }
+    //public void playRotateUp(int position)
+    //{
+    //    if (position == 1 || position == -1)
+    //    {            
+    //        Play("tilt up 1");
+    //    }
+    //    else if (position == 2 || position == -2)
+    //    {
+    //        Play("tilt up 2");
+    //    }
+    //    else if (position == 3 || position == -3)
+    //    {
+    //        Play("tilt up 3");
+    //    }
+    //}
 
-    public void playRotateDown(int position)
-    {
-        if (position == 0)
-        {
-            Play("tilt down 1");
-        }
-        else if (position == 1 || position == -1)
-        {
-            Play("tilt down 2");
-        }
-        else if (position == 2 || position == -2)
-        {
-            Play("tilt down 3");
-        }
-    }
+    //public void playRotateDown(int position)
+    //{
+    //    if (position == 0)
+    //    {
+    //        Play("tilt down 1");
+    //    }
+    //    else if (position == 1 || position == -1)
+    //    {
+    //        Play("tilt down 2");
+    //    }
+    //    else if (position == 2 || position == -2)
+    //    {
+    //        Play("tilt down 3");
+    //    }
+    //}
 
     //Speed sound code that's not finished yet
     /*public void playSpeed(float speed)
