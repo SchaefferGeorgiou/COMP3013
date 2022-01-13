@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RailMover : MonoBehaviour
 {
     //Current instance of rail that object is on
     public Rail currentRail;
     public Rigidbody rig;
+
+    public UnityEvent MoveToEndRail;
+    public UnityEvent BackToMainMenu;
 
     private float transition;
     //Current speed float
@@ -36,6 +40,18 @@ public class RailMover : MonoBehaviour
         {
             //test code, delete
             SetSpeed(1f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            //more test code, delete later
+
+            MoveToEndRail.Invoke();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetRail();
         }
 
     }
@@ -85,5 +101,19 @@ public class RailMover : MonoBehaviour
         //return move;
         var vel = rig.velocity;
         return vel;
+    }
+
+    //Entering a new Rail
+    public void SwitchRail(Rail newRail)
+    {
+        currentRail = newRail;
+        ResetRail();
+    }
+
+
+    //Setting a Rail to the first node
+    public void ResetRail()
+    {
+        currentSeg = 0;
     }
 }

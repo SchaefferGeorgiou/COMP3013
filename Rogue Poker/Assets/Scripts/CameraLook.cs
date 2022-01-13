@@ -56,4 +56,10 @@ public class CameraLook : MonoBehaviour
     {
         target = tableSide;
     }
+
+    public void Activate()
+    {
+        moveCentreTable();
+        gameObject.SetActive(true);
+    }
 }
