@@ -45,9 +45,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.03230214
-  m_TransitionOffset: 0.5751987
-  m_ExitTime: 0.5751426
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0.614767
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -197,9 +197,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.028170824
-  m_TransitionOffset: 0.5760086
-  m_ExitTime: 0.5750922
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0.0040247682
+  m_ExitTime: 0.6162623
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -278,8 +278,8 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0
-  m_TransitionOffset: 0.00029739997
-  m_ExitTime: 0.57527035
+  m_TransitionOffset: 0.00040890658
+  m_ExitTime: 0.59427506
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -297,14 +297,14 @@ AnimatorController:
   - m_Name: DealerOption
     m_Type: 3
     m_DefaultFloat: 0
-    m_DefaultInt: -1
+    m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: Flip
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 0
+    m_DefaultBool: 1
     m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
