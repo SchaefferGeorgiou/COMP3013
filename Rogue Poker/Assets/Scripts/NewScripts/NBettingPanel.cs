@@ -82,6 +82,7 @@ public class NBettingPanel : MonoBehaviour
         refBet.setBetOption(Option);
 
         //set current bet equal to the saved bet, unless it#s null then set to defaul 0's
+        currentBet = new int[6];
         currentBet = refBet.returnBetNums();
 
         if (currentBet == null) { currentBet = new int[] { 0, 0, 0, 0, 0 }; }
@@ -136,24 +137,10 @@ public class NBettingPanel : MonoBehaviour
         //getting the total number of chips the player has from nChipCount via nPlayer and updating the UI appropriately
         tot = refPlayer.getTotalChipNums();
         
-        int[][] temp = refBet.returnAllBetNums();
-
-        foreach (int[] x in temp)
-        {
-            for (int i = 0; i < tot.Length; i++)
-            {
-                //add onto that any chips already on this bet, as they need to be included as available to be bet with
-                tot[i] += x[i];
-                totalNumChips[i].SetText("x" + tot[i].ToString());
-            }
-        }
-        /*
         for (int i = 0; i < tot.Length; i++)
         {
-            //add onto that any chips already on this bet, as they need to be included as available to be bet with
-            tot[i] += currentBet[i];
             totalNumChips[i].SetText("x" + tot[i].ToString());
-        }*/
+        }
     }
 
     public void ValidateBet()
@@ -162,7 +149,7 @@ public class NBettingPanel : MonoBehaviour
         int betTotal = 0;
         int betNum = 0;
 
-        foreach (int i in currentBet)
+        for (int i = 0; i < 6; i++)
         {
             //calculate the total amount bet
             betTotal += currentBet[i] * referenceValues[i];
@@ -191,7 +178,6 @@ public class NBettingPanel : MonoBehaviour
                 }
                 break;
         }
-
 
         if (betValid)
         {

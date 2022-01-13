@@ -34,10 +34,17 @@ public class NBet : MonoBehaviour
 
     public void AlterBet(int[] betNum)
     {
+        //if sent bet has no change, then don't alter bet
+        //if (betNum == betNums[currentOption]) return;
         previousBet = betNums[currentOption];
+
+        playerNum[currentOption] = 0;
+        playerBet[currentOption] = 0;
         //Sets a new value for the bets
         for (int i = 0; i < betNums.Length; i++)
         {
+            //int diff = betNum[i] - betNums[currentOption][i];
+
             betNums[currentOption][i] = betNum[i];
 
             playerNum[currentOption] += betNum[i];
@@ -115,6 +122,7 @@ public class NBet : MonoBehaviour
         for (int i = 0; i < diff.Length; i++)
         {
             diff[i] = betNums[currentOption][i] - previousBet[i];
+            previousBet[i] = betNums[currentOption][i]; //then reset previous to stop reppeat subtraction
         }
         return diff;
     }
