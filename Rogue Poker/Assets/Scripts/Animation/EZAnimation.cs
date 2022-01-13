@@ -11,6 +11,12 @@ public class EZAnimation : MonoBehaviour
 
     //I got tired so I gave up and hardcoded the boi
     public NDealer dealer;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     
     
     public void setBoolTrue(string boolName)
