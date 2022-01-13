@@ -20,7 +20,7 @@ It features tower style progression with each succeeding opponent being more dif
 Now plug in your Android device and hit play in the Editor.
 
 * iOS
-1. Download Unity Remote 4 from the App Store
+1. Download Unity Remote 5 from the App Store
 2. In Unity set the Build as iOS
 
 I think you're good to go.
