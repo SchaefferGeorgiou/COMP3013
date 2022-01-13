@@ -10,6 +10,7 @@ public class RailMover : MonoBehaviour
     public Rigidbody rig;
 
     public UnityEvent MoveToEndRail;
+    public UnityEvent BackToMainMenu;
 
     private float transition;
     //Current speed float
@@ -46,8 +47,11 @@ public class RailMover : MonoBehaviour
             //more test code, delete later
 
             MoveToEndRail.Invoke();
+        }
 
-            SetSpeed(0f);
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetRail();
         }
 
     }
@@ -99,8 +103,17 @@ public class RailMover : MonoBehaviour
         return vel;
     }
 
+    //Entering a new Rail
     public void SwitchRail(Rail newRail)
     {
         currentRail = newRail;
+        ResetRail();
+    }
+
+
+    //Setting a Rail to the first node
+    public void ResetRail()
+    {
+        currentSeg = 0;
     }
 }
