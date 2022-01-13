@@ -142,5 +142,5 @@ public class Rail : MonoBehaviour
             Handles.DrawDottedLine(nodes[i].position, nodes[i + 1].position, 3.0f);
         }
     }
-    
+
 }
