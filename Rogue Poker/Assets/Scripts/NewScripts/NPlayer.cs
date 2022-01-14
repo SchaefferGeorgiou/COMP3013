@@ -13,6 +13,26 @@ public class NPlayer : MonoBehaviour
     {
         playerChips = this.gameObject.AddComponent<NChipCount>();
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            /*int[] temp = playerChips.GetCount();
+            for (int i = 0; i < 6; i++)
+            {
+                Debug.Log(temp[i]);
+            }
+            */
+            AlterChipCounts();
+            Debug.Log("BREK");
+            /*
+            int[] bleh = playerChips.GetCount();
+            for (int i = 0; i < 6; i++)
+            {
+                Debug.Log(bleh[i]);
+            }*/
+        }
+    }
     public int[] getAllBetsNums()
     {
         return playerBets.returnAllCounts();

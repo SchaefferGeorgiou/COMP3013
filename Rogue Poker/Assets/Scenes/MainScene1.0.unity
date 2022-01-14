@@ -3773,6 +3773,7 @@ MonoBehaviour:
   - {fileID: 1745689324}
   - {fileID: 151990308}
   - {fileID: 1252386815}
+  isPlayer: 1
 --- !u!1 &467158831
 GameObject:
   m_ObjectHideFlags: 0
@@ -5193,8 +5194,8 @@ Light:
   m_Color: {r: 0.8113208, g: 0.5052726, b: 0, a: 1}
   m_Intensity: 15
   m_Range: 14
-  m_SpotAngle: 40
-  m_InnerSpotAngle: 4
+  m_SpotAngle: 24
+  m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -6669,6 +6670,7 @@ MonoBehaviour:
   - {fileID: 2095291059}
   - {fileID: 1579988796}
   - {fileID: 864022605}
+  isPlayer: 0
 --- !u!1 &887154423
 GameObject:
   m_ObjectHideFlags: 0
@@ -15740,8 +15742,8 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.8113208, g: 0.5052726, b: 0, a: 1}
-  m_Intensity: 7
+  m_Color: {r: 0.67058825, g: 0.40069628, b: 0.01960785, a: 1}
+  m_Intensity: 6
   m_Range: 60
   m_SpotAngle: 63
   m_InnerSpotAngle: 1

@@ -17,13 +17,14 @@ public class NBet : MonoBehaviour
 
     private int currentOption;
 
+    [SerializeField]
     private bool isPlayer;
     private int[] playerBet = new int[3], //total value of all bets
         playerNum = new int[3], //total number of chips bet
-        previousBet = new int[5]; //the num of chips on the bet before being updated
+        previousBet = new int[6]; //the num of chips on the bet before being updated
     private int[][] betNums = new int[3][];
     private int foldedIndex;
-    private int[] raiseNums = new int[5];
+    private int[] raiseNums = new int[6];
 
     private int[] referenceValues = { 100, 50, 20, 10, 5, 1 };
 
@@ -34,16 +35,33 @@ public class NBet : MonoBehaviour
 
     public void AlterBet(int[] betNum)
     {
-        //if sent bet has no change, then don't alter bet
-        //if (betNum == betNums[currentOption]) return;
-        previousBet = betNums[currentOption];
+        playerNum[currentOption] = 0;
+        playerBet[currentOption] = 0;
+        //Sets a new value for the bets
+        for (int i = 0; i < 6; i++)
+        {
+            previousBet[i] = betNums[currentOption][i];
+
+            betNums[currentOption][i] = betNum[i];
+
+            playerNum[currentOption] += betNum[i];
+            playerBet[currentOption] += betNum[i] * referenceValues[i]; 
+        }
+
+        optionsText[currentOption].SetText("£" + playerBet[currentOption].ToString()); //sets the label text to the bets value
+        ChipCountChanged.Invoke();
+    }
+
+    public void AlterBet(int option, int[] betNum)
+    {
+        setBetOption(option);
 
         playerNum[currentOption] = 0;
         playerBet[currentOption] = 0;
         //Sets a new value for the bets
-        for (int i = 0; i < betNums.Length; i++)
+        for (int i = 0; i < 6; i++)
         {
-            //int diff = betNum[i] - betNums[currentOption][i];
+            previousBet[i] = betNums[currentOption][i];
 
             betNums[currentOption][i] = betNum[i];
 
@@ -56,36 +74,21 @@ public class NBet : MonoBehaviour
         ChipCountChanged.Invoke();
     }
 
-    public void AlterBet(int option, int[] betNum)
-    {
-        setBetOption(option);
-        //Sets a new value for the bets
-        for (int i = 0; i < betNums.Length; i++)
-        {
-            betNums[currentOption][i] = betNum[i];
-
-            playerNum[currentOption] += betNum[i];
-            playerBet[currentOption] += betNum[i] * referenceValues[i];
-
-            optionsText[i].SetText("£" + playerBet[currentOption].ToString()); //sets the label text to the bets value
-        }
-
-        ChipCountChanged.Invoke();
-    }
-
     public void CheckBetsMade()
     {
+        Debug.Log("pressed");
         //Checks that all the bets have none-zero values before changing from phase 1 to 2
         bool betsMade = true;
         for (int i = 0; i < playerBet.Length; i++)
         {
-            if (!(playerBet[i] > 0))
+            if (playerBet[i] == 0)
             {
+                Debug.Log("bad");
                 betsMade = false;
                 break;
             }
         }
-
+        Debug.Log("good");
         if (isPlayer && betsMade)
         {
             refPhases.PhaseTwo();
@@ -118,7 +121,7 @@ public class NBet : MonoBehaviour
 
     public int[] returnBetChange()
     {
-        int[] diff = new int[5];
+        int[] diff = new int[6];
         for (int i = 0; i < diff.Length; i++)
         {
             diff[i] = betNums[currentOption][i] - previousBet[i];
@@ -183,5 +186,12 @@ public class NBet : MonoBehaviour
         betNums[0] = new int[] { 0, 0, 0, 0, 0, 0 };
         betNums[1] = new int[] { 0, 0, 0, 0, 0, 0 };
         betNums[2] = new int[] { 0, 0, 0, 0, 0, 0 };
+
+        //previousBet = betNums[0];
+        
+        for (int i = 0; i < 6; i++)
+        {
+            previousBet[i] = betNums[0][i];
+        }
     }
 }
