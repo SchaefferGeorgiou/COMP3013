@@ -88,7 +88,6 @@ public class RailMover : MonoBehaviour
     public void SetSpeed(float inSpeed)
     {
         Speed = inSpeed;
-        Debug.Log("Speed: " + Speed);
     }
 
     public void Halt()

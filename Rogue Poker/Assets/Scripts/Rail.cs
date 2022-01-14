@@ -19,7 +19,6 @@ public class Rail : MonoBehaviour
         nodes = GetComponentsInChildren<Transform>();
         //Grabs the Camera
         Camera = GameObject.Find("Main Camera");
-        Debug.Log(Camera.name);
     }
 
     public void CheckFinish(int seg)
@@ -27,8 +26,6 @@ public class Rail : MonoBehaviour
         //Checks if current node is last node
         if (seg == nodes.Length - 2)
         {
-            Debug.Log("Finishing Level...");
-
             //Runs command in the ui for ending level
             Camera.SendMessage("Halt");
         }
