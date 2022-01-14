@@ -6,6 +6,40 @@ using TMPro;
 
 public class NBet : MonoBehaviour
 {
+    [System.Serializable]
+    public class AllStacks
+    {
+        public ChipStack[] Stack;
+
+        //doesn't work yet, infinte loop somehow
+        public void alterStack(int[] difference)
+        {
+            bool finishedAll = false;
+            int i = 0;
+            int tracker = 0;
+            while (finishedAll == false)
+            {
+                if(i == tracker) 
+                { 
+                    Stack[i].StackChips(difference[i]);
+                    tracker++;
+                }
+
+                if(Stack[i].checkFinished() == true)
+                {
+                    //if finished adding tot he current stack
+                    i++;
+                }
+
+                if (i > 5) { finishedAll = true; }
+
+            }
+        }
+    }
+
+    public static AllStacks Instance;
+    public AllStacks[] allChipStacks;
+
     public NPhase refPhases;
 
     [Header ("Called when successfully updated player chip #")]
@@ -35,6 +69,8 @@ public class NBet : MonoBehaviour
 
     public void AlterBet(int[] betNum)
     {
+        //int[] change = new int[6];
+        int change;
         playerNum[currentOption] = 0;
         playerBet[currentOption] = 0;
         //Sets a new value for the bets
@@ -45,7 +81,10 @@ public class NBet : MonoBehaviour
             betNums[currentOption][i] = betNum[i];
 
             playerNum[currentOption] += betNum[i];
-            playerBet[currentOption] += betNum[i] * referenceValues[i]; 
+            playerBet[currentOption] += betNum[i] * referenceValues[i];
+
+            change = betNums[currentOption][i] - previousBet[i];
+            allChipStacks[currentOption].Stack[i].StackChips(change);
         }
 
         optionsText[currentOption].SetText("£" + playerBet[currentOption].ToString()); //sets the label text to the bets value

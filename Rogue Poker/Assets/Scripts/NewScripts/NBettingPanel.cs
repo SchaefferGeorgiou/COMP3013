@@ -9,17 +9,6 @@ using System.Linq;
 
 public class NBettingPanel : MonoBehaviour
 {
-//Singleton
-    [System.Serializable]
-    public class AllStacks
-    {
-        public ChipStack[] Stack;
-    }
-
-    public static AllStacks Instance;
-
-    public AllStacks[] allChipStacks;
-
     //the string defining the type of UI panel
     private string type;
     //the player's bet
@@ -78,6 +67,7 @@ public class NBettingPanel : MonoBehaviour
         if (!isActive) return;
         //if option sent is -1, then get the opponents Raised option to use
         if (Option == -1) { Option = refAI.getRaiseIndex(); };
+        Debug.Log(Option);
 
         refBet.setBetOption(Option);
 
@@ -163,7 +153,7 @@ public class NBettingPanel : MonoBehaviour
             //calculate the total amount bet
             betTotal += currentBet[i] * referenceValues[i];
             //calculate total number of chips bet
-            betNum += currentBet[i];
+            //betNum += currentBet[i];
         }
 
         switch (type)

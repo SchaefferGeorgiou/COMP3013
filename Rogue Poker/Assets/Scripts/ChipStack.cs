@@ -15,7 +15,9 @@ public class ChipStack : MonoBehaviour
     Vector3 stackPosition; //the chip stack's position
     List<GameObject> chipStack = new List<GameObject>(); //list of chips returned from instantiation
 
-    [SerializeField, Header("Invoked once per Chip (not necessary)")]
+    private bool finished;
+
+    [SerializeField, Header("Invoked once per Chip")]
     public UnityEvent ChipAdded;
 
     // Start is called before the first frame update
@@ -25,9 +27,20 @@ public class ChipStack : MonoBehaviour
         stackPosition = transform.position;
     }
 
-    //a method for stacking individual chips as they are added (progressively) in the Betting Panel
-    void StackChips(int numChips)
+    public bool checkFinished()
     {
+        if (finished) { finished = false; return true; }
+        else { return false; }
+    }
+
+    //a method for stacking individual chips as they are added (progressively) in the Betting Panel
+    public void StackChips(int numChips)
+    {
+        finished = false;
+
+        if (numChips == 0) return;
+        if (numChips < 0) { RemoveChips(0 - numChips); return; }
+
         for (int i = 0; i < numChips; i++)
         {
             //create a chip, save it and then add it to the stack
@@ -36,6 +49,8 @@ public class ChipStack : MonoBehaviour
             chipStack.Add(temp);
             stackPosition.y += GapSize; //the y value of the stack's position changes by the height
         }
+
+        finished = true;
     }
 
     //a method for removing individual chips as they are subtracted (progressively) in the Betting Panel
