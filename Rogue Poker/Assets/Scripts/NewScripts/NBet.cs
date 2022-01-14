@@ -112,11 +112,11 @@ public class NBet : MonoBehaviour
         for (int i = 0; i < raiseNums.Length; i++)
         {
             //RaisedNums hold amount Raised by for calculating min/max for Calls
-            raiseNums[i] = nums[i] - playerNum[i]; //take original bet from raised bet to get just raise values
+            raiseNums[i] = nums[i] - betNums[currentOption][i]; //take original bet from raised bet to get just raise values
         }
         //Tell Phase script that Raised
-        refPhases.Raise();
         AlterBet(nums);
+        refPhases.Raise();
     }
 
     public int[] returnBetChange()

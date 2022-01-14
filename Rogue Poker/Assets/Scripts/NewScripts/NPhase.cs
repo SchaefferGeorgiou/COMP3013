@@ -68,6 +68,7 @@ public class NPhase : MonoBehaviour
     public void Raise()
     {
         hasRaised = true;
+        PhaseTwo_F();
         //PhaseTwo_RF("reset");
         RaisedAndFolded();
 

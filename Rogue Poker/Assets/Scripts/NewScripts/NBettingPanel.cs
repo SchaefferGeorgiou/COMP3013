@@ -117,11 +117,11 @@ public class NBettingPanel : MonoBehaviour
                 tempValues = refBet.returnAllValues();
                 //maxBet is half the original bet on a particular bubble (R, P, or S)
                 //this line needs to be changed when NPlayer is complete
-                maxBet = (tempValues[Option] / 2);
+                maxBet = (tempValues[Option] + (tempValues[Option] / 2));
                 maxNum = 0;
                 minBet = 0;
                 maxNumChips.SetText("");
-                maxBetValue.SetText("Max Raise: £" + maxBet.ToString());
+                maxBetValue.SetText("Max Raised Bet: £" + maxBet.ToString());
                 break;
             case "call":
                 //setting the base values for matching an opponent's raise
