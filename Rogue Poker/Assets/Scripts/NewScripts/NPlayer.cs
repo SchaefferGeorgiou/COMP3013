@@ -7,31 +7,8 @@ using TMPro;
 public class NPlayer : MonoBehaviour
 {
     public NBet playerBets; //player's bet's value (in £)
-    private NChipCount playerChips; //player's number of chips
-    private void Start()
-    {
-        playerChips = this.gameObject.AddComponent<NChipCount>();
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            /*int[] temp = playerChips.GetCount();
-            for (int i = 0; i < 6; i++)
-            {
-                Debug.Log(temp[i]);
-            }
-            */
-            AlterChipCounts();
-            Debug.Log("BREK");
-            /*
-            int[] bleh = playerChips.GetCount();
-            for (int i = 0; i < 6; i++)
-            {
-                Debug.Log(bleh[i]);
-            }*/
-        }
-    }
+    public NChipCount playerChips; //player's number of chips
+    
     public int[] getAllBetsNums()
     {
         return playerBets.returnAllCounts();
@@ -64,9 +41,8 @@ public class NPlayer : MonoBehaviour
 
     public void resetGame()
     {
-        int[] numTotals = { 3, 5, 10, 10, 20, 50 };
-        playerChips.AlterCount(numTotals);
-
+        int[] numTotals = { 4, 5, 8, 8, 10, 10 };
+        playerChips.setCount(numTotals);
         playerBets.ResetBets();
         playerBets.refPhases.resetGame();
     }

@@ -108,7 +108,7 @@ public class NCalculator : MonoBehaviour
                         if (x == FoldIndex)
                         {
                             //if the current option was folded
-                            playerWinnings += (playerBets[x] + bonus) - (opponentBets[y] + opponentBonus) / 2;
+                            playerWinnings += ((playerBets[x] + bonus) - (opponentBets[y] + opponentBonus)) / 2;
                         }
                         else
                         {
@@ -120,7 +120,7 @@ public class NCalculator : MonoBehaviour
                         if (x == FoldIndex)
                         {
                             //if the current option was folded
-                            opponentWinnings += (opponentBets[y] + opponentBonus) - (playerBets[x] + bonus) / 2;
+                            opponentWinnings += ((opponentBets[y] + opponentBonus) - (playerBets[x] + bonus)) / 2;
                         }
                         else
                         {

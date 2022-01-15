@@ -131,6 +131,7 @@ public class UIController : MonoBehaviour
 
     public void ResetGame()
     {
+        if (!started) return;
         ContinueBtn.SetActive(false);
         started = false;
         leaveTable();

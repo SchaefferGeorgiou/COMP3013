@@ -7,22 +7,16 @@ using TMPro;
 public class NAI : MonoBehaviour
 {
     public NBet opponentBets;
-    NChipCount opponentChips;
+    public NChipCount opponentChips;
     public TextMeshPro ifCalledLbl;
 
     private int raiseIndex;
     private int raiseAmount;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        startGame();
-    }
-
     public void resetGame()
     {
         int[] numTotals = { 3, 5, 10, 10, 20, 50 };
-        opponentChips.AlterCount(numTotals);
+        opponentChips.setCount(numTotals);
         startGame();
     }
 
@@ -31,12 +25,12 @@ public class NAI : MonoBehaviour
         opponentBets.ResetBets();
 
         System.Random generate = new System.Random();
-        int option = generate.Next(0, 4);
+        int option = generate.Next(1, 4);
         int[] nums;
         switch (option)
         {
             case 1:
-                nums = new int[] { 0, 3, 0, 20, 0, 0 };
+                nums = new int[] { 0, 1, 0, 20, 0, 0 };
                 opponentBets.AlterBet(0, nums);
                 nums = new int[] { 0, 1, 5, 0, 4, 0 };
                 opponentBets.AlterBet(1, nums);
@@ -47,18 +41,18 @@ public class NAI : MonoBehaviour
             case 2:
                 nums = new int[] { 2, 0, 1, 0, 0, 0 };
                 opponentBets.AlterBet(0, nums);
-                nums = new int[] { 0, 2, 2, 7, 1, 15 };
+                nums = new int[] { 0, 3, 2, 7, 1, 15 };
                 opponentBets.AlterBet(1, nums);
-                nums = new int[] { 0, 2, 5, 0, 10, 0 };
+                nums = new int[] { 0, 1, 5, 0, 10, 0 };
                 opponentBets.AlterBet(2, nums);
                 break;
 
             case 3:
-                nums = new int[] { 0, 1, 0, 4, 0, 0 };
+                nums = new int[] { 0, 0, 1, 4, 2, 5 };
                 opponentBets.AlterBet(0, nums);
                 nums = new int[] { 0, 2, 3, 0, 0, 0 };
                 opponentBets.AlterBet(1, nums);
-                nums = new int[] { 5, 0, 0, 0, 0, 0 };
+                nums = new int[] { 4, 0, 0, 0, 0, 0 };
                 opponentBets.AlterBet(2, nums);
                 break;
         }
@@ -80,6 +74,9 @@ public class NAI : MonoBehaviour
                 lowest = i;
             }
         }
+
+        lowestval = bets[lowest];
+        highestVal = bets[highest];
 
         //Raising
         int[] nums = { 0, 0, 0, 0, 0, 0 };
@@ -131,7 +128,7 @@ public class NAI : MonoBehaviour
             nums[3] = 4;
             dif = (int)Math.Round(temp) - 40;
         }
-        else if (highestVal > 50)
+        else if (highestVal >= 50)
         {
             dif = (int)Math.Round(temp);
         }
@@ -166,21 +163,17 @@ public class NAI : MonoBehaviour
             }
         }
 
-        //Identify which is highest and apply calculated Raise
-        switch (highest)
-        {//Somewhere here, need to notify UI and allow player to Call
-            case 0:
-                opponentBets.AlterBet(0, nums);
-                break;
-
-            case 1:
-                opponentBets.AlterBet(1, nums);
-                break;
-
-            case 2:
-                opponentBets.AlterBet(2, nums);
-                break;
+        int[][] allbets = opponentBets.returnAllBetNums();
+        //add raise values to the original bet
+        for (int i = 0; i < 6; i++)
+        {
+            int a = allbets[highest][i];
+            nums[i] += a;
         }
+
+        //Identify which is highest and apply calculated Raise
+        opponentBets.setBetOption(highest);
+        opponentBets.setRaisedNums(nums);
         raiseIndex = highest;
 
         //Fold lowest valued bet
@@ -203,7 +196,6 @@ public class NAI : MonoBehaviour
 
             int[] referenceValues = { 100, 50, 20, 10, 5, 1 };
             int totNum = 0;
-            //int totVal = 0;
 
             for (int i = 0; i < 6; i++)
             {
@@ -281,6 +273,14 @@ public class NAI : MonoBehaviour
                     }
                     if (check == 0) { break; } //pass without making a change = infinite loop somehow (-'ve numbers maybe?)
                 }
+                int[][] allbets = opponentBets.returnAllBetNums();
+                //add raise values to the original bet
+                for (int i = 0; i < 6; i++)
+                {
+                    int g = allbets[index][i];
+                    nums[i] += g;
+                }
+
                 opponentBets.AlterBet(index, nums);
             }
         }
@@ -319,7 +319,14 @@ public class NAI : MonoBehaviour
 
     public int getRaiseAmount()
     {
-        int[] temp =  opponentBets.returnAllValues();
-        return temp[raiseIndex];
+        int[] temp =  opponentBets.returnRaisedNums();
+        int total = 0;
+
+        for (int i = 0; i < 6; i++)
+        {
+            total += temp[i];
+        }
+
+        return total;
     }
 }
