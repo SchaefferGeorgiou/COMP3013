@@ -16,6 +16,8 @@ public class NAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        opponentBets.ResetBets();
+
         System.Random generate = new System.Random();
         int option = generate.Next(0, 4);
         int[] nums;

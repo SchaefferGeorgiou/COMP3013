@@ -35,7 +35,7 @@ public class RailMover : MonoBehaviour
             Play();
         }
 
-        
+        /*
         if (Input.GetKeyDown(KeyCode.B))
         {
             //test code, delete
@@ -52,7 +52,7 @@ public class RailMover : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             ResetRail();
-        }
+        }*/
 
     }
     

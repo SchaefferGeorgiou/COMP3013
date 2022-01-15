@@ -67,7 +67,6 @@ public class NBettingPanel : MonoBehaviour
         if (!isActive) return;
         //if option sent is -1, then get the opponents Raised option to use
         if (Option == -1) { Option = refAI.getRaiseIndex(); };
-        Debug.Log(Option);
 
         refBet.setBetOption(Option);
 

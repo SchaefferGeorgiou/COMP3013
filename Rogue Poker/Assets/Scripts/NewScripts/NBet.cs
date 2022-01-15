@@ -42,8 +42,7 @@ public class NBet : MonoBehaviour
 
     public NPhase refPhases;
 
-    [Header ("Called when successfully updated player chip #")]
-    public UnityEvent ChipCountChanged;
+    public UnityEvent ChipCountChanged, ChipSound;
 
     public TextMeshPro callLabel;
 
@@ -69,6 +68,7 @@ public class NBet : MonoBehaviour
 
     public void AlterBet(int[] betNum)
     {
+        bool ifChanged = false;
         //int[] change = new int[6];
         int change;
         playerNum[currentOption] = 0;
@@ -85,10 +85,14 @@ public class NBet : MonoBehaviour
 
             change = betNums[currentOption][i] - previousBet[i];
             allChipStacks[currentOption].Stack[i].StackChips(change);
+
+            if (change != 0) ifChanged = true;
         }
 
         optionsText[currentOption].SetText("£" + playerBet[currentOption].ToString()); //sets the label text to the bets value
         ChipCountChanged.Invoke();
+
+        if (ifChanged) ChipSound.Invoke();
     }
 
     public void AlterBet(int option, int[] betNum)
@@ -122,12 +126,10 @@ public class NBet : MonoBehaviour
         {
             if (playerBet[i] == 0)
             {
-                Debug.Log("bad");
                 betsMade = false;
                 break;
             }
         }
-        Debug.Log("good");
         if (isPlayer && betsMade)
         {
             refPhases.PhaseTwo();
@@ -225,12 +227,5 @@ public class NBet : MonoBehaviour
         betNums[0] = new int[] { 0, 0, 0, 0, 0, 0 };
         betNums[1] = new int[] { 0, 0, 0, 0, 0, 0 };
         betNums[2] = new int[] { 0, 0, 0, 0, 0, 0 };
-
-        //previousBet = betNums[0];
-        
-        for (int i = 0; i < 6; i++)
-        {
-            previousBet[i] = betNums[0][i];
-        }
     }
 }
