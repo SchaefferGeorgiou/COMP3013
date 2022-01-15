@@ -18,6 +18,9 @@ public class NBettingPanel : MonoBehaviour
     //the oppoenent
     public NAI refAI;
 
+    [Header ("Chalk selection circles")]
+    public GameObject[] selections;
+
     //[SerializeField]
     //private ChipStack[][] AllStacks;
 
@@ -259,6 +262,12 @@ public class NBettingPanel : MonoBehaviour
 
     public void ChangeChipSelected(int index)
     {
+        for (int i = 0; i < 6; i++)
+        {
+            selections[i].SetActive(false);
+        }
+        selections[index].SetActive(true);
+
         //0 = 100, 1 = 50.... 5 = 1
         if (index <= 5 && index >= 0)
         {
