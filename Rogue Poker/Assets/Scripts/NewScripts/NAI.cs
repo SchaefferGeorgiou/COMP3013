@@ -16,6 +16,18 @@ public class NAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        startGame();
+    }
+
+    public void resetGame()
+    {
+        int[] numTotals = { 3, 5, 10, 10, 20, 50 };
+        opponentChips.AlterCount(numTotals);
+        startGame();
+    }
+
+    public void startGame()
+    {
         opponentBets.ResetBets();
 
         System.Random generate = new System.Random();
@@ -175,9 +187,103 @@ public class NAI : MonoBehaviour
         opponentBets.setFoldIndex(lowest);
     }
 
-    public void Call()
+    public void Call(int index, int[] Raise)
     {
         bool called = false;
+        if (index != getFoldedIndex())
+        {
+            int[] temp = getAllValues();
+            int dif = temp[index] / 2;
+            int[][] allChips = opponentBets.returnAllBetNums();
+
+            int[] counts = getAllCounts();
+            int totCount = 0;
+
+            for (int i = 0; i < 3; i++) { totCount += counts[i]; }
+
+            int[] referenceValues = { 100, 50, 20, 10, 5, 1 };
+            int totNum = 0;
+            //int totVal = 0;
+
+            for (int i = 0; i < 6; i++)
+            {
+                totNum += Raise[i];
+            }
+
+            //multi-stage check to see if want to call
+            bool enough = false;
+            System.Random generate = new System.Random();
+            int a = generate.Next(1, 11);
+            int b = generate.Next(0, 6);
+            int c = generate.Next(5, 41);
+            int oppTotal = allChips[index][5] + allChips[index][4] + allChips[index][3] + allChips[index][2] + allChips[index][1] + allChips[index][0];
+
+            //if enough chips & chips raised is more than the random num difference
+            if (oppTotal > totNum && totNum >= a-b) { enough = true; }
+            //calculates a low probability for deciding not to call, which is influenced by the total value of that bet option
+            double mod = 1 - ((500 / temp[index]) *b) * -1;
+            if (enough && (100/(c+(int)Math.Round(mod))>= a * 2)) { called = true; }
+
+            if (called)
+            {
+                int[] nums = { 0, 0, 0, 0, 0, 0 };
+                int check = 0;
+                while (dif > 0 && totNum > 0)
+                {
+                    check++;
+                    //keep adding to raise until difference is made up
+                    if (dif - 100 >= 0 && allChips[index][0] > 0)
+                    {
+                        nums[0] += 1;
+                        dif -= 100;
+                        allChips[index][0] -= 1;
+                        totNum--;
+                        check--;
+                    }
+                    else if (dif - 50 >= 0 && allChips[index][1] > 0)
+                    {
+                        nums[1] += 1;
+                        dif -= 50;
+                        allChips[index][1] -= 1;
+                        totNum--;
+                        check--;
+                    }
+                    else if (dif - 20 >= 0 && allChips[index][2] > 0)
+                    {
+                        nums[2] += 1;
+                        dif -= 20;
+                        allChips[index][2] -= 1;
+                        totNum--;
+                        check--;
+                    }
+                    else if (dif - 10 >= 0 && allChips[index][3] > 0)
+                    {
+                        nums[3] += 1;
+                        dif -= 10;
+                        allChips[index][3] -= 1;
+                        totNum--;
+                        check--;
+                    }
+                    else if (dif - 5 >= 0 && allChips[index][4] > 0)
+                    {
+                        nums[4] += 1;
+                        dif -= 5;
+                        allChips[index][4] -= 1;
+                        check--;
+                    }
+                    else if (dif - 1 >= 0 && allChips[index][5] > 0)
+                    {
+                        nums[5] += 1;
+                        dif -= 1;
+                        allChips[index][5] -= 1;
+                        totNum--;
+                        check--;
+                    }
+                    if (check == 0) { break; } //pass without making a change = infinite loop somehow (-'ve numbers maybe?)
+                }
+                opponentBets.AlterBet(index, nums);
+            }
+        }
 
         //Input logic here
         //get raised nums from player bet, random chance not to call

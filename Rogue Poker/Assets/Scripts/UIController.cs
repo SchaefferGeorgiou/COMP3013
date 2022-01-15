@@ -36,30 +36,43 @@ public class UIController : MonoBehaviour
         }
     }
 
+    public void closeJalp()
+    {
+        int phase = refPhases.getPhaseNum();
+
+        if (phase > 1)
+        {//Normalise the Phase num to work with the array
+            if (phase == 2 || phase == 3) { phase = 1; }
+            else if (phase > 3) { phase = 2; }
+        }
+        else { phase = 0; }
+
+        HelpScreens[phase].SetActive(false);
+        open = false;
+    }
+
+    public void openJalp()
+    {
+        if (open) return;
+        int phase = refPhases.getPhaseNum();
+
+        if (phase > 1)
+        {//Normalise the Phase num to work with the array
+            if (phase == 2 || phase == 3) { phase = 1; }
+            else if (phase > 3) { phase = 2; }
+        }
+        else { phase = 0; }
+
+        HelpScreens[phase].SetActive(true);
+        open = true;
+    }
+
     private void Update()
     {
         //replace with a button for turning on/off
         if (Input.GetKey("j") && atTable)
         {
-            int phase = refPhases.getPhaseNum();
-
-            if(phase > 1)
-            {//Normalise the Phase num to work with the array
-                if (phase == 2 || phase == 3) { phase = 2; }
-                if (phase > 3) { phase = 3; }
-            }
-
-            if (open)
-            {
-                HelpScreens[phase].SetActive(false);
-                open = false;
-                return;
-            }
-            else
-            {
-                HelpScreens[phase].SetActive(true);
-                open = true;
-            }
+            openJalp();
         }
 
         if (end)

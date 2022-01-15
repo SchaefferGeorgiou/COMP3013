@@ -12,7 +12,6 @@ public class NCalculator : MonoBehaviour
     public NAI opponent;
     public NPlayer player;
     public NDealer dealer;
-    public NBet refBet;
 
     private int FoldIndex;
     private int Dealer;
@@ -30,6 +29,19 @@ public class NCalculator : MonoBehaviour
         EnemyWinningsTxt.SetText("");
     }
 
+    public void resetGame()
+    {
+        player.resetGame();
+        opponent.resetGame();
+        dealer.resetDealer();
+    }
+
+    public void AICall()
+    {
+        opponent.Call(player.playerBets.returnRaisedIndex() ,player.playerBets.returnRaisedNums());
+    }
+
+    //shows the user what the AI raised so that they can call them
     public void displayCalLablel()
     {
         string option = "";
@@ -45,7 +57,7 @@ public class NCalculator : MonoBehaviour
                 option = "Scissors";
                 break;
         }
-        refBet.setCallLabelText(option, opponent.getRaiseAmount());
+        player.playerBets.setCallLabelText(option, opponent.getRaiseAmount());
     }
 
     public void Calculate()

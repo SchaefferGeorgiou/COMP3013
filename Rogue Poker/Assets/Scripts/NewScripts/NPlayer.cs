@@ -8,7 +8,6 @@ public class NPlayer : MonoBehaviour
 {
     public NBet playerBets; //player's bet's value (in £)
     private NChipCount playerChips; //player's number of chips
-    private NBetIndicator UIindicator; //UI variable
     private void Start()
     {
         playerChips = this.gameObject.AddComponent<NChipCount>();
@@ -61,6 +60,15 @@ public class NPlayer : MonoBehaviour
     public void AlterChipCounts()
     {
         playerChips.AlterCount(playerBets.returnBetChange());
+    }
+
+    public void resetGame()
+    {
+        int[] numTotals = { 3, 5, 10, 10, 20, 50 };
+        playerChips.AlterCount(numTotals);
+
+        playerBets.ResetBets();
+        playerBets.refPhases.resetGame();
     }
 
 }

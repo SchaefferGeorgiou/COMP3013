@@ -193,6 +193,11 @@ public class NBet : MonoBehaviour
         return raiseNums;
     }
 
+    public int returnRaisedIndex()
+    {
+        return currentOption;
+    }
+
     //This returns all individual number of chips on a specific bet option 100s, 50s, 20s etc.
     public int[] returnBetNums()
     {
