@@ -21,6 +21,7 @@ public class NCalculator : MonoBehaviour
 
     public TextMeshPro PlayerWinningsTxt;
     public TextMeshPro EnemyWinningsTxt;
+    public TextMeshPro endText;
 
     // Start is called before the first frame update
     void Start()
@@ -139,6 +140,7 @@ public class NCalculator : MonoBehaviour
 
             PlayerWinningsTxt.text = "+£" + playerWinnings.ToString();
             EnemyWinningsTxt.text = "+£" + opponentWinnings.ToString();
+            endText.SetText("Congratulations of winning! Click the return button to go to the main menu");
         }
         else
         {
@@ -146,6 +148,7 @@ public class NCalculator : MonoBehaviour
 
             PlayerWinningsTxt.text = "+£" + playerWinnings.ToString();
             EnemyWinningsTxt.text = "+£" + opponentWinnings.ToString();
+            endText.SetText("Better luck next time. Try experimenting with new strategies to get the upper hand!");
         }
     }
 
