@@ -31,7 +31,6 @@ public class NPhase : MonoBehaviour
         PhaseOne();
     }
 
-    //This method isn't necessary at current, however we will make it reset the game for testing purposes
     public void PhaseOne()
     {
         //This enables the bet buttons only
@@ -52,8 +51,7 @@ public class NPhase : MonoBehaviour
         //This enables the Raise Fold buttons for Phase 2 and disables the Phase 1 Bet Buttons
         setPhaseNum(2);
         betBtns.SetActive(false);
-        //RFBtns.SetActive(true);
-            pickBtnsRaise.SetActive(true);
+        pickBtnsRaise.SetActive(true);
 
         phaseTwo_RF.Invoke();
     }
@@ -71,8 +69,8 @@ public class NPhase : MonoBehaviour
         PhaseTwo_F();
         //PhaseTwo_RF("reset");
         RaisedAndFolded();
-
     }
+
     public void Fold()
     {
         hasFolded = true;
@@ -84,11 +82,10 @@ public class NPhase : MonoBehaviour
     {
         if (hasRaised && hasFolded)
         {
-            PhaseTwo_C();
             phaseTwo_C.Invoke();
+            PhaseTwo_C();
         }
     }
-
 
     public void PhaseTwo_C()
     {
@@ -103,14 +100,14 @@ public class NPhase : MonoBehaviour
         setPhaseNum(5);
         CPBtns.SetActive(false);
         EndBtns.SetActive(true);
-        //do other stuffs
-        //smooth rotate text displays so user can see
-
-
-        //Don't forget to reset these rotations in phase_one()
         phaseThree.Invoke();
     }
 
+    public void resetGame()
+    {
+        PhaseOne();
+        winnings = new int[3];
+    }
 
     public void setPhaseNum(int phase)
     {

@@ -67,7 +67,6 @@ public class NBettingPanel : MonoBehaviour
         if (!isActive) return;
         //if option sent is -1, then get the opponents Raised option to use
         if (Option == -1) { Option = refAI.getRaiseIndex(); };
-        Debug.Log(Option);
 
         refBet.setBetOption(Option);
 
@@ -116,11 +115,17 @@ public class NBettingPanel : MonoBehaviour
             case "call":
                 //setting the base values for matching an opponent's raise
                 opponentNum = refAI.getOpponentBets().returnRaisedNums().Sum();
-
                 tempValues = refBet.returnAllValues();
                 //this line needs to be changed when NPlayer is complete
-                maxBet = (tempValues[Option] / 2);
-                maxNum = opponentNum;
+                maxBet = (tempValues[Option] / 2) + tempValues[Option];
+
+                for (int i = 0; i < 6; i++)
+                {
+                    //calculate total number of chips bet
+                    maxNum += currentBet[i];
+                }
+
+                maxNum += opponentNum;
                 maxNumChips.SetText("Number Chips:" + maxNum.ToString());
                 maxBetValue.SetText("Call Amount: £" + maxBet.ToString());
                 break;
@@ -153,7 +158,7 @@ public class NBettingPanel : MonoBehaviour
             //calculate the total amount bet
             betTotal += currentBet[i] * referenceValues[i];
             //calculate total number of chips bet
-            //betNum += currentBet[i];
+            betNum += currentBet[i];
         }
 
         switch (type)

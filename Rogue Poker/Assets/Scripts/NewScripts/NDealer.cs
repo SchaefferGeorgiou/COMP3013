@@ -34,9 +34,10 @@ public class NDealer : MonoBehaviour
         threeOptions[option].SetActive(true);
     }
 
-    void ShowDealer()
+    public void resetDealer()
     {
-
+        threeOptions[option].SetActive(false);
+        Default.SetActive(true);
     }
 
     public int returnOption()
