@@ -44,6 +44,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
+  - name: card_flip
+    clip: {fileID: 8300000, guid: 9b8cdc10e52a83f43b8fbc174a486d8a, type: 3}
+    mix: {fileID: 24300002, guid: 2e00f18fa0f57e444969a5cb89bba159, type: 2}
+    volume: 0.25
+    pitch: 1
+    pan: 0
+    onAwake: 0
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
   - name: thump
     clip: {fileID: 8300000, guid: 55733f1d0feac144686040407b43dff1, type: 3}
     mix: {fileID: 24300002, guid: 2e00f18fa0f57e444969a5cb89bba159, type: 2}
@@ -132,5 +142,15 @@ MonoBehaviour:
     pan: 0
     onAwake: 1
     loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: music
+    clip: {fileID: 8300000, guid: 8e0981d17baab62469a2fac5104c5aab, type: 3}
+    mix: {fileID: 24300002, guid: 2e00f18fa0f57e444969a5cb89bba159, type: 2}
+    volume: 0.5
+    pitch: 1
+    pan: 0
+    onAwake: 1
+    loop: 1
     mute: 0
     source: {fileID: 0}
