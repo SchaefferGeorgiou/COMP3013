@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class NChipCount : MonoBehaviour
 {
-    private int[] numTotals;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        numTotals = new int[]{ 4, 5, 8, 8, 10, 10 };
-    }
+    private int[] numTotals = new int[] { 4, 5, 8, 8, 10, 10 };
 
     // Update is called once per frame
     void Update()

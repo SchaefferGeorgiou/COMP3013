@@ -21,6 +21,8 @@ public class UIController : MonoBehaviour
 
     private bool open, atTable, end, started;
 
+    //public int angleX = 0, angleY = 180, angleZ = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,7 +81,8 @@ public class UIController : MonoBehaviour
         {
             foreach (GameObject item in AllTexts)
             {
-                //item.transform.LookAt(rotationTarget.transform);
+                //item.transform.LookAt(rotationTarget.transform, Vector3.up);
+                //item.transform.Rotate(new Vector3(item.transform.eulerAngles.x + angleX, item.transform.eulerAngles.y + angleY, item.transform.eulerAngles.z + angleZ));
 
                 //var targetRotation = Quaternion.LookRotation(rotationTarget.transform.position - transform.position);
                 //item.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.1f * Time.deltaTime);
@@ -98,7 +101,7 @@ public class UIController : MonoBehaviour
     public void SpinText()
     {
         leaveTable();
-        //end = true;
+        end = true;
         foreach (GameObject item in AllTexts)
         {
             item.transform.Rotate(new Vector3(item.transform.position.x, item.transform.position.y + 90f, item.transform.position.z));
