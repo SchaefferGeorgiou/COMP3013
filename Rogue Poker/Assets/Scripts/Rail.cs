@@ -134,10 +134,10 @@ public class Rail : MonoBehaviour
     private void OnDrawGizmos()
     {
         //Loop to step through all nodes in a scene and draw a line between them
-        for (int i = 0; i < nodes.Length - 1; i++)
+        /*for (int i = 0; i < nodes.Length - 1; i++)
         {
             Handles.DrawDottedLine(nodes[i].position, nodes[i + 1].position, 3.0f);
-        }
+        }*/
     }
 
 }
