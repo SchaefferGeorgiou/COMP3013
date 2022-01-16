@@ -30,13 +30,12 @@ public class EZAnimation : MonoBehaviour
     }
 
 
-    /*
-    //Actual method, but not needed rn
-    //public void setNewIntValue(int value)
-    //{
-    //    newInt = value;
-    //}
-    */
+
+    public void setNewIntValue(int value)
+    {
+        newInt = value;
+    }
+
 
     //Used to set postition in the array
 
