@@ -7,7 +7,7 @@ using System;
 public class NPhase : MonoBehaviour
 {
     [SerializeField]
-    private GameObject betBtns, pickBtnsRaise, pickBtnsFold, CPBtns, EndBtns;
+    private GameObject betBtns, pickBtnsRaise, pickBtnsFold, CPBtns, CallBtns, EndBtns;
 
     [SerializeField, Header ("Final score text displays")]
     private GameObject dealerText;
@@ -18,7 +18,7 @@ public class NPhase : MonoBehaviour
     [SerializeField]
     private int phaseNum;
 
-    private bool hasFolded, hasRaised;
+    private bool hasFolded, hasRaised, firstDeal;
 
     [Header("Events NOT Necessary for functionality")]
     public UnityEvent phaseOne, phaseTwo_RF, phaseTwo_C, phaseThree;
@@ -39,9 +39,11 @@ public class NPhase : MonoBehaviour
         pickBtnsFold.SetActive(false);
         pickBtnsRaise.SetActive(false);
         CPBtns.SetActive(false);
+        CallBtns.SetActive(false);
         EndBtns.SetActive(false);
         hasFolded = false; 
         hasRaised = false;
+        firstDeal = false;
 
         phaseOne.Invoke();
     }
@@ -53,7 +55,7 @@ public class NPhase : MonoBehaviour
         betBtns.SetActive(false);
         pickBtnsRaise.SetActive(true);
 
-        phaseTwo_RF.Invoke();
+        if(!firstDeal) { phaseTwo_RF.Invoke(); firstDeal = true; }
     }
 
     public void PhaseTwo_F()
@@ -99,6 +101,7 @@ public class NPhase : MonoBehaviour
     {
         setPhaseNum(5);
         CPBtns.SetActive(false);
+        CallBtns.SetActive(false);
         EndBtns.SetActive(true);
         phaseThree.Invoke();
     }
@@ -133,7 +136,8 @@ public class NPhase : MonoBehaviour
                 PhaseTwo_F();
                 break;
             case 4:
-                PhaseTwo_C();
+                //PhaseTwo_C();
+                PhaseThree();
                 break;
             case 5:
                 PhaseThree();

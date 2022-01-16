@@ -81,7 +81,7 @@ public class UIController : MonoBehaviour
         {
             foreach (GameObject item in AllTexts)
             {
-                //item.transform.LookAt(rotationTarget.transform, Vector3.up);
+                item.transform.LookAt(rotationTarget.transform);
                 //item.transform.Rotate(new Vector3(item.transform.eulerAngles.x + angleX, item.transform.eulerAngles.y + angleY, item.transform.eulerAngles.z + angleZ));
 
                 //var targetRotation = Quaternion.LookRotation(rotationTarget.transform.position - transform.position);
@@ -102,10 +102,10 @@ public class UIController : MonoBehaviour
     {
         leaveTable();
         end = true;
-        foreach (GameObject item in AllTexts)
+        /*foreach (GameObject item in AllTexts)
         {
             item.transform.Rotate(new Vector3(item.transform.position.x, item.transform.position.y + 90f, item.transform.position.z));
-        }
+        }*/
     }
 
     public void resetText()

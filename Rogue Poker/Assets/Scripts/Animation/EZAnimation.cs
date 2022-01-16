@@ -12,7 +12,7 @@ public class EZAnimation : MonoBehaviour
     //I got tired so I gave up and hardcoded the boi
     public NDealer dealer = null;
 
-    private void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
     }

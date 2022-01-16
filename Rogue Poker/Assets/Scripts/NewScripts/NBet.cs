@@ -48,10 +48,13 @@ public class NBet : MonoBehaviour
 
     public TextMeshPro[] optionsText;
 
+    public Material MetalOne, MetalFold;
+    public GameObject[] Cards;
+
     private int currentOption;
 
     [SerializeField]
-    private bool isPlayer;
+    private bool isPlayer, reset;
     private int[] playerBet = new int[3], //total value of all bets
         playerNum = new int[3], //total number of chips bet
         previousBet = new int[6]; //the num of chips on the bet before being updated
@@ -63,6 +66,7 @@ public class NBet : MonoBehaviour
 
     private void Start()
     {
+        reset = false;
         playerNum = new int[] { 0, 0, 0 };
         playerBet = new int[] { 0, 0, 0 };
         betNums[0] = new int[] { 0, 0, 0, 0, 0, 0 };
@@ -88,12 +92,14 @@ public class NBet : MonoBehaviour
             playerNum[currentOption] += betNum[i];
             playerBet[currentOption] += betNum[i] * referenceValues[i];
 
-            if (isPlayer)
+            if (isPlayer || reset)
             {
                 change = betNums[currentOption][i] - previousBet[i];
                 allChipStacks[currentOption].Stack[i].StackChips(change);
             }
         }
+        if(reset) { reset = false; }
+
         optionsText[currentOption].SetText("x" + playerNum[currentOption].ToString());
         //sets the label text to the bets value
         if (isPlayer) { optionsText[currentOption].SetText("£" + playerBet[currentOption].ToString()); }
@@ -164,6 +170,8 @@ public class NBet : MonoBehaviour
     public void setFoldIndex(int type)
     {
         foldedIndex = type;
+
+        if (type != -1) { Cards[type].GetComponent<MeshRenderer>().material = MetalFold; }
         //Tell phase that folded
         if (isPlayer) { refPhases.Fold(); }
     }
@@ -248,7 +256,11 @@ public class NBet : MonoBehaviour
     {
         for (int x = 0; x < 3; x++)
         {
+            reset = true;
             setBetOption(x);
+
+            Cards[x].GetComponent<MeshRenderer>().material = MetalOne;
+
             int[] temp = new int[] { 0, 0, 0, 0, 0, 0 };
             
             AlterBet(temp);

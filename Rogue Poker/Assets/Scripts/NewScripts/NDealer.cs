@@ -14,7 +14,7 @@ public class NDealer : MonoBehaviour
 
     public TextMeshPro DelaerTxt;
     [Header ("Delay between when dealer.Deal is called and the text update")]
-    public int textDelay = 2;
+    public float textDelay = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -40,9 +40,9 @@ public class NDealer : MonoBehaviour
         StartCoroutine(showChoice(textDelay, choice));
     }
 
-    IEnumerator showChoice(int delay, string choice)
+    IEnumerator showChoice(float delay, string choice)
     {
-        DelaerTxt.SetText("???");
+        DelaerTxt.SetText("");
         yield return new WaitForSeconds(delay);
         DelaerTxt.SetText(choice);
     }

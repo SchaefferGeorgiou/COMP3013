@@ -15,8 +15,9 @@ public class NAI : MonoBehaviour
 
     public void resetGame()
     {
-        int[] numTotals = { 3, 5, 10, 10, 20, 50 };
+        int[] numTotals = { 4, 5, 8, 8, 10, 10 };
         opponentChips.setCount(numTotals);
+        opponentBets.ResetBets();
         startGame();
     }
 
@@ -25,7 +26,7 @@ public class NAI : MonoBehaviour
         opponentBets.ResetBets();
 
         System.Random generate = new System.Random();
-        int option = generate.Next(1, 4);
+        int option = generate.Next(1, 5);
         int[] nums;
         switch (option)
         {
@@ -41,18 +42,27 @@ public class NAI : MonoBehaviour
             case 2:
                 nums = new int[] { 2, 0, 1, 0, 0, 0 };
                 opponentBets.AlterBet(0, nums);
-                nums = new int[] { 0, 3, 2, 7, 1, 15 };
+                nums = new int[] { 0, 0, 2, 7, 1, 15 };
                 opponentBets.AlterBet(1, nums);
                 nums = new int[] { 0, 1, 5, 0, 10, 0 };
                 opponentBets.AlterBet(2, nums);
                 break;
 
             case 3:
-                nums = new int[] { 0, 0, 1, 4, 2, 5 };
+                nums = new int[] { 0, 0, 1, 4, 0, 5 };
                 opponentBets.AlterBet(0, nums);
                 nums = new int[] { 0, 2, 3, 0, 0, 0 };
                 opponentBets.AlterBet(1, nums);
                 nums = new int[] { 4, 0, 0, 0, 0, 0 };
+                opponentBets.AlterBet(2, nums);
+                break;
+
+            case 4:
+                nums = new int[] { 1, 0, 0, 0, 0, 0 };
+                opponentBets.AlterBet(0, nums);
+                nums = new int[] { 0, 3, 0, 5, 0, 0 };
+                opponentBets.AlterBet(1, nums);
+                nums = new int[] { 0, 0, 4, 0, 0, 0 };
                 opponentBets.AlterBet(2, nums);
                 break;
         }
@@ -61,22 +71,21 @@ public class NAI : MonoBehaviour
     public void RaiseFold()
     {
         int[] bets = opponentBets.returnAllValues();
-        int lowest = 2, highest = 0, lowestval = 49, highestVal = 501;
+        int lowest = 0, highest = 2, lowestval = bets[0], highestVal = bets[2];
         //identify highest bet and lowest bet
         for (int i = 0; i < bets.Length; i++)
         {
-            if (bets[i] > lowestval)
-            {
-                highest = i;
-            }
-            if (bets[i] < highestVal)
+            if (bets[i] < lowestval)
             {
                 lowest = i;
+                lowestval = bets[i];
+            }
+            if (bets[i] > highestVal)
+            {
+                highest = i;
+                highestVal = bets[i];
             }
         }
-
-        lowestval = bets[lowest];
-        highestVal = bets[highest];
 
         //Raising
         int[] nums = { 0, 0, 0, 0, 0, 0 };

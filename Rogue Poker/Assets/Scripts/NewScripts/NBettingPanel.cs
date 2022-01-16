@@ -116,7 +116,7 @@ public class NBettingPanel : MonoBehaviour
                 maxNum = 0;
                 minBet = 0;
                 maxNumChips.SetText("");
-                maxBetValue.SetText("Max Raised Bet: £" + maxBet.ToString());
+                maxBetValue.SetText("New Max Bet: £" + maxBet.ToString());
                 break;
             case "call":
                 //setting the base values for matching an opponent's raise
@@ -132,8 +132,8 @@ public class NBettingPanel : MonoBehaviour
                 }
 
                 maxNum += opponentNum;
-                maxNumChips.SetText("Number Chips:" + maxNum.ToString());
-                maxBetValue.SetText("Call Amount: £" + maxBet.ToString());
+                maxNumChips.SetText("Required Chip Number:" + maxNum.ToString());
+                maxBetValue.SetText("New Max Bet: £" + maxBet.ToString());
                 break;
         }    
     }
@@ -218,7 +218,7 @@ public class NBettingPanel : MonoBehaviour
             {
                 refBet.AlterBet(currentBet);
 
-                if (type == "call") { refBet.refPhases.setPhaseNum(5); }//if calling, then ensure progress to next phase
+                if (type == "call") { refBet.refPhases.PhaseThree(); }//if calling, then ensure progress to next phase
             }
             //If it's raising then runs the setRaisedNums method to store the number of chips for calling
             else if (type == "raise")
