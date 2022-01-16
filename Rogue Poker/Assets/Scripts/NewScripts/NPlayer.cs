@@ -6,30 +6,22 @@ using TMPro;
 
 public class NPlayer : MonoBehaviour
 {
-    private NBet playerBets; //player's bet's value (in £)
-    private NChipCount playerChips; //player's number of chips
-    private NBetIndicator UIindicator; //UI variable
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public int[] getAllCounts()
+    public NBet playerBets; //player's bet's value (in £)
+    public NChipCount playerChips; //player's number of chips
+    
+    public int[] getAllBetsNums()
     {
         return playerBets.returnAllCounts();
     }
 
-    public int[] getAllValues()
+    public int[] getAllBetValues()
     {
         return playerBets.returnAllValues();
+    }
+
+    public int[] getTotalChipNums()
+    {
+        return playerChips.GetCount();
     }
 
     public NBet getPlayerBet()
@@ -44,7 +36,15 @@ public class NPlayer : MonoBehaviour
 
     public void AlterChipCounts()
     {
-        playerChips.AlterCount(playerBets.returnBetNums());
+        playerChips.AlterCount(playerBets.returnBetChange());
+    }
+
+    public void resetGame()
+    {
+        int[] numTotals = { 4, 5, 8, 8, 10, 10 };
+        playerChips.setCount(numTotals);
+        playerBets.ResetBets();
+        playerBets.refPhases.resetGame();
     }
 
 }

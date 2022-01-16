@@ -7,13 +7,23 @@ using System;
 public class NPhase : MonoBehaviour
 {
     [SerializeField]
-    private GameObject betBtns, pickBtnsRaise, RFBtns, pickBtnsFold, CPBtns, endScores;
+    private GameObject betBtns, pickBtnsRaise, pickBtnsFold, CPBtns, CallBtns, EndBtns;
+
+    [SerializeField, Header ("Final score text displays")]
+    private GameObject dealerText;
+
+    [SerializeField]
+    private GameObject[] playerText, opponentText;
+
     [SerializeField]
     private int phaseNum;
 
-    private bool hasFolded, hasRaised;
+    private bool hasFolded, hasRaised, firstDeal;
 
+    [Header("Events NOT Necessary for functionality")]
     public UnityEvent phaseOne, phaseTwo_RF, phaseTwo_C, phaseThree;
+
+    private int[] winnings = new int[3];
 
     // Start is called before the first frame update
     void Start()
@@ -21,25 +31,19 @@ public class NPhase : MonoBehaviour
         PhaseOne();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
-    //This method isn't necessary at current, however we will make it reset the game for testing purposes
     public void PhaseOne()
     {
         //This enables the bet buttons only
         setPhaseNum(1);
         betBtns.SetActive(true);
-        RFBtns.SetActive(false);
         pickBtnsFold.SetActive(false);
         pickBtnsRaise.SetActive(false);
         CPBtns.SetActive(false);
+        CallBtns.SetActive(false);
+        EndBtns.SetActive(false);
         hasFolded = false; 
         hasRaised = false;
+        firstDeal = false;
 
         phaseOne.Invoke();
     }
@@ -49,53 +53,30 @@ public class NPhase : MonoBehaviour
         //This enables the Raise Fold buttons for Phase 2 and disables the Phase 1 Bet Buttons
         setPhaseNum(2);
         betBtns.SetActive(false);
-        RFBtns.SetActive(true);
+        pickBtnsRaise.SetActive(true);
 
-        phaseTwo_RF.Invoke();
+        if(!firstDeal) { phaseTwo_RF.Invoke(); firstDeal = true; }
     }
-    public void PhaseTwo_RF(string choice)
+
+    public void PhaseTwo_F()
     {
-
-        //This takes in the specific button type and changes the UI respectively
-        switch (choice)
-        {
-            case "raise":
-                RFBtns.SetActive(false);
-                pickBtnsRaise.SetActive(true);
-                break;
-
-            case "fold":
-                RFBtns.SetActive(false);
-                pickBtnsFold.SetActive(true);
-                break;
-
-            case "reset":
-                RFBtns.SetActive(true);
-                pickBtnsFold.SetActive(false);
-                pickBtnsRaise.SetActive(false);
-                break;
-
-            default:
-                Debug.Log("Incorrect text written in a raise / fold / pass button");
-                break;
-        }
-
-        //The pass button can have the text change to reflect whether the player has done one or none
-        //e.g. changing 'pass' to 'continue'
+        setPhaseNum(3);
+        pickBtnsRaise.SetActive(false);
+        pickBtnsFold.SetActive(true);
     }
 
     public void Raise()
     {
         hasRaised = true;
-        PhaseTwo_RF("reset");
+        PhaseTwo_F();
+        //PhaseTwo_RF("reset");
         RaisedAndFolded();
-
-        phaseTwo_C.Invoke();
     }
+
     public void Fold()
     {
         hasFolded = true;
-        PhaseTwo_RF("reset");
+        //PhaseTwo_RF("reset");
         RaisedAndFolded();
     }
 
@@ -103,26 +84,33 @@ public class NPhase : MonoBehaviour
     {
         if (hasRaised && hasFolded)
         {
+            phaseTwo_C.Invoke();
             PhaseTwo_C();
         }
     }
 
-
     public void PhaseTwo_C()
     {
+        setPhaseNum(4);
         CPBtns.SetActive(true);
-        RFBtns.SetActive(false);
+        //RFBtns.SetActive(false);
+        pickBtnsFold.SetActive(false);
     }
 
     public void PhaseThree()
     {
-        setPhaseNum(3);
+        setPhaseNum(5);
         CPBtns.SetActive(false);
-        endScores.SetActive(true);
-
+        CallBtns.SetActive(false);
+        EndBtns.SetActive(true);
         phaseThree.Invoke();
     }
 
+    public void resetGame()
+    {
+        PhaseOne();
+        winnings = new int[3];
+    }
 
     public void setPhaseNum(int phase)
     {
@@ -132,5 +120,28 @@ public class NPhase : MonoBehaviour
     public int getPhaseNum()
     {
         return phaseNum;
+    }
+
+    public void displayCurrentPhase()
+    {
+        switch(phaseNum)
+        {
+            case 1:
+                PhaseOne();
+                break;
+            case 2:
+                PhaseTwo();
+                break;
+            case 3:
+                PhaseTwo_F();
+                break;
+            case 4:
+                //PhaseTwo_C();
+                PhaseThree();
+                break;
+            case 5:
+                PhaseThree();
+                break;
+        }
     }
 }

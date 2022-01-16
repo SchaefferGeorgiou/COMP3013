@@ -1,40 +1,76 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.Events;
 
 public class NCalculator : MonoBehaviour
 {
     private int dealerInt;
     private int bonus;
     private int opponentBonus;
-    private NAI opponent;
-    private NPlayer player;
-    private NDealer dealer;
+    public NAI opponent;
+    public NPlayer player;
+    public NDealer dealer;
+
+    private int FoldIndex;
+    private int Dealer;
+
+    public UnityEvent PlayerWin;
+    public UnityEvent OpponentWin;
+
+    public TextMeshPro PlayerWinningsTxt;
+    public TextMeshPro EnemyWinningsTxt;
+    public TextMeshPro endText;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        PlayerWinningsTxt.SetText("");
+        EnemyWinningsTxt.SetText("");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void resetGame()
     {
-        
+        player.resetGame();
+        opponent.resetGame();
+        dealer.resetDealer();
     }
 
-    void Calculate()
+    public void AICall()
     {
-        int[] playerBets = player.getAllValues();
-        int[] playerNums = player.getAllCounts();
+        opponent.Call(player.playerBets.returnRaisedIndex() ,player.playerBets.returnRaisedNums());
+    }
 
+    //shows the user what the AI raised so that they can call them
+    public void displayCalLablel()
+    {
+        string option = "";
+        switch (opponent.getRaiseIndex())
+        {
+            case 0:
+                option = "Rock";
+                break;
+            case 1:
+                option = "Paper";
+                break;
+            case 2:
+                option = "Scissors";
+                break;
+        }
+        player.playerBets.setCallLabelText(option, opponent.getRaiseAmount());
+    }
+
+    public void Calculate()
+    {
+        FoldIndex = player.getFoldIndex(); //-1 = no fold, otherwise index = folded option
+        Dealer = dealer.returnOption();
+
+        int[] playerBets = player.getAllBetValues(); //value of each bet
         int[] opponentBets = opponent.getAllValues();
-        int[] opponentNums = opponent.getAllCounts();
 
         int playerWinnings = 0;
         int opponentWinnings = 0;
-
-        int foldIndex = 0;
 
         for (int x = 0; x < 3; x++) //x refers to player
         {
@@ -57,32 +93,23 @@ public class NCalculator : MonoBehaviour
                         opponentBonus += 50;
                     }
 
-                    if (CompareBets(x, dealer.returnOption())) //P vs D
+                    if (CompareBets(x, Dealer)) //P vs D
                     {
                         bonus += 75;
                     }
-                    else
+
+                    if (CompareBets(y, Dealer)) //E vs D
                     {
                         opponentBonus += 75;
-                    }                        
-
-                    //if (CompareBets(y, x)) //E vs P
-                    //{
-                    //    oppBonus += 50;
-                    //}
-
-                    //if (CompareBets(y, dealer.returnOption())) //E vs D
-                    //{
-                    //    oppBonus += 75;
-                    //}
+                    }
 
 
                     if (playerBets[x] + bonus > opponentBets[y] + opponentBonus)
                     {
-                        if (x == foldIndex)
+                        if (x == FoldIndex)
                         {
                             //if the current option was folded
-                            playerWinnings += (playerBets[x] + bonus) - (opponentBets[y] + opponentBonus) / 2;
+                            playerWinnings += ((playerBets[x] + bonus) - (opponentBets[y] + opponentBonus)) / 2;
                         }
                         else
                         {
@@ -91,19 +118,37 @@ public class NCalculator : MonoBehaviour
                     }
                     else
                     {
-                        if (x == foldIndex)
+                        if (x == FoldIndex)
                         {
                             //if the current option was folded
-                            opponentWinnings += (opponentBets[y] + opponentBonus) - (playerBets[x] + bonus) / 2;
+                            opponentWinnings += ((opponentBets[y] + opponentBonus) - (playerBets[x] + bonus)) / 2;
                         }
                         else
                         {
                             opponentWinnings += (opponentBets[y] + opponentBonus) - (playerBets[x] + bonus);
                         }
                     }
-
+                    bonus = 0;
+                    opponentBonus = 0;
                 }
             }
+        }
+
+        if (playerWinnings > opponentWinnings)
+        {
+            PlayerWin.Invoke();
+
+            PlayerWinningsTxt.text = "+£" + playerWinnings.ToString();
+            EnemyWinningsTxt.text = "+£" + opponentWinnings.ToString();
+            endText.SetText("Congratulations of winning! Click the return button to go to the main menu");
+        }
+        else
+        {
+            OpponentWin.Invoke();
+
+            PlayerWinningsTxt.text = "+£" + playerWinnings.ToString();
+            EnemyWinningsTxt.text = "+£" + opponentWinnings.ToString();
+            endText.SetText("Better luck next time. Try experimenting with new strategies to get the upper hand!");
         }
     }
 
