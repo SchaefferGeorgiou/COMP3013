@@ -245,6 +245,42 @@ MonoBehaviour:
           m_StringArgument: music
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1326286496}
+        m_TargetAssemblyTypeName: EZAnimation, Assembly-CSharp
+        m_MethodName: setNewIntValue
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: -1
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1326286496}
+        m_TargetAssemblyTypeName: EZAnimation, Assembly-CSharp
+        m_MethodName: setAnimIntValue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: DealerOption
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1326286496}
+        m_TargetAssemblyTypeName: EZAnimation, Assembly-CSharp
+        m_MethodName: setBoolFalse
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Flip
+          m_BoolArgument: 0
+        m_CallState: 2
   Enter:
     m_PersistentCalls:
       m_Calls: []
@@ -20414,6 +20450,42 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: clicked
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1326286496}
+        m_TargetAssemblyTypeName: EZAnimation, Assembly-CSharp
+        m_MethodName: setNewIntValue
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: -1
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1326286496}
+        m_TargetAssemblyTypeName: EZAnimation, Assembly-CSharp
+        m_MethodName: setAnimIntValue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: DealerOption
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1326286496}
+        m_TargetAssemblyTypeName: EZAnimation, Assembly-CSharp
+        m_MethodName: setBoolFalse
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Flip
           m_BoolArgument: 1
         m_CallState: 2
   Enter:
