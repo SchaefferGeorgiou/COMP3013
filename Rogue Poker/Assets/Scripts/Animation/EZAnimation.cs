@@ -10,7 +10,7 @@ public class EZAnimation : MonoBehaviour
 
 
     //I got tired so I gave up and hardcoded the boi
-    public NDealer dealer;
+    public NDealer dealer = null;
 
     private void Start()
     {
@@ -45,16 +45,16 @@ public class EZAnimation : MonoBehaviour
     //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
     //Hard coded thing
-    public void setAnimIntValue(string intName)
+    public void setAnimIntValueDealer(string intName)
     {
         animator.SetInteger(intName, dealer.returnOption());
     }
 
 
-    //public void setAnimIntValue(string intName)
-    //{
-    //    animator.SetInteger(intName, newInt);
-    //}
+    public void setAnimIntValue(string intName)
+    {
+        animator.SetInteger(intName, newInt);
+    }
 
 
 }

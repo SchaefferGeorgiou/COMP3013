@@ -47,7 +47,7 @@ MonoBehaviour:
   - name: card_flip
     clip: {fileID: 8300000, guid: 9b8cdc10e52a83f43b8fbc174a486d8a, type: 3}
     mix: {fileID: 24300002, guid: 2e00f18fa0f57e444969a5cb89bba159, type: 2}
-    volume: 0.25
+    volume: 1
     pitch: 1
     pan: 0
     onAwake: 0
@@ -152,5 +152,45 @@ MonoBehaviour:
     pan: 0
     onAwake: 1
     loop: 1
+    mute: 0
+    source: {fileID: 0}
+  - name: open_bet_panel
+    clip: {fileID: 8300000, guid: a021b1de4bab8ca45a3cc7a931ab157d, type: 3}
+    mix: {fileID: 24300002, guid: 2e00f18fa0f57e444969a5cb89bba159, type: 2}
+    volume: 0.496
+    pitch: 1
+    pan: 0
+    onAwake: 0
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: close_bet_panel
+    clip: {fileID: 8300000, guid: f0e9023b8e80ae5429fd09a4995ffae9, type: 3}
+    mix: {fileID: 24300002, guid: 2e00f18fa0f57e444969a5cb89bba159, type: 2}
+    volume: 0.502
+    pitch: 1
+    pan: 0
+    onAwake: 0
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: clicked
+    clip: {fileID: 8300000, guid: 27147aa630cdbfe4f9f5ea8963a0b6d1, type: 3}
+    mix: {fileID: 24300002, guid: 2e00f18fa0f57e444969a5cb89bba159, type: 2}
+    volume: 0.33
+    pitch: 0.76
+    pan: 0
+    onAwake: 0
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: invalid
+    clip: {fileID: 8300000, guid: ada4d05321a96ae4b8f23e8f6bfb1bd5, type: 3}
+    mix: {fileID: 24300002, guid: 2e00f18fa0f57e444969a5cb89bba159, type: 2}
+    volume: 0.33
+    pitch: 0.76
+    pan: 0
+    onAwake: 0
+    loop: 0
     mute: 0
     source: {fileID: 0}

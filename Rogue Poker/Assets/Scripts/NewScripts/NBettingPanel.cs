@@ -9,6 +9,9 @@ using System.Linq;
 
 public class NBettingPanel : MonoBehaviour
 {
+    //For playing error sound
+    public AudioManager audio;
+
     //the string defining the type of UI panel
     private string type;
     //the player's bet
@@ -170,20 +173,43 @@ public class NBettingPanel : MonoBehaviour
                 if (betTotal <= 500 && betTotal >= 50)
                 {
                     betValid = true;
+
+                    //Play specific audio here due to different possibilities
+                    audio.Play("rustle_thump");
+                    audio.Play("many_jingle");
+
+                }
+                else
+                {
+                    audio.Play("invalid");
                 }
                 break;
             case "raise":
                 if (betTotal <= maxBet)
                 {
                     betValid = true;
+
+                    audio.Play("rustle_thump");
+                    audio.Play("many_jingle");
+                }
+                else
+                {
+                    audio.Play("invalid");
                 }
                 break;
             case "call":
                 if (betTotal <= maxBet && betNum == maxNum)
                 {
                     betValid = true;
+
+                    audio.Play("rustle_thump");
+                    audio.Play("many_jingle");
                 }
-                break;
+                else
+                {
+                    audio.Play("invalid");
+                }
+                break;        
         }
 
         if (betValid)
@@ -211,7 +237,7 @@ public class NBettingPanel : MonoBehaviour
 
     public void cancelBet()
     {
-        isActive = false;
+        //isActive = false; commented out to enable animation
 
         currentBet = new int[6];
         int[] temp;
@@ -224,7 +250,7 @@ public class NBettingPanel : MonoBehaviour
         if (currentBet == null) { currentBet = new int[] { 0, 0, 0, 0, 0, 0 }; }
         refBet.AlterBet(currentBet);
 
-        closeBettingPanel.Invoke();
+        closeBettingPanel.Invoke(); //Because of this dealer flip audio is being played multiple times
     }
 
     public void IncrementBet()
